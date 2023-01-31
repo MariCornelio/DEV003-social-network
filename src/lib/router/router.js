@@ -1,9 +1,9 @@
-import { login } from './login.js';
+import { login } from '../views/login.js';
 
 export const router = () => {
   const root = document.getElementById('root');
   const hash = window.location.hash;
-  if (hash === '' || hash === '#/index') {
+  if (hash === '' || hash === '#/') {
     root.innerHTML = login;
   } else if (hash === '#/profile') {
     root.innerHTML = '<h2>Perfil</h2>';

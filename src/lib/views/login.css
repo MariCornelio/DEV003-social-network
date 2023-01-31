@@ -9,11 +9,10 @@
 }
 
 body {
-  height: 100vh;
+  min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #ffffff;
   background-image: linear-gradient(
     0deg,
     #2d00f7ff,
@@ -30,52 +29,84 @@ body {
 }
 
 .container {
+  margin: 10px;
   position: relative;
-  max-width: 430px;
-  width: 100%;
   background: rgb(255, 255, 255);
   border-radius: 10px;
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
   overflow: hidden;
-  margin: 0 20px;
-}
-
-.container .forms {
-  display: flex;
-  align-items: center;
-  height: 440px;
-  width: 200%;
-  transition: height 0.2s ease;
 }
 
 .container .form {
-  width: 50%;
   padding: 30px;
   background-color: rgb(255, 255, 255);
-  transition: margin-left 0.18s ease;
+}
+/* titulo */
+.forms h1 {
+  text-align: center;
+  margin-top: 10px;
 }
 
+/* boton google */
+.button-google {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #2223;
+  box-shadow: 0px 5px 5px -4px rgba(0, 0, 0, 0.61);
+  background-color: #eee;
+}
+
+.button-google img {
+  width: 20px;
+  margin-right: 5px;
+}
+
+.continue-email {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin: 15px;
+}
+.continue-email p {
+  margin: 0 5px;
+  font-size: 14px;
+  flex-shrink: 0;
+}
+
+.continue-email::before {
+  display: inline-block;
+  content: '';
+  width: 40%;
+  height: 2px;
+  background-color: #2223;
+}
+.continue-email::after {
+  display: inline-block;
+  content: '';
+  width: 40%;
+  height: 2px;
+  background-color: #2223;
+}
 .container.active .login {
-  margin-left: -50%;
-  opacity: 0;
-  transition: margin-left 0.18s ease, opacity 0.15s ease;
+  display: none;
 }
 
 .container .signup {
-  opacity: 0;
-  transition: opacity 0.09s ease;
+  display: none;
 }
 .container.active .signup {
-  opacity: 1;
-  transition: opacity 0.2s ease;
+  display: block;
+  padding-top: 20px;
 }
 
-.container.active .forms {
-  height: 600px;
-}
 .container .form .title {
   position: relative;
-  font-size: 27px;
+  /* font-size: 27px; */
   font-weight: 600;
 }
 
@@ -91,9 +122,9 @@ body {
 
 .form .input-field {
   position: relative;
-  height: 50px;
+  height: 40px;
   width: 100%;
-  margin-top: 30px;
+  margin-top: 20px;
 }
 
 .input-field input {
@@ -140,21 +171,26 @@ body {
   align-items: center;
   justify-content: space-between;
   margin-top: 20px;
+  text-align: center;
 }
 
 .checkbox-text .checkbox-content {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
+  justify-content: center;
+  flex-shrink: 0;
 }
 
 .checkbox-content input {
   margin-right: 10px;
   accent-color: #493fe0;
+  margin: 5px;
 }
 
 .form .text {
   color: #000000;
   font-size: 14px;
+  margin-right: 7px;
 }
 
 .form a.text {
@@ -191,7 +227,20 @@ body {
   margin-top: 30px;
   text-align: center;
 }
+.login-signup .text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 0 10px;
+}
 
 .title {
   color: rgb(0, 0, 0);
+}
+
+@media screen and (min-width: 400px) {
+  .login-signup .text {
+    flex-direction: row;
+  }
 }
