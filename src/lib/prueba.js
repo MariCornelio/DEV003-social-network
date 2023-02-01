@@ -1,4 +1,4 @@
-import { guardarPublicacion, verPublicacion } from './model/firebase';
+import { guardarPublicacion, verPublicacion } from './index.js';
 
 const contenedorPublicacion = document.querySelector('.contenedorPublicacion');
 contenedorPublicacion.addEventListener('submit', (e) => {

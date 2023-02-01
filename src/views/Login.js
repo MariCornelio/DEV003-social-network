@@ -1,7 +1,8 @@
-export const login = `
-
-    <div class="container">
-      <div class="forms">
+export const Login = () => {
+  const divContainer = document.createElement('div');
+  divContainer.classList.add('container');
+  divContainer.innerHTML = `
+       <div class="forms">
       <h1>devgram <> </h1>
         <div class="form login">
           <button class="button-google">
@@ -87,6 +88,6 @@ export const login = `
           </div>
         </div>
       </div>
-    </div>
-    
-`;
+   `;
+  return divContainer;
+};
