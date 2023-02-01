@@ -1,3 +1,4 @@
+import { cleanMessageErrors } from '../errors/messageError.js';
 import { createUser } from '../lib/index.js';
 
 export const loginLogic = () => {
@@ -46,6 +47,7 @@ export const loginLogic = () => {
   // firebase
   formSignup.addEventListener('submit', (e) => {
     e.preventDefault();
+    cleanMessageErrors(formSignup);
     createUser(registerEmail.value, registerPassword.value);
   });
 };

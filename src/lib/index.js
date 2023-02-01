@@ -29,6 +29,9 @@ export const createUser = (email, password) => {
       console.log(error);
       const formSignup = document.getElementById('form-signup');
       const registerInput = document.querySelectorAll('#form-signup .input-field');
+      if (error.code === 'auth/weak-password') {
+        messageError('Password should be at least 6 characters', registerInput[3]);
+      }
       if (error.code === 'auth/email-already-in-use') {
         console.log(registerInput[1]);
         messageError('Email already in use', registerInput[1]);
