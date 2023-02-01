@@ -50,7 +50,7 @@ export const Login = () => {
         <div class="form signup">
           <span class="title">Registration</span>
 
-          <form>
+          <form id="form-signup">
             <div class="input-field">
               <input type="text" placeholder="Enter your name" required>
               <i class="uil uil-user"></i>
@@ -71,13 +71,13 @@ export const Login = () => {
 
             <div class="checkbox-text">
               <div class="checkbox-content">
-                <input type="checkbox" id="termCon">
+                <input type="checkbox" id="termCon" required>
                 <label for="termCon" class="text terms">I accept all terms and conditions</label>
               </div>
             </div>
 
             <div class="input-field button">
-              <input id="button-signup" type="button" value="Signup">
+              <input id="button-signup" type="submit" value="Signup">
             </div>
           </form>
 

@@ -10,7 +10,7 @@ export const loginLogic = () => {
   // firebase
   const registerEmail = document.getElementById('register-email');
   const registerPassword = document.getElementById('register-password');
-  const buttonSignup = document.getElementById('button-signup');
+  const formSignup = document.getElementById('form-signup');
 
   //   js code to show/hide password and change icon
   pwShowHide.forEach((eyeIcon) => {
@@ -44,7 +44,8 @@ export const loginLogic = () => {
   });
 
   // firebase
-  buttonSignup.addEventListener('click', () => {
+  formSignup.addEventListener('submit', (e) => {
+    e.preventDefault();
     createUser(registerEmail.value, registerPassword.value);
   });
 };

@@ -239,6 +239,11 @@ body {
   color: rgb(0, 0, 0);
 }
 
+/* errores */
+.messageError {
+  color: red;
+}
+
 @media screen and (min-width: 400px) {
   .login-signup .text {
     flex-direction: row;
