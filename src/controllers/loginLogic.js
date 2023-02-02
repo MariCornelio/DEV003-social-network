@@ -49,6 +49,7 @@ export const loginLogic = () => {
   const createPassword = document.getElementById('create-password');
   const confirmPassword = document.getElementById('register-password');
   const registerInput = document.querySelectorAll('#form-signup .input-field');
+  const buttonRegister =document.getElementById('button-signup');
 
   const checkPassword = () => {
     cleanMessageErrors(formSignup);
@@ -57,11 +58,17 @@ export const loginLogic = () => {
       createPassword.value &&
       createPassword.value !== confirmPassword.value
     ) {
+      buttonRegister.disabled = true;
+      buttonRegister.style.opacity = 0.5; 
       messageError('Password should match', registerInput[3]);
     }
+    else {
+      buttonRegister.disabled = false;
+      buttonRegister.style.opacity = 1; 
+    }
   };
-  createPassword.addEventListener('change', checkPassword);
-  confirmPassword.addEventListener('change', checkPassword);
+  createPassword.addEventListener('input', checkPassword);
+  confirmPassword.addEventListener('input', checkPassword);
 
   // firebase
   formSignup.addEventListener('submit', (e) => {
