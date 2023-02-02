@@ -1,8 +1,8 @@
 export const messageError = (message, tag) => {
-  const spanError = document.createElement('span');
-  spanError.textContent = message;
-  spanError.classList.add('messageError', 'messageErrorEmail');
-  tag.insertAdjacentElement('afterend', spanError);
+  const divError = document.createElement('div');
+  divError.innerHTML = ` <i class="fa-solid fa-circle-exclamation"></i> <p>${message}</p>`;
+  divError.classList.add('messageError');
+  tag.insertAdjacentElement('afterend', divError);
 };
 export const cleanMessageErrors = (tagContainer) => {
   if (document.querySelector('.messageError') !== null) {

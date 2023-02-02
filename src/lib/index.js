@@ -1,11 +1,7 @@
 // aqui exportaras las funciones que necesites
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 
-import {
-  collection,
-  addDoc,
-  onSnapshot,
-} from 'firebase/firestore';
+import { collection, addDoc, onSnapshot } from 'firebase/firestore';
 
 import { messageError } from '../errors/messageError.js';
 
@@ -16,7 +12,8 @@ export const guardarPublicacion = (descripcion) => {
   addDoc(collection(db, 'publicaciones'), { descripcion });
 };
 
-export const verPublicacion = (funcionRecorrido) => onSnapshot(collection(db, 'publicaciones'), funcionRecorrido);
+export const verPublicacion = (funcionRecorrido) =>
+  onSnapshot(collection(db, 'publicaciones'), funcionRecorrido);
 
 // usando Autenticación
 
@@ -28,13 +25,21 @@ export const createUser = (email, password) => {
     .catch((error) => {
       console.log(error);
       const formSignup = document.getElementById('form-signup');
-      const registerInput = document.querySelectorAll('#form-signup .input-field');
-      if (error.code === 'auth/weak-password') {
-        messageError('Password should be at least 6 characters', registerInput[3]);
-      }
+      const registerInput = document.querySelectorAll(
+        '#form-signup .input-field'
+      );
       if (error.code === 'auth/email-already-in-use') {
         console.log(registerInput[1]);
         messageError('Email already in use', registerInput[1]);
+      } else if (error.code === 'auth/invalid-email') {
+        messageError('Invalid email', registerInput[1]);
+      } else if (error.code === 'auth/weak-password') {
+        messageError(
+          'Password should be at least 6 characters',
+          registerInput[3]
+        );
+      } else {
+        messageError('Error occurred in your registration', formSignup);
       }
     });
 };
