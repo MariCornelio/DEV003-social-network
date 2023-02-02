@@ -238,12 +238,21 @@ body {
 .title {
   color: rgb(0, 0, 0);
 }
-
+/* **************************************************************+++ */
 /* errores */
 .messageError {
-  color: red;
-}
+  color: #f73e3e;
+  text-align: center;
 
+  font-size: 14px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+.messageError i {
+  margin: 4px;
+}
+/* **************************************************************+++ */
 @media screen and (min-width: 400px) {
   .login-signup .text {
     flex-direction: row;
