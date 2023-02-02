@@ -60,8 +60,9 @@ export const Login = () => {
               <i class="uil uil-envelope icon"></i>
             </div>
             <div class="input-field">
-              <input type="password" class="password" placeholder="Create a password" required>
+              <input id="create-password" type="password" class="password" placeholder="Create a password" required>
               <i class="uil uil-lock icon"></i>
+              <i class="uil uil-eye-slash showHidePw"></i>
             </div>
             <div class="input-field">
               <input id="register-password" type="password" class="password" placeholder="Confirm a password" required>

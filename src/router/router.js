@@ -6,12 +6,24 @@ export const router = () => {
 
   root.innerHTML = '';
   const hash = window.location.hash;
-  if (hash === '' || hash === '#/') {
-    root.appendChild(Login());
-    loginLogic();
-  } else if (hash === '#/profile') {
-    root.innerHTML = '<h2>Perfil</h2>';
-  } else {
-    root.innerHTML = '<h2>Error 404</h2>';
+  switch (hash) {
+    case '#/':
+    case '':
+      root.appendChild(Login());
+      loginLogic();
+      break;
+    case '#/profile':
+      root.innerHTML = '<h2>Perfil</h2>';
+      break;
+    default:
+      root.innerHTML = '<h2>Error 404</h2>';
   }
+  // if (hash === '' || hash === '#/') {
+  //   root.appendChild(Login());
+  //   loginLogic();
+  // } else if (hash === '#/profile') {
+  //   root.innerHTML = '<h2>Perfil</h2>';
+  // } else {
+  //   root.innerHTML = '<h2>Error 404</h2>';
+  // }
 };
