@@ -1,4 +1,5 @@
-import { cleanMessageErrors } from '../errors/messageError.js';
+/* eslint-disable operator-linebreak */
+import { cleanMessageErrors, messageError } from '../errors/messageError.js';
 import { createUser } from '../lib/index.js';
 
 export const loginLogic = () => {
@@ -43,6 +44,24 @@ export const loginLogic = () => {
   login.addEventListener('click', () => {
     container.classList.remove('active');
   });
+
+  // check if passwords match
+  const createPassword = document.getElementById('create-password');
+  const confirmPassword = document.getElementById('register-password');
+  const registerInput = document.querySelectorAll('#form-signup .input-field');
+
+  const checkPassword = () => {
+    cleanMessageErrors(formSignup);
+    if (
+      confirmPassword.value &&
+      createPassword.value &&
+      createPassword.value !== confirmPassword.value
+    ) {
+      messageError('Password should match', registerInput[3]);
+    }
+  };
+  createPassword.addEventListener('change', checkPassword);
+  confirmPassword.addEventListener('change', checkPassword);
 
   // firebase
   formSignup.addEventListener('submit', (e) => {

@@ -7,12 +7,17 @@ export const router = () => {
 
   root.innerHTML = '';
   const hash = window.location.hash;
-  if (hash === '' || hash === '#/') {
-    root.appendChild(Login());
-    loginLogic();
-  } else if (hash === '#/profile') {
-    root.appendChild(Profile());
-  } else {
-    root.innerHTML = '<h2>Error 404</h2>';
-  }
-};
+
+  switch (hash) {
+    case '#/':
+    case '':
+      root.appendChild(Login());
+      loginLogic();
+      break;
+    case '#/profile':
+      root.appendChild(Profile());
+      break;
+    default:
+      root.innerHTML = '<h2>Error 404</h2>';
+ };
+
