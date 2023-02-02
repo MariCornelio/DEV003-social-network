@@ -17,7 +17,10 @@ export const router = () => {
     case '#/profile':
       root.appendChild(Profile());
       break;
+    case '#/home':
+      root.appendChild(Home()); 
+      break;
     default:
       root.innerHTML = '<h2>Error 404</h2>';
  };
-
+}
