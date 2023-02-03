@@ -1,4 +1,6 @@
 import { loginLogic } from '../controllers/loginLogic.js';
+import { profileLogic } from '../controllers/profileLogic.js';
+import { Home } from '../views/Home.js';
 import { Login } from '../views/Login.js';
 import { Profile } from '../views/Profile.js';
 
@@ -16,11 +18,12 @@ export const router = () => {
       break;
     case '#/profile':
       root.appendChild(Profile());
+      profileLogic();
       break;
     case '#/home':
-      root.appendChild(Home()); 
+      root.appendChild(Home());
       break;
     default:
       root.innerHTML = '<h2>Error 404</h2>';
- };
-}
+  }
+};

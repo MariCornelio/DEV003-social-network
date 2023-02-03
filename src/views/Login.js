@@ -52,7 +52,7 @@ export const Login = () => {
 
           <form id="form-signup">
             <div class="input-field">
-              <input type="text" placeholder="Enter your name" required>
+              <input id="register-name" type="text" placeholder="Enter your name" required>
               <i class="uil uil-user"></i>
             </div>
             <div class="input-field">

@@ -13,6 +13,7 @@ export const loginLogic = () => {
   const registerEmail = document.getElementById('register-email');
   const registerPassword = document.getElementById('register-password');
   const formSignup = document.getElementById('form-signup');
+  const registerName = document.getElementById('register-name');
 
   //   js code to show/hide password and change icon
   pwShowHide.forEach((eyeIcon) => {
@@ -49,7 +50,7 @@ export const loginLogic = () => {
   const createPassword = document.getElementById('create-password');
   const confirmPassword = document.getElementById('register-password');
   const registerInput = document.querySelectorAll('#form-signup .input-field');
-  const buttonRegister =document.getElementById('button-signup');
+  const buttonRegister = document.getElementById('button-signup');
 
   const checkPassword = () => {
     cleanMessageErrors(formSignup);
@@ -59,12 +60,11 @@ export const loginLogic = () => {
       createPassword.value !== confirmPassword.value
     ) {
       buttonRegister.disabled = true;
-      buttonRegister.style.opacity = 0.5; 
+      buttonRegister.style.opacity = 0.5;
       messageError('Password should match', registerInput[3]);
-    }
-    else {
+    } else {
       buttonRegister.disabled = false;
-      buttonRegister.style.opacity = 1; 
+      buttonRegister.style.opacity = 1;
     }
   };
   createPassword.addEventListener('input', checkPassword);
@@ -74,6 +74,6 @@ export const loginLogic = () => {
   formSignup.addEventListener('submit', (e) => {
     e.preventDefault();
     cleanMessageErrors(formSignup);
-    createUser(registerEmail.value, registerPassword.value);
+    createUser(registerEmail.value, registerPassword.value, registerName.value);
   });
 };

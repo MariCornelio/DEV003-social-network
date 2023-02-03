@@ -17,10 +17,12 @@ export const verPublicacion = (funcionRecorrido) =>
 
 // usando Autenticación
 
-export const createUser = (email, password) => {
+export const createUser = (email, password, nameUser) => {
   createUserWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
       console.log(userCredential);
+      userCredential.user.displayName = { nameUser };
+      console.log(userCredential.user.displayName);
     })
     .catch((error) => {
       console.log(error);
