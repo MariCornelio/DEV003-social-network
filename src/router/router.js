@@ -3,7 +3,6 @@ import { profileLogic } from '../controllers/profileLogic.js';
 import { Home } from '../views/Home.js';
 import { Login } from '../views/Login.js';
 import { Profile } from '../views/Profile.js';
-import { Home } from '../views/Home.js';
 
 export const router = () => {
   const root = document.getElementById('root');
