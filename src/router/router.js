@@ -1,6 +1,7 @@
 import { loginLogic } from '../controllers/loginLogic.js';
 import { Login } from '../views/Login.js';
 import { Profile } from '../views/Profile.js';
+import { Home } from '../views/Home.js';
 
 export const router = () => {
   const root = document.getElementById('root');
@@ -18,9 +19,9 @@ export const router = () => {
       root.appendChild(Profile());
       break;
     case '#/home':
-      root.appendChild(Home()); 
+      root.appendChild(Home());
       break;
     default:
       root.innerHTML = '<h2>Error 404</h2>';
- };
-}
+  }
+};
