@@ -58,6 +58,7 @@ body {
   border: 1px solid #2223;
   box-shadow: 0px 5px 5px -4px rgba(0, 0, 0, 0.61);
   background-color: #eee;
+  cursor: pointer;
 }
 
 .button-google img {
@@ -124,7 +125,7 @@ body {
   position: relative;
   height: 40px;
   width: 100%;
-  margin-top: 20px;
+  margin-top: 15px;
 }
 
 .input-field input {
@@ -240,17 +241,23 @@ body {
 }
 /* **************************************************************+++ */
 /* errores */
-.messageError {
+.messageError,
+.messageErrorValidation {
   color: #f73e3e;
-  text-align: center;
-
   font-size: 14px;
   display: flex;
   justify-content: flex-start;
   align-items: flex-start;
 }
-.messageError i {
+.messageError i,
+.messageErrorValidation i {
   margin: 4px;
+}
+.none {
+  display: none;
+}
+.messageErrorValidation.active-pattern {
+  display: flex;
 }
 /* **************************************************************+++ */
 @media screen and (min-width: 400px) {

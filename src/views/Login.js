@@ -1,3 +1,4 @@
+/* eslint-disable no-useless-escape */
 export const Login = () => {
   const divContainer = document.createElement('div');
   divContainer.classList.add('container');
@@ -13,15 +14,15 @@ export const Login = () => {
           <p>or continue with email</p>
          </div>
 
-          <form>
-            <div class="input-field">
-              <input type="text" placeholder="Enter your email" required>
-              <i class="uil uil-envelope icon"></i>
+          <form id="form-signin">
+            <div class="input-field" title="Incomplete or invalid email">
+              <input id="signin-email" type="text" placeholder="Enter your email" pattern='^[a-z0-9]+(\\.[_a-z0-9]+)*@[a-z0-9-]+(\\.[a-z0-9-]+)*(\\.[a-z]{2,15})$' name="emailSignin" required>
+              <i class="fa-solid fa-envelope icon"></i>
             </div>
-            <div class="input-field">
-              <input type="password" class="password" placeholder="Enter your password" required>
-              <i class="uil uil-lock icon"></i>
-              <i class="uil uil-eye-slash showHidePw"></i>
+            <div class="input-field" title="Invalid password-only numbers and letters">
+              <input id="signin-password" name="passwordSignin" pattern="^[A-Za-zÑñÁáÉéÍíÓóÚúÜü\\d]+$" type="password" class="password" placeholder="Enter your password" minlength='6' required>
+              <i class="fa-solid fa-lock icon"></i>
+              <i class="fa-solid fa-eye-slash showHidePw"></i>
             </div>
 
             <div class="checkbox-text">
@@ -34,7 +35,7 @@ export const Login = () => {
             </div>
 
             <div class="input-field button">
-              <input type="button" value="Login">
+              <input id="button-signin" type="submit" value="Login">
             </div>
           </form>
 
@@ -51,23 +52,23 @@ export const Login = () => {
           <span class="title">Registration</span>
 
           <form id="form-signup">
-            <div class="input-field">
-              <input id="register-name" type="text" placeholder="Enter your name" required>
-              <i class="uil uil-user"></i>
+            <div class="input-field" title="Invalid name">
+              <input id="register-name" name="userNameSignup" type="text" placeholder="Enter your name" pattern="^[A-Za-zÑñÁáÉéÍíÓóÚúÜü\\s]+$" required>
+              <i class="fa-solid fa-user"></i>
             </div>
-            <div class="input-field">
-              <input id="register-email" type="text" placeholder="Enter your email" required>
-              <i class="uil uil-envelope icon"></i>
+            <div class="input-field" title="Incomplete or invalid email" >
+              <input id="register-email" type="text" placeholder="Enter your email"  pattern='^[a-z0-9]+(\\.[_a-z0-9]+)*@[a-z0-9-]+(\\.[a-z0-9-]+)*(\\.[a-z]{2,15})$' name="emailSignup" required>
+              <i class="fa-solid fa-envelope icon"></i>
             </div>
-            <div class="input-field">
-              <input id="create-password" type="password" class="password" placeholder="Create a password" required>
-              <i class="uil uil-lock icon"></i>
-              <i class="uil uil-eye-slash showHidePw"></i>
+            <div class="input-field" title="Invalid password-only numbers and letters">
+              <input id="create-password" name="firstPasswordSignup" pattern="^[A-Za-zÑñÁáÉéÍíÓóÚúÜü\\d]+$" type="password" class="password" placeholder="Create a password" minlength='6' required>
+              <i class="fa-solid fa-lock icon"></i>
+              <i class="fa-solid fa-eye-slash showHidePw"></i>
             </div>
-            <div class="input-field">
-              <input id="register-password" type="password" class="password" placeholder="Confirm a password" required>
-              <i class="uil uil-lock icon"></i>
-              <i class="uil uil-eye-slash showHidePw"></i>
+            <div class="input-field" title="Invalid password-only numbers and letters">
+              <input id="register-password" name="secondPasswordSignup" pattern="^[A-Za-zÑñÁáÉéÍíÓóÚúÜü\\d]+$" type="password" class="password" placeholder="Confirm a password" required>
+              <i class="fa-solid fa-lock icon"></i>
+              <i class="fa-solid fa-eye-slash showHidePw"></i>
             </div>
 
             <div class="checkbox-text">

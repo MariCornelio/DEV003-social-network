@@ -5,7 +5,7 @@ export const messageError = (message, tag) => {
   tag.insertAdjacentElement('afterend', divError);
 };
 export const cleanMessageErrors = (tagContainer) => {
-  if (document.querySelector('.messageError') !== null) {
+  if (tagContainer.querySelector('.messageError') !== null) {
     tagContainer.removeChild(document.querySelector('.messageError'));
   }
 };
