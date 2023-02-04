@@ -1,4 +1,58 @@
 /* .header-home */
+.home-container {
+}
+.home-header {
+  margin-top: 0;
+  width: 100%;
+  padding: 5px 10px;
+  background: rgb(255, 255, 255);
+  border-radius: 10px;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+.home-logo {
+  font-size: 1.2rem;
+}
+.home-buttons {
+  display: flex;
+  justify-content: space-between;
+  width: 28vw;
+  max-width: 100px;
+}
+.home-buttons div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.home-buttons span {
+  height: 2.4rem;
+  font-size: 2rem;
+}
+.home-buttons p {
+  font-size: 0.8rem;
+}
+/* CSS solo para demostracion */
+.home-stories {
+  display: flex;
+  flex-direction: column;
+  margin-top: 10%;
+  width: 85vw;
+  padding: 5px;
+  background: rgb(255, 255, 255);
+  border-radius: 10px;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+  overflow-y: scroll;
+}
+.home-stories img {
+  margin: 5px;
+}
+
 /* **************************************************** */
 
 /* .home-stories */
