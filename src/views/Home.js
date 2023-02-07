@@ -6,17 +6,18 @@ export const Home = () => {
   <header class="home-header">
     <div class="home-logo">devgram<></div>
     <div class="home-buttons">
-      <div class="home-create-btn">
-        <span>&#10022;</span>
-        <p>Create</p>
+      <div class="home-post-btn">
+        <i class="fa-solid fa-plus"></i>
+        <p>Post</p>
       </div>
       <div class="home-edit-profile">
-        <span>&#9786;</span> 
+        <div class="home-profile-pic">
+          <img src="../assets/profile.jpg" alt="Profile photo"> 
+        </div>
         <p>Edit</p>
       </div>
     </div>
   </header>
-    <!------------------- STORIES -------------------->
 <main>
   <section>
     <div class="middle-home-content">
@@ -65,6 +66,7 @@ export const Home = () => {
             <input type="text" placeholder="What's on your mind, Mari?" id="create-post">
             <input type="submit" value="Post" class="create-btn btn-primary-create">
         </form>
+
       <!-- HTML solo para demostracion -->
       <section class="home-stories">
       <img src="../../assets/feed.jpg"></img> 

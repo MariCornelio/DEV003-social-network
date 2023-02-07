@@ -3,15 +3,14 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap");
 
 .home-container {
-  list-style: none;
+  width: 100%;
 }
 
 .home-header {
   margin-top: 0;
   width: 100%;
-  padding: 5px 10px;
+  padding: 10px 25px;
   background: rgb(255, 255, 255);
-  border-radius: 10px;
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
   display: flex;
   justify-content: space-between;
@@ -35,10 +34,24 @@
   flex-direction: column;
   align-items: center;
 }
-.home-buttons span {
+.home-buttons i {
   height: 2.4rem;
-  font-size: 2rem;
+  font-size: 1.5rem;
+  display: flex;
+  align-items: center;
 }
+.home-profile-pic {
+  height: 2.4rem;
+  width: 2.4rem;
+  overflow: hidden;
+  border-radius: 50%;
+}
+/*profile pic manually resized*/
+.home-profile-pic img {
+  width: 45px;
+  margin: -15px 0 0 5px;
+}
+/* ************************** */
 .home-buttons p {
   font-size: 0.8rem;
 }
@@ -62,6 +75,11 @@ img {
 
 .home-stories img {
   margin: 5px;
+}
+.main-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 /* .home-stories */
