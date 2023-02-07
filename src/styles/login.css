@@ -12,19 +12,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-image: linear-gradient(
-    0deg,
-    #2d00f7ff,
-    #6a00f4ff,
-    #8900f2ff,
-    #a100f2ff,
-    #b100e8ff,
-    #bc00ddff,
-    #d100d1ff,
-    #db00b6ff,
-    #e500a4ff,
-    #f20089ff
-  );
+  background-color: rgb(238, 235, 235);
 }
 #root {
   display: flex;
@@ -47,9 +35,17 @@ body {
   background-color: rgb(255, 255, 255);
 }
 /* titulo */
-.forms h1 {
+.forms-title-logo {
+  display: flex;
+  justify-content: center;
   text-align: center;
   margin-top: 10px;
+  color: #5a017a;
+}
+
+.forms-title-logo img {
+  width: 40px;
+  height: auto;
 }
 
 /* boton google */
@@ -111,7 +107,7 @@ body {
 }
 
 .title {
-  color: rgb(0, 0, 0);
+  color: #5a5a5a;
 }
 
 .container .form .title {
@@ -168,13 +164,13 @@ body {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  color: #920fb3d7;
-  font-size: 23px;
+  color: #662e7ad3;
+  font-size: 20px;
   transition: all 0.2s ease;
 }
 
 .input-field input:is(:focus, :valid) ~ i {
-  color: #b358cad7;
+  color: #9d82cf;
 }
 
 .input-field i.icon {
@@ -226,13 +222,13 @@ body {
   font-weight: 500;
   letter-spacing: 1px;
   border-radius: 6px;
-  background: linear-gradient(90deg, #3f51b5, transparent) #e91e63;
+  background: #0E9DD9;
   cursor: pointer;
   transition: all 0.3s ease;
 }
 
 .button input:hover {
-  background-color: #a308a8;
+  background-color: #3a77bd;
   color: #fff;
 }
 
