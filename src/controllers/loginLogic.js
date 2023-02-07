@@ -92,22 +92,15 @@ export const loginLogic = () => {
           document
             .getElementById(inputForm.name)
             .classList.add('active-pattern');
-          buttonRegister.disabled = true;
-          buttonRegister.style.opacity = 0.5;
-          buttonLogin.disabled = true;
-          buttonLogin.style.opacity = 0.5;
         } else {
           document
             .getElementById(inputForm.name)
             .classList.remove('active-pattern');
-          buttonRegister.disabled = false;
-          buttonRegister.style.opacity = 1;
-          buttonLogin.disabled = false;
-          buttonLogin.style.opacity = 1;
         }
       }
     });
   });
+
   // *******************************************
   // js code to appear signup and login form
   signUp.addEventListener('click', () => {

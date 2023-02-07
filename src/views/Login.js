@@ -16,11 +16,11 @@ export const Login = () => {
 
           <form id="form-signin">
             <div class="input-field" title="Incomplete or invalid email">
-              <input id="signin-email" type="text" placeholder="Enter your email" pattern='^[a-z0-9]+(\\.[_a-z0-9]+)*@[a-z0-9-]+(\\.[a-z0-9-]+)*(\\.[a-z]{2,15})$' name="emailSignin" required>
+              <input id="signin-email" title="Incomplete or invalid email" type="text" placeholder="Enter your email" pattern='^[a-z0-9]+(\\.[_a-z0-9]+)*@[a-z0-9-]+(\\.[a-z0-9-]+)*(\\.[a-z]{2,15})$' name="emailSignin" required>
               <i class="fa-solid fa-envelope icon"></i>
             </div>
             <div class="input-field" title="Invalid password-only numbers and letters">
-              <input id="signin-password" name="passwordSignin" pattern="^[A-Za-zÑñÁáÉéÍíÓóÚúÜü\\d]+$" type="password" class="password" placeholder="Enter your password" minlength='6' required>
+              <input id="signin-password" title="Invalid password only accept numbers and letters" name="passwordSignin" pattern="^[A-Za-zÑñÁáÉéÍíÓóÚúÜü\\d]+$" type="password" class="password" placeholder="Enter your password" minlength='6' required>
               <i class="fa-solid fa-lock icon"></i>
               <i class="fa-solid fa-eye-slash showHidePw"></i>
             </div>
@@ -53,20 +53,20 @@ export const Login = () => {
 
           <form id="form-signup">
             <div class="input-field" title="Invalid name">
-              <input id="register-name" name="userNameSignup" type="text" placeholder="Enter your name" pattern="^[A-Za-zÑñÁáÉéÍíÓóÚúÜü\\s]+$" required>
+              <input id="register-name" title="Name only accepts letters and blank spaces" name="userNameSignup" type="text" placeholder="Enter your name" pattern="^[A-Za-zÑñÁáÉéÍíÓóÚúÜü\\s]+$" required>
               <i class="fa-solid fa-user"></i>
             </div>
             <div class="input-field" title="Incomplete or invalid email" >
-              <input id="register-email" type="text" placeholder="Enter your email"  pattern='^[a-z0-9]+(\\.[_a-z0-9]+)*@[a-z0-9-]+(\\.[a-z0-9-]+)*(\\.[a-z]{2,15})$' name="emailSignup" required>
+              <input id="register-email" title="Incomplete or invalid email" type="text" placeholder="Enter your email"  pattern='^[a-z0-9]+(\\.[_a-z0-9]+)*@[a-z0-9-]+(\\.[a-z0-9-]+)*(\\.[a-z]{2,15})$' name="emailSignup" required>
               <i class="fa-solid fa-envelope icon"></i>
             </div>
             <div class="input-field" title="Invalid password-only numbers and letters">
-              <input id="create-password" name="firstPasswordSignup" pattern="^[A-Za-zÑñÁáÉéÍíÓóÚúÜü\\d]+$" type="password" class="password" placeholder="Create a password" minlength='6' required>
+              <input id="create-password" title="Invalid password only accept numbers and letters" name="firstPasswordSignup" pattern="^[A-Za-zÑñÁáÉéÍíÓóÚúÜü\\d]+$" type="password" class="password" placeholder="Create a password" minlength='6' required>
               <i class="fa-solid fa-lock icon"></i>
               <i class="fa-solid fa-eye-slash showHidePw"></i>
             </div>
             <div class="input-field" title="Invalid password-only numbers and letters">
-              <input id="register-password" name="secondPasswordSignup" pattern="^[A-Za-zÑñÁáÉéÍíÓóÚúÜü\\d]+$" type="password" class="password" placeholder="Confirm a password" required>
+              <input id="register-password" title="Invalid password only accept numbers and letters" name="secondPasswordSignup" pattern="^[A-Za-zÑñÁáÉéÍíÓóÚúÜü\\d]+$" type="password" class="password" placeholder="Confirm a password" minlength='6' required>
               <i class="fa-solid fa-lock icon"></i>
               <i class="fa-solid fa-eye-slash showHidePw"></i>
             </div>
