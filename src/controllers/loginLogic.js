@@ -58,9 +58,9 @@ export const loginLogic = () => {
   const checkPassword = () => {
     cleanMessageErrors(formSignup);
     if (
-      confirmPassword.value &&
-      createPassword.value &&
-      createPassword.value !== confirmPassword.value
+      confirmPassword.value
+      && createPassword.value
+      && createPassword.value !== confirmPassword.value
     ) {
       buttonRegister.disabled = true;
       buttonRegister.style.opacity = 0.5;

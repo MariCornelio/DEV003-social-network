@@ -17,8 +17,8 @@ export const guardarPublicacion = (descripcion) => {
   addDoc(collection(db, 'publicaciones'), { descripcion });
 };
 
-export const verPublicacion = (funcionRecorrido) =>
-  onSnapshot(collection(db, 'publicaciones'), funcionRecorrido);
+export const verPublicacion = (funcionRecorrido) => onSnapshot(collection(db, 'publicaciones'), funcionRecorrido);
+
 // ************************************************
 // usando Autenticación
 
@@ -34,7 +34,7 @@ export const createUser = (email, password, nameUser) => {
       console.log(error);
       // const formSignup = document.getElementById('form-signup');
       const registerInput = document.querySelectorAll(
-        '#form-signup .input-field'
+        '#form-signup .input-field',
       );
       if (error.code === 'auth/email-already-in-use') {
         messageError('Email already in use', registerInput[1]);
@@ -70,12 +70,7 @@ export const signinUser = (email, password) => {
 };
 // inicio de sesion con google
 const provider = new GoogleAuthProvider();
-export const googleSignin = () => {
-  signInWithPopup(auth, provider)
-    .then((result) => {
-      console.log(result);
-    })
-    .catch((error) => {
-      console.log(error);
-    });
+export const googleSignin = async () => {
+  const response = await signInWithPopup(auth, provider);
+  return response;
 };
