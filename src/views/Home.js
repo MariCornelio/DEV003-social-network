@@ -18,18 +18,62 @@ export const Home = () => {
       </div>
     </div>
   </header>
-
-    <!-- menu -->
-    <!-- Fer-Main -->
-    <main class="main-content">
-    <section class="home-stories">
+<main>
+  <section>
+    <div class="middle-home-content">
+      <div class="stories-home">
+        <div class="story-home">
+        <div class="profile-photo-home">
+          <img src="../../assets/feed.jpg">
+    </div>
+    <p class="name-home-stories">Your Story</p>
+    </div>
+    <div class="story-home">
+      <div class="profile-photo-home">
+        <img src="../../assets/feed.jpg">
+      </div>
+      <p class="name-home-stories">Anita Mari</p>
+                </div>
+                <div class="story-home">
+                    <div class="profile-photo-home">
+                        <img src="../../assets/feed.jpg">
+                    </div>
+                    <p class="name-home-stories">Fernanda Treviño</p>
+                </div>
+                <div class="story-home">
+                    <div class="profile-photo-home">
+                        <img src="../../assets/feed.jpg">
+                    </div>
+                    <p class="name-home-stories">Gerado Perez</p>
+                </div>
+                <div class="story-home">
+                    <div class="profile-photo-home">
+                        <img src="../../assets/feed.jpg">
+                    </div>
+                    <p class="name-home-stories">Lolita Ayala</p>
+                </div>
+                <div class="story-home">
+                    <div class="profile-photo-home">
+                        <img src="../../assets/feed.jpg">
+                    </div>
+                    <p class="name-home-stories">Rosalba Luna</p>
+                </div>
+            </div>
+            <form class="create-post">
+            <div class="profile-photo-home">
+                <img src="../../assets/feed.jpg">
+            </div>
+            <input type="text" placeholder="What's on your mind, Mari?" id="create-post">
+            <input type="submit" value="Post" class="create-btn btn-primary-create">
+        </form>
 
       <!-- HTML solo para demostracion -->
+      <section class="home-stories">
       <img src="../../assets/feed.jpg"></img> 
       <img src="../../assets/feed.jpg"></img> 
       <img src="../../assets/feed.jpg"></img> 
-    </section>
-    <section class="home-post"></section>
+      </section>
+      </div>
     </main>
     `;
   return divContainer;
