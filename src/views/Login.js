@@ -4,7 +4,10 @@ export const Login = () => {
   divContainer.classList.add('container');
   divContainer.innerHTML = `
        <div class="forms">
-      <h1>devgram <> </h1>
+       <div class="forms-title-logo"> 
+      <h1>devgram</h1> 
+      <img src="./assets/branch.svg" alt="logo devgram"> 
+      </div>
         <div class="form login">
           <button class="button-google">
           <img src="./assets/logo-google.png" alt="logo google">
