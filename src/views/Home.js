@@ -4,7 +4,10 @@ export const Home = () => {
   divContainer.innerHTML = `
   <!-- Ana-Header -->
   <header class="home-header">
-    <div class="home-logo">devgram<></div>
+  <div class="home-title-logo"> 
+  <h1>devgram</h1> 
+  <img src="./assets/branch.svg" alt="logo devgram"> 
+  </div>
     <div class="home-buttons">
       <div class="home-post-btn">
         <i class="fa-solid fa-plus"></i>

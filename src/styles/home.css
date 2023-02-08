@@ -3,7 +3,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap");
 
 .home-container {
-  width: 100%;
+  max-width: 1300px;
 }
 
 .home-header {
@@ -18,11 +18,28 @@
   position: sticky;
   top: 0;
   z-index: 1;
+  border-radius: 0 0 12px 12px;
 }
 
-.home-logo {
-  font-size: 1.2rem;
+img {
+  display: block;
+  width: 100%;
 }
+
+.home-title-logo {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  margin-top: 0px;
+  color: #5a017a;
+  font-size: 1rem;
+}
+
+.home-title-logo img {
+  width: 35px;
+  height: auto;
+}
+
 .home-buttons {
   display: flex;
   justify-content: space-between;
@@ -40,6 +57,8 @@
   display: flex;
   align-items: center;
 }
+
+
 .home-profile-pic {
   height: 2.4rem;
   width: 2.4rem;
@@ -58,19 +77,14 @@
 /* CSS solo para demostracion */
 .home-stories {
   display: flex;
+  align-items: center;
+  justify-content: center;
   flex-direction: column;
-  margin-top: 10%;
-  width: 85vw;
+  margin-top: 4%;
   padding: 5px;
   background: rgb(255, 255, 255);
   border-radius: 10px;
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
-  overflow: scroll;
-}
-
-img {
-  display: block;
-  width: 100%;
 }
 
 .home-stories img {
@@ -119,7 +133,7 @@ body {
 }
 
 .btn-primary-create {
-  background: rgb(100, 100, 156);
+  background: #0E9DD9;
   color: rgb(255, 255, 255);
 }
 
@@ -134,8 +148,7 @@ body {
 
 /* main*/
 main {
-  position: relative;
-  top: 5.4rem;
+  margin-top: 3%;
 }
 
 main .container {
@@ -205,7 +218,7 @@ main .container {
   width: 2rem;
   height: 2rem;
   align-self: start;
-  border: 3px solid rgb(91, 114, 136);
+  border: 3px solid #3a77bd;
 }
 
 /* crear un post  */
@@ -215,7 +228,7 @@ main .container {
   align-items: center;
   justify-content: space-between;
   margin-top: 1rem;
-  background: rgb(240, 235, 235);
+  background: rgb(255, 255, 255);
   padding: 0.4rem 1rem;
   border-radius: 2rem;
 }
@@ -225,7 +238,7 @@ main .container {
   width: 100%;
   padding-left: 1rem;
   background: transparent;
-  color: rgb(2, 2, 2);
+  color: rgb(255, 249, 249);
   margin-right: 1rem;
 }
 
