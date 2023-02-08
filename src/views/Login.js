@@ -6,11 +6,11 @@ export const Login = () => {
        <div class="forms">
        <div class="forms-title-logo"> 
       <h1>devgram</h1> 
-      <img src="./assets/branch.svg" alt="logo devgram"> 
+      <img src="assets/branch.svg" alt="logo devgram"> 
       </div>
         <div class="form login">
           <button class="button-google">
-          <img src="./assets/logo-google.png" alt="logo google">
+          <img src="assets/logo-google.png" alt="logo google">
           <p>Continue with Google</p>
           </button>
          <div class="continue-email">
