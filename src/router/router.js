@@ -1,8 +1,10 @@
 import { loginLogic } from '../controllers/loginLogic.js';
 import { profileLogic } from '../controllers/profileLogic.js';
+import { homeLogic } from '../controllers/homeLogic.js';
 import { Home } from '../views/Home.js';
 import { Login } from '../views/Login.js';
 import { Profile } from '../views/Profile.js';
+
 
 export const router = () => {
   const root = document.getElementById('root');
@@ -22,6 +24,7 @@ export const router = () => {
       break;
     case '#/home':
       root.appendChild(Home());
+      homeLogic(Home());
       break;
     default:
       root.innerHTML = '<h2>Error 404</h2>';
