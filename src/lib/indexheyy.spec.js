@@ -1,5 +1,14 @@
 import { collection, addDoc } from 'firebase/firestore';
-import { guardarPublicacion, googleSignin } from './index';
+import { guardarPublicacion, googleSignin, createUser } from './index';
+import { createUserWithEmailAndPassword, getAuth } from 'firebase/auth'
+import { messageError } from '../errors/messageError.js';
+
+jest.mock('../errors/messageError.js', () => {
+  const originalModule = jest.requireActual('../errors/messageError.js');
+  const newMod = { ...originalModule };
+  newMod.messageError = jest.fn();
+  return newMod;
+});
 
 jest.mock('firebase/firestore', () => {
   const originalModule = jest.requireActual('firebase/firestore');
@@ -13,10 +22,12 @@ jest.mock('firebase/firestore', () => {
 jest.mock('firebase/auth', () => {
   const originalModule = jest.requireActual('firebase/auth');
   const newMod = { ...originalModule };
-  newMod.createUserWithEmailAndPassword = jest.fn();
+  newMod.createUserWithEmailAndPassword = jest.fn().mockImplementation((auth, email, password) => Promise.resolve({ user: {id:'hello im a mock', email: email, password: password} }));
+  //newMod.createUserWithEmailAndPassword = jest.fn().mockImplementation(async () => {return Promise.resolve(new Error())});
   newMod.GoogleAuthProvider = jest.fn();
   newMod.signInWithEmailAndPassword = jest.fn();
   newMod.signInWithPopup = jest.fn().mockImplementation(() => Promise.resolve({ email: 'test@gmail.com' }));
+  newMod.getAuth = jest.fn().mockImplementation(() => Promise.resolve({ }));
   return newMod;
 });
 
@@ -36,6 +47,32 @@ describe('guardarPublicacion', () => {
     expect(addDoc).toHaveBeenCalled();
   });
 });
+
+describe('createUser', () => {
+  it('debería ser una función', () => {
+    expect(typeof createUser).toBe('function');
+  });
+
+  it('debería recibir el objeto ID', () => {
+    const email = 'myemail@gmail.com'
+    const password = 'pwd'
+    const nameUser = 'Anita Mari'
+    createUser(email, password, nameUser);
+    return expect(createUserWithEmailAndPassword(Promise.resolve({}), email, password)).resolves.toStrictEqual({ user: {id:'hello im a mock', email: 'myemail@gmail.com', password: 'pwd' } });
+  })
+
+  
+
+  it('createUserWithEmailAndPassword debería ser llamada con los parámetros correctos', () => {
+    const email = 'myemail@gmail.com'
+    const password = 'pwd'
+    const nameUser = 'Anita Mari'
+    createUser(email, password, nameUser);
+    expect(createUserWithEmailAndPassword).toBeCalledWith(Promise.resolve({}), email, password);
+  });
+
+});
+
 
 describe('googleSignin', () => {
   it('debería ser una función', () => {
