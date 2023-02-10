@@ -17,7 +17,8 @@ export const guardarPublicacion = (descripcion) => {
   addDoc(collection(db, 'publicaciones'), { descripcion });
 };
 
-export const verPublicacion = (funcionRecorrido) => onSnapshot(collection(db, 'publicaciones'), funcionRecorrido);
+export const verPublicacion = (funcionRecorrido) =>
+  onSnapshot(collection(db, 'publicaciones'), funcionRecorrido);
 
 // ************************************************
 // usando Autenticación
@@ -27,14 +28,14 @@ export const createUser = (email, password, nameUser) => {
   createUserWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
       console.log(userCredential);
-      userCredential.user.displayName = { nameUser };
+      userCredential.user.displayName = nameUser;
       console.log(userCredential.user.displayName);
     })
     .catch((error) => {
       console.log(error);
       // const formSignup = document.getElementById('form-signup');
       const registerInput = document.querySelectorAll(
-        '#form-signup .input-field',
+        '#form-signup .input-field'
       );
       if (error.code === 'auth/email-already-in-use') {
         messageError('Email already in use', registerInput[1]);
