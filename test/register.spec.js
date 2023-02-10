@@ -26,3 +26,5 @@ describe('register form', () => {
     console.log(document.body.innerHTML);
   });
 });
+
+// dispatchEvent
