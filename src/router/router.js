@@ -1,10 +1,9 @@
-import { loginLogic } from '../controllers/loginLogic.js';
 import { profileLogic } from '../controllers/profileLogic.js';
 import { homeLogic } from '../controllers/homeLogic.js';
 import { Home } from '../views/Home.js';
 import { Login } from '../views/Login.js';
+import { loginLogic } from '../controllers/loginLogic.js';
 import { Profile } from '../views/Profile.js';
-
 
 export const router = () => {
   const root = document.getElementById('root');
