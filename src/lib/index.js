@@ -39,6 +39,7 @@ export const createUser = (email, password, nameUser) => {
       );
       if (error.code === 'auth/email-already-in-use') {
         messageError('Email already in use', registerInput[1]);
+        console.log('aqui estamos');
       } else if (error.code === 'auth/invalid-email') {
         messageError('Invalid email', registerInput[1]);
       } else {

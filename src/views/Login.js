@@ -59,7 +59,7 @@ export const Login = () => {
               <input id="register-name" title="Name only accepts letters and blank spaces" name="userNameSignup" type="text" placeholder="Enter your name" pattern="^[A-Za-zÑñÁáÉéÍíÓóÚúÜü\\s]+$" required>
               <i class="fa-solid fa-user"></i>
             </div>
-            <div class="input-field" title="Incomplete or invalid email" >
+            <div class="input-field" id="form-signup-email" title="Incomplete or invalid email" >
               <input id="register-email" title="Incomplete or invalid email" type="text" placeholder="Enter your email"  pattern='^[a-z0-9]+(\\.[_a-z0-9]+)*@[a-z0-9-]+(\\.[a-z0-9-]+)*(\\.[a-z]{2,15})$' name="emailSignup" required>
               <i class="fa-solid fa-envelope icon"></i>
             </div>
