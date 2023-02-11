@@ -1,4 +1,7 @@
 /* eslint-disable no-useless-escape */
+import branchLogo from '../assets/branch.svg';
+import logoGoogle from '../assets/logo-google.png';
+
 export const Login = () => {
   const divContainer = document.createElement('div');
   divContainer.classList.add('container');
@@ -6,11 +9,11 @@ export const Login = () => {
        <div class="forms">
        <div class="forms-title-logo"> 
       <h1>devgram</h1> 
-      <img src="assets/branch.svg" alt="logo devgram"> 
+      <img src="${branchLogo}" alt="logo devgram"> 
       </div>
         <div class="form login">
           <button class="button-google">
-          <img src="assets/logo-google.png" alt="logo google">
+          <img src=${logoGoogle} alt="logo google">
           <p>Continue with Google</p>
           </button>
          <div class="continue-email">
