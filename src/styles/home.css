@@ -1,6 +1,6 @@
 /* .header-home */
 
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
 
 .home-container {
   max-width: 1300px;
@@ -58,7 +58,6 @@ img {
   align-items: center;
 }
 
-
 .home-profile-pic {
   height: 2.4rem;
   width: 2.4rem;
@@ -71,31 +70,30 @@ img {
   margin: -15px 0 0 5px;
 }
 
-
-.nav-links{
+.nav-links {
   display: flex;
   align-items: center;
   gap: 30px;
 }
 
-.nav-icon{
+.nav-icon {
   width: 25px;
   height: 25px;
   cursor: pointer;
 }
 
-.user-profile{
+.user-profile {
   width: 30px;
   height: 30px;
   border-radius: 50%;
 }
 
-.activity-log{
+.activity-log {
   position: relative;
   height: 25px;
 }
 
-.activity-container{
+.activity-container {
   width: 350px;
   height: auto;
   max-height: 300px;
@@ -106,7 +104,7 @@ img {
   border: 1px solid #999;
 }
 
-.activity-card{
+.activity-card {
   width: 100%;
   display: flex;
   justify-content: space-between;
@@ -117,33 +115,31 @@ img {
   cursor: pointer;
 }
 
-.activity-card:hover{
+.activity-card:hover {
   background: #fafafa;
 }
 
-.activity-container.hide{
+.activity-container.hide {
   pointer-events: none;
   opacity: 0;
 }
 
-.user-img{
+.user-img {
   width: 50px;
   height: 50px;
   border-radius: 50%;
 }
 
-.activity{
+.activity {
   width: 200px;
   font-size: 1rem;
 }
 
-.activity-post{
+.activity-post {
   width: 50px;
   height: 50px;
   object-fit: cover;
 }
-
-
 
 /* ************************** */
 .home-buttons p {
@@ -154,7 +150,6 @@ img {
 /* .home-stories */
 /* **************************************************** */
 
-
 * {
   box-sizing: border-box;
   text-decoration: none;
@@ -163,7 +158,7 @@ img {
 }
 
 body {
-  font-family: "Poppins", sans-serif;
+  font-family: 'Poppins', sans-serif;
 }
 
 .profile-photo-home {
@@ -188,7 +183,7 @@ body {
 }
 
 .btn-primary-create {
-  background: #0E9DD9;
+  background: #0e9dd9;
   color: rgb(255, 255, 255);
 }
 
@@ -199,7 +194,6 @@ body {
 .text-muted {
   color: rgb(145, 140, 140);
 }
-
 
 /* main*/
 main {
@@ -212,7 +206,6 @@ main .container {
   column-gap: 2rem;
   position: relative;
 }
-
 
 /* historias */
 .middle-home-content .stories-home {
@@ -237,7 +230,7 @@ main .container {
 }
 
 .middle-home-content .stories-home .story-home::before {
-  content: "";
+  content: '';
   display: block;
   width: 100%;
   height: 5rem;
@@ -251,22 +244,22 @@ main .container {
 }
 
 .middle-home-content .stories-home .story-home:nth-child(1) {
-  background: url("../../assets/feed.jpg") no-repeat center center/cover;
+  background: url('../assets/feed.jpg') no-repeat center center/cover;
 }
 .middle-home-content .stories-home .story-home:nth-child(2) {
-  background: url("../../assets/feed.jpg") no-repeat center center/cover;
+  background: url('../assets/feed.jpg') no-repeat center center/cover;
 }
 .middle-home-content .stories-home .story-home:nth-child(3) {
-  background: url("../../assets/feed.jpg") no-repeat center center/cover;
+  background: url('../assets/feed.jpg') no-repeat center center/cover;
 }
 .middle-home-content .stories-home .story-home:nth-child(4) {
-  background: url("../../assets/feed.jpg") no-repeat center center/cover;
+  background: url('../assets/feed.jpg') no-repeat center center/cover;
 }
 .middle-home-content .stories-home .story-home:nth-child(5) {
-  background: url("../../assets/feed.jpg") no-repeat center center/cover;
+  background: url('../assets/feed.jpg') no-repeat center center/cover;
 }
 .middle-home-content .stories-home .story-home:nth-child(6) {
-  background: url("../../assets/feed.jpg") no-repeat center center/cover;
+  background: url('../assets/feed.jpg') no-repeat center center/cover;
 }
 
 .middle-home-content .story-home .profile-photo-home {
@@ -288,7 +281,7 @@ main .container {
   border-radius: 2rem;
 }
 
-.middle-home-content .create-post input[type="text"] {
+.middle-home-content .create-post input[type='text'] {
   justify-self: start;
   width: 100%;
   padding-left: 1rem;
@@ -300,8 +293,6 @@ main .container {
 /* media queries para tabletas y celulares grandes */
 
 @media screen and (max-width: 1200px) {
-  
-
   /* no se van a ver las historias 5 y 6 */
   main .middle-home-content .stories-home .story-home:nth-child(5),
   main .middle-home-content .stories-home .story-home:nth-child(6) {
@@ -312,13 +303,13 @@ main .container {
 /* .home-post */
 /* **************************************************** */
 
-.home-post-section{
+.home-post-section {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-.post-container{
+.post-container {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -327,91 +318,91 @@ main .container {
   padding: 5px;
 }
 
-.post{
+.post {
   width: 100%;
   border: 1px solid #999;
   background: #fff;
   margin-bottom: 30px;
 }
 
-.post-header{
+.post-header {
   display: flex;
   align-items: center;
   padding: 1.2rem;
   gap: 10px;
 }
 
-.post-header .user-icon{
+.post-header .user-icon {
   width: 30px;
   height: 30px;
   border-radius: 50%;
 }
 
-.post-header .username{
-  font-size: .9rem;
+.post-header .username {
+  font-size: 0.9rem;
   font-weight: 600;
 }
 
-.post-feed{
+.post-feed {
   width: 100%;
   height: 500px;
 }
 
-.post-img-container{
+.post-img-container {
   width: 100%;
   height: 100%;
   display: flex;
   overflow: hidden;
-  transition: .5s;
+  transition: 0.5s;
 }
 
-.post-img-container img{
+.post-img-container img {
   min-width: 100%;
   height: 100%;
   object-fit: none;
-  transition: .5s;
+  transition: 0.5s;
 }
 
-.post-detail{
+.post-detail {
   padding: 1.2rem;
 }
 
-.detail-intracables{
+.detail-intracables {
   display: flex;
   gap: 10px;
 }
 
-.detail-intracables img{
+.detail-intracables img {
   width: 30px;
   height: 30px;
   cursor: pointer;
 }
 
-.likes{
+.likes {
   color: #a0a0a0;
   display: flex;
   margin: 10px 0;
 }
 
-.post .username{
+.post .username {
   font-weight: 600;
 }
 
-.post-des{
+.post-des {
   margin: 20px 0;
-  font-size: .9rem;
+  font-size: 0.9rem;
   line-height: 1.5rem;
   opacity: 0.7;
 }
 
-.comment-box{
+.comment-box {
   width: 100%;
   height: 42px;
   display: flex;
   border: 1px solid #999;
 }
 
-#comment-input{
+#comment-input {
   width: 100%;
   height: 40px;
   background: #fafafa;
@@ -422,15 +413,15 @@ main .container {
   font-size: 1rem;
 }
 
-#comment-input::placeholder{
+#comment-input::placeholder {
   color: #bbb;
 }
 
-#comment-input:focus{
+#comment-input:focus {
   outline: 1px solid #2f2f2f;
 }
 
-.add-comment-btn{
+.add-comment-btn {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -442,21 +433,21 @@ main .container {
   background: #fff;
 }
 
-.add-comment-btn img{
+.add-comment-btn img {
   width: 30px;
   height: 30px;
 }
 
-.comment-count{
+.comment-count {
   font-weight: 600;
   color: #a0a0a0;
-  font-size: .8rem;
+  font-size: 0.8rem;
   display: flex;
   margin-top: 10px;
   opacity: 0.7;
 }
 
-.post-overlays{
+.post-overlays {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -466,36 +457,36 @@ main .container {
   pointer-events: none;
 }
 
-.like-icon{
+.like-icon {
   width: 200px;
   opacity: 0;
-  transition: .5s;
+  transition: 0.5s;
 }
 
-.like-icon.show{
+.like-icon.show {
   opacity: 1;
   animation: popup 2s forwards 1;
 }
 
-@keyframes popup{
-  0%{
-      transform: scale(0);
+@keyframes popup {
+  0% {
+    transform: scale(0);
   }
-  20%{
-      transform: scale(1.1);
+  20% {
+    transform: scale(1.1);
   }
-  80%{
-      transform: scale(.9);
+  80% {
+    transform: scale(0.9);
   }
-  90%{
-      transform: scale(.95);
+  90% {
+    transform: scale(0.95);
   }
-  100%{
-      transform: scale(1);
+  100% {
+    transform: scale(1);
   }
 }
 
-.share-window{
+.share-window {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -503,29 +494,29 @@ main .container {
   background: #fff;
   padding: 20px;
   width: 70%;
-  transition: .5s;
+  transition: 0.5s;
   opacity: 0;
 }
 
-.share-window.active{
+.share-window.active {
   opacity: 1;
   pointer-events: all;
 }
 
-.share-window .title{
+.share-window .title {
   font-size: 1rem;
   font-weight: 500;
   text-transform: capitalize;
   margin-bottom: 20px;
 }
 
-.share-link-container{
+.share-link-container {
   width: 100%;
   display: flex;
   border: 1px solid #999;
 }
 
-#share-link{
+#share-link {
   height: 40px;
   padding: 10px;
   background: #fafafa;
@@ -534,7 +525,7 @@ main .container {
   width: 100%;
 }
 
-.copy-btn{
+.copy-btn {
   background: #80c2ff88;
   border: none;
   outline: none;
@@ -555,4 +546,3 @@ main .container {
   border-radius: 10px;
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
 }
-
