@@ -24,8 +24,8 @@ export const verPublicacion = (funcionRecorrido) =>
 // usando Autenticación
 
 // para registro de usuarios
-export const createUser = (email, password, nameUser) => {
-  createUserWithEmailAndPassword(auth, email, password)
+export const createUser = async (email, password, nameUser) => {
+  await createUserWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
       console.log(userCredential);
       userCredential.user.displayName = nameUser;

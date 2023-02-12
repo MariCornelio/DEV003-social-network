@@ -76,11 +76,28 @@ describe('Primera prueba de registro', () => {
     inputCreatePassword.value = '123456';
     inputRegisterName.value = 'Ana';
     messageError('Email already in use', formSignupEmail);
-    // console.log('1', messageError('Email already in use', formSignupEmail));
+    console.log('1', messageError('Email already in use', formSignupEmail));
     formSignup.submit();
     const RegisterError = document.querySelectorAll('.messageError p');
-    console.log('2', RegisterError);
-    console.log('3', RegisterError[1].querySelector('p'));
+    console.log('2', RegisterError[1]);
+    console.log('3', RegisterError[1].querySelector('.messageError p'));
     expect(RegisterError[1].textContent).toBe('Email already in use');
   });
+
+
+  test('mock test with jest.fn().mockRejectedValue', () => {
+  const mockFunction = jest.fn();
+  mockFunction.mockRejectedValue(new Error('Mock error'));
+
+  someFunction(mockFunction)
+    .catch(error => {
+      expect(error).toEqual(new Error('Mock error'));
+    });
+
+  expect(mockFunction).toHaveBeenCalled();
+});
+
+
+
+
 });

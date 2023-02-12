@@ -1,7 +1,7 @@
 export const Home = () => {
-  const divContainer = document.createElement('div');
-  divContainer.classList.add('home-container');
-  divContainer.innerHTML = `
+    const divContainer = document.createElement('div');
+    divContainer.classList.add('home-container');
+    divContainer.innerHTML = `
   <!-- Ana-Header -->
   <header class="home-header">
   <div class="home-title-logo"> 
@@ -199,5 +199,5 @@ export const Home = () => {
     </div>
     </section>
     `;
-  return divContainer;
+    return divContainer;
 };
