@@ -2,11 +2,21 @@
 import {
   createUserWithEmailAndPassword,
   GoogleAuthProvider,
+  onAuthStateChanged,
   signInWithEmailAndPassword,
   signInWithPopup,
+  updateProfile,
 } from 'firebase/auth';
 
-import { collection, addDoc, onSnapshot } from 'firebase/firestore';
+import {
+  collection,
+  addDoc,
+  onSnapshot,
+  updateDoc,
+  doc,
+  getDoc,
+  setDoc,
+} from 'firebase/firestore';
 
 import { messageError } from '../errors/messageError.js';
 
@@ -17,29 +27,66 @@ export const guardarPublicacion = (descripcion) => {
   addDoc(collection(db, 'publicaciones'), { descripcion });
 };
 
-export const verPublicacion = (funcionRecorrido) =>
-  onSnapshot(collection(db, 'publicaciones'), funcionRecorrido);
+export const verPublicacion = (funcionRecorrido) => onSnapshot(collection(db, 'publicaciones'), funcionRecorrido);
+// ************************************************************
+// guardando perfil
+export const saveProfile = (proffession, languages) => {
+  console.log('hola')
+  console.log(auth.currentUser);
+  setDoc(doc(db, 'userProfile', auth.currentUser.uid), { proffession, languages });
+};
 
 // ************************************************
+// Mediador para el estado de perfil
+// export const stateProfile = (callback) => onSnapshot(collection(db, 'userProfile'), callback);
+
+export const updateprofileFields = (id, newFields) => updateDoc(doc(db, 'userProfile', id), newFields);
+
+export const docGetProfile = (id) => getDoc(doc(db, 'userProfile', id));
+// ************************************************
+// para actualizar la información de usuario
+export const updateName = (currentUser, nameUser) => {
+  updateProfile(currentUser, {
+    displayName: nameUser,
+  }).then(() => {
+    console.log('Se guardo el nombre en el perfil');
+  }).catch((error) => {
+    console.log(error.code);
+  });
+};
+// ***************************************************
 // usando Autenticación
+// para escuchar el inicio de sesión:
+export const onStateSession = () => {
+  onAuthStateChanged(auth, (user) => {
+    console.log(user);
+    if (user == null) {
+      window.location.hash = '#/';
+    }
+    if (window.location.hash === '#/' && user) {
+      window.location.hash = '#/home';
+    }
+    if (window.location.hash === '' && user) {
+      window.location.hash = '#/home';
+    }
+  });
+};
 
 // para registro de usuarios
 export const createUser = (email, password, nameUser) => {
   createUserWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
-      console.log(userCredential);
-      userCredential.user.displayName = nameUser;
-      console.log(userCredential.user.displayName);
+      // console.log('1', userCredential);
+      // console.log('2', auth.currentUser);
+      // console.log(userCredential.user.displayName);
+      updateName(userCredential.user, nameUser);
+      window.location.hash = '#/home';
     })
     .catch((error) => {
       console.log(error);
-      // const formSignup = document.getElementById('form-signup');
-      const registerInput = document.querySelectorAll(
-        '#form-signup .input-field'
-      );
+      const registerInput = document.querySelectorAll('#form-signup .input-field');
       if (error.code === 'auth/email-already-in-use') {
         messageError('Email already in use', registerInput[1]);
-        console.log('aqui estamos');
       } else if (error.code === 'auth/invalid-email') {
         messageError('Invalid email', registerInput[1]);
       } else {
@@ -52,13 +99,12 @@ export const createUser = (email, password, nameUser) => {
 export const signinUser = (email, password) => {
   signInWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
-      console.log('se ha iniciado sesion');
-      console.log(userCredential);
+      console.log('se ha iniciado sesion con correo y contraseña');
+      window.location.hash = '#/home';
     })
     .catch((error) => {
       console.log(error);
       const formSignin = document.querySelectorAll('#form-signin .input-field');
-      console.log(formSignin);
       if (error.code === 'auth/wrong-password') {
         messageError('Wrong password', formSignin[1]);
       } else if (error.code === 'auth/invalid-email') {
@@ -72,7 +118,11 @@ export const signinUser = (email, password) => {
 };
 // inicio de sesion con google
 const provider = new GoogleAuthProvider();
-export const googleSignin = async () => {
-  const response = await signInWithPopup(auth, provider);
-  return response;
+export const googleSignin = () => {
+  signInWithPopup(auth, provider)
+    .then((result) => {
+      window.location.hash = '#/home';
+    }).catch((error) => {
+      console.log(error);
+    });
 };
