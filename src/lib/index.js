@@ -30,10 +30,10 @@ export const guardarPublicacion = (descripcion) => {
 export const verPublicacion = (funcionRecorrido) => onSnapshot(collection(db, 'publicaciones'), funcionRecorrido);
 // ************************************************************
 // guardando perfil
-export const saveProfile = (proffession, languages) => {
+export const saveProfile = (profession, languages) => {
   console.log('hola')
   console.log(auth.currentUser);
-  setDoc(doc(db, 'userProfile', auth.currentUser.uid), { proffession, languages });
+  setDoc(doc(db, 'userProfile', auth.currentUser.uid), { profession, languages });
 };
 
 // ************************************************

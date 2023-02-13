@@ -5,7 +5,7 @@ import { auth } from '../lib/model/firebase';
 export const profileLogic = () => {
   const profileButtonLogout = document.getElementById('profile-button-logout');
   const profileForm = document.getElementById('profile-form');
-  const profileProffesion = document.getElementById('profile-proffesion');
+  const profileProfession = document.getElementById('profile-profession');
   const profileLanguages = document.getElementById('profile-languages');
 
   // firebase: cerrando sesion con un evento click
@@ -23,12 +23,12 @@ export const profileLogic = () => {
     if (docSnap.exists()) {
       console.log('actualizando');
       updateprofileFields(docFirebaseId, {
-        proffesion: profileProffesion.value,
+        profession: profileProfession.value,
         languages: profileLanguages.value,
       });
     } else {
       console.log('entro')
-      saveProfile(profileProffesion.value, profileLanguages.value);
+      saveProfile(profileProfession.value, profileLanguages.value);
     }
 
     // stateProfile((querysnapshot) => {
