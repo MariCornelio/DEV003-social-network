@@ -36,11 +36,11 @@ jest.mock('firebase/auth', () => {
 }); */
 
 describe('guardarPublicacion', () => {
-  it('debería ser una función', () => {
+  it('should be a function', () => {
     expect(typeof guardarPublicacion).toBe('function');
   });
 
-  it('firestore debería ser llamado con los parámetros correctos', () => {
+  it('firestore should be called with the correct parameters', () => {
     const params = { };
     guardarPublicacion(params);
     expect(collection).toHaveBeenCalled();
@@ -49,11 +49,11 @@ describe('guardarPublicacion', () => {
 });
 
 describe('createUser', () => {
-  it('debería ser una función', () => {
+  it('should be a function', () => {
     expect(typeof createUser).toBe('function');
   });
 
-  it('debería recibir el objeto ID', () => {
+  it('should receive ID object correctly', () => {
     const email = 'myemail@gmail.com'
     const password = 'pwd'
     const nameUser = 'Anita Mari'
@@ -63,7 +63,7 @@ describe('createUser', () => {
 
   
 
-  it('createUserWithEmailAndPassword debería ser llamada con los parámetros correctos', () => {
+  it('createUserWithEmailAndPassword should be called with the correct parameters', () => {
     const email = 'myemail@gmail.com'
     const password = 'pwd'
     const nameUser = 'Anita Mari'
@@ -75,11 +75,11 @@ describe('createUser', () => {
 
 
 describe('googleSignin', () => {
-  it('debería ser una función', () => {
+  it('should be a function', () => {
     expect(typeof googleSignin).toBe('function');
   });
 
-  it('CAMBIAR NOMBRE DE TEST', async () => {
+  it('should receive email correctly', async () => {
     const params = { };
     const response = await googleSignin(params);
     console.log(response);
@@ -88,8 +88,19 @@ describe('googleSignin', () => {
     });
   });
 
+  it('should call messageError when an error is thrown', async () => {
+    const eCode = 'auth/email-already-in-use'
+    jest.spyOn(document, 'querySelectorAll').mockImplementation(() => {return []});
+    createUserWithEmailAndPassword.mockRejectedValueOnce({code: eCode})
+    const email = 'myemail@gmail.com'
+    const password = 'pwd'
+    const nameUser = 'Anita Mari'
+    await createUser(email, password, nameUser);
+    expect(messageError).toHaveBeenCalled();
+  })
+
   describe('Mock return value', () => {
-    it('Should mock the return value of sum', () => {
+    it('Should mock the return value of ', () => {
       const originalModule = jest.requireActual('firebase/auth');
       const newMod = { ...originalModule };
       newMod.signInWithPopup = jest.fn().mockReturnValue(2);

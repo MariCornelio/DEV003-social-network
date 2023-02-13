@@ -79,5 +79,23 @@ describe('Primera prueba de registro', () => {
     const registerError = document.querySelectorAll('.messageError p');
     console.log(registerError);
     expect(registerError.textContent).toBe('Email already in use');
+
   });
+
+
+  test('mock test with jest.fn().mockRejectedValue', () => {
+  const mockFunction = jest.fn();
+  mockFunction.mockRejectedValue(new Error('Mock error'));
+
+  someFunction(mockFunction)
+    .catch(error => {
+      expect(error).toEqual(new Error('Mock error'));
+    });
+
+  expect(mockFunction).toHaveBeenCalled();
+});
+
+
+
+
 });

@@ -73,8 +73,8 @@ export const onStateSession = () => {
 };
 
 // para registro de usuarios
-export const createUser = (email, password, nameUser) => {
-  createUserWithEmailAndPassword(auth, email, password)
+export const createUser = async (email, password, nameUser) => {
+  await createUserWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
       // console.log('1', userCredential);
       // console.log('2', auth.currentUser);
