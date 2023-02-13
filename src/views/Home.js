@@ -96,11 +96,7 @@ export const Home = () => {
                   </div>
                 </div>
                 <div class="post-img-container">
-                  <img src="../../assets/feed.jpg" alt="">
-                  <img src="../../assets/feed.jpg" alt="">
-                  <img src="../../assets/feed.jpg" alt="">
-                  <img src="../../assets/feed.jpg" alt="">
-                  <img src="../../assets/feed.jpg" alt="">
+                <p class="post-des">Hoy bañé a mi perriwo :)) </p>
                 </div>
               </div>
               <div class="post-detail">
@@ -111,7 +107,7 @@ export const Home = () => {
                 </div>
                 <span class="likes">2.8k likes</span>
                 <p class="username">Anita Mari</p>
-                <p class="post-des">Hoy bañé a mi perriwo :)) </p>
+                
 
                 <div class="comment-box">
                   <input type="text" id="comment-input" placeholder="Add a comment">
@@ -121,7 +117,9 @@ export const Home = () => {
                 <span class="comment-count">300 comments</span>
               </div>
             </div>
-            <div class="post">
+
+            
+            <!-- <div class="post">
               <div class="post-header">
                 <img src="./assets/feed.jpg" class="user-icon" alt="">
                 <p class="username">Isabel Roman</p>
@@ -198,7 +196,7 @@ export const Home = () => {
 
                 <span class="comment-count">300 comments</span>
               </div>
-            </div>
+            </div> -->
           </div>
         </section>
       </div>
