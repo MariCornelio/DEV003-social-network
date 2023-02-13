@@ -13,7 +13,7 @@ export const Home = () => {
         <i class="fa-solid fa-plus"></i>
         <p>Post</p>
       </div>
-      <div class="home-edit-profile">
+      <div id='header-edit-profile' class="home-edit-profile">
         <div class="home-profile-pic">
           <img src="../assets/profile.jpg" alt="Profile photo"> 
         </div>

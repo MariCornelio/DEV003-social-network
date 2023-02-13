@@ -28,6 +28,7 @@ describe('Primera prueba de registro', () => {
   let inputCreatePassword;
   let formSignup;
   let formSignupEmail;
+  let registerInput;
   beforeEach(() => {
     const rootDiv = document.createElement('div');
     rootDiv.id = 'root';
@@ -43,6 +44,9 @@ describe('Primera prueba de registro', () => {
     inputCreatePassword = document.getElementById('create-password');
     formSignup = document.getElementById('form-signup');
     formSignupEmail = document.getElementById('form-signup-email');
+    registerInput = document.querySelectorAll(
+      '#form-signup .input-field'
+    );
   });
   it('espero que me registre', async () => {
     createUserWithEmailAndPassword.mockImplementation((auth, email, password) =>
@@ -71,17 +75,11 @@ describe('Primera prueba de registro', () => {
     createUserWithEmailAndPassword.mockRejectedValueOnce({
       code: 'auth/email-already-in-use',
     });
-    inputRegisterEmail.value = 'Ana@gmail.com';
-    inputRegisterPassword.value = '123456';
-    inputCreatePassword.value = '123456';
-    inputRegisterName.value = 'Ana';
-    messageError('Email already in use', formSignupEmail);
-    console.log('1', messageError('Email already in use', formSignupEmail));
     formSignup.submit();
-    const RegisterError = document.querySelectorAll('.messageError p');
-    console.log('2', RegisterError[1]);
-    console.log('3', RegisterError[1].querySelector('.messageError p'));
-    expect(RegisterError[1].textContent).toBe('Email already in use');
+    const registerError = document.querySelectorAll('.messageError p');
+    console.log(registerError);
+    expect(registerError.textContent).toBe('Email already in use');
+
   });
 
 
