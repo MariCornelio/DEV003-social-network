@@ -260,6 +260,7 @@ main .container {
 }
 .middle-home-content .stories-home .story-home:nth-child(6) {
   background: url('../assets/feed.jpg') no-repeat center center/cover;
+
 }
 
 .middle-home-content .story-home .profile-photo-home {
@@ -342,6 +343,50 @@ main .container {
   font-size: 0.9rem;
   font-weight: 600;
 }
+
+
+/* POST DROPDOWN MENU */
+.post-dropdown {
+  margin-left: auto;
+}
+.post-actions {
+  width: 3rem;
+  background-color: #fff;
+  color: #444;
+  font-size: 1.5rem;
+  border-radius: 8px;
+}
+.post-actions:hover,
+.post-actions:focus {
+  background-color: #0e9dd9;
+  color: white;
+}
+.post-dropdown {
+  position: relative;
+  display: inline-block;
+}
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  transform: translateX(-94px) translateY(3px);
+}
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+.dropdown-content a:hover {
+  background-color: #ddd;
+}
+.show-post-actions {
+  display: block;
+}
+/*  */
 
 .post-feed {
   width: 100%;

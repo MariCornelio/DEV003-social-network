@@ -79,7 +79,14 @@ export const Home = () => {
             <div class="post-header">
                 <img src="../../assets/feed.jpg" class="user-icon" alt="">
                 <p class="username">Anita Mari</p>
-                <p class="username-position-languages">Software Developer <em>javascript, angular</em> 
+                <p class="username-position-languages">Software Developer <em>javascript, angular</em></p> 
+                <div class="post-dropdown">
+                    <button class="post-actions">...</button>
+                    <div id="myDropdown" class="dropdown-content">
+                        <a>Edit</a>
+                        <a>Delete</a>
+                    </div>
+                </div>
             </div>
             <div class="post-feed">
                 <div class="post-overlays">
