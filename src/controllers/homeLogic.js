@@ -18,7 +18,9 @@ export const homeLogic = () => {
       setTimeout(() => {
         likeImg.classList.remove('show');
       }, 3000);
+
     });
+
 
     // post share
     let shareBtn = post.querySelector('.send-btn');
@@ -26,8 +28,10 @@ export const homeLogic = () => {
 
     shareBtn.addEventListener('click', () => {
       shareWindow.classList.toggle('active');
+
       changeIcon(shareBtn);
     });
+
 
     let postLink = post.querySelector('#share-link').value;
     let copyLinkBtn = post.querySelector('.copy-btn');
@@ -35,6 +39,7 @@ export const homeLogic = () => {
     copyLinkBtn.addEventListener('click', () => {
       navigator.clipboard.writeText(postLink).then(() => {
         shareBtn.click();
+
       });
     });
   };
@@ -62,4 +67,10 @@ export const homeLogic = () => {
       }
     }
   };
+
+  // Redirigiendo a profile
+  const headerEditProfile = document.getElementById('header-edit-profile');
+  headerEditProfile.addEventListener('click', () => {
+    window.location.hash = '#/profile';
+  });
 };

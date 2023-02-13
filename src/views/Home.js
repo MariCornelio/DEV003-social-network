@@ -1,7 +1,7 @@
 export const Home = () => {
-  const divContainer = document.createElement('div');
-  divContainer.classList.add('home-container');
-  divContainer.innerHTML = `
+    const divContainer = document.createElement('div');
+    divContainer.classList.add('home-container');
+    divContainer.innerHTML = `
   <!-- Ana-Header -->
   <header class="home-header">
   <div class="home-title-logo"> 
@@ -13,7 +13,7 @@ export const Home = () => {
         <i class="fa-solid fa-plus"></i>
         <p>Post</p>
       </div>
-      <div class="home-edit-profile">
+      <div id='header-edit-profile' class="home-edit-profile">
         <div class="home-profile-pic">
           <img src="../assets/profile.jpg" alt="Profile photo"> 
         </div>
@@ -206,5 +206,5 @@ export const Home = () => {
     </div>
     </section>
     `;
-  return divContainer;
+    return divContainer;
 };

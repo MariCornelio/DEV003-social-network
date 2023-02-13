@@ -146,7 +146,7 @@ export const loginLogic = () => {
   // inicio de sesion
   formSignin.addEventListener('submit', (e) => {
     e.preventDefault();
-    console.log(formSignin);
+    // console.log(formSignin);
     cleanMessageErrors(formSignin);
     signinUser(signinEmail.value, signinPassword.value);
   });
