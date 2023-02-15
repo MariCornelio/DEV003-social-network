@@ -1,3 +1,4 @@
+import { createPost } from './utils/createPost';
 import { docGetProfile, savePosts, seePost, updatePostFields } from '../lib/index.js';
 import { auth } from '../lib/model/firebase.js';
 
@@ -170,6 +171,7 @@ export const homeLogic = () => {
       }
     }
   };
+
   // Redirigiendo a profile
   const headerEditProfile = document.getElementById('header-edit-profile');
   headerEditProfile.addEventListener('click', () => {

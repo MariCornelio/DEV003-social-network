@@ -59,7 +59,6 @@ export const Home = () => {
           <div class="profile-photo-home">
             <img src="../../assets/feed.jpg">
           </div>
-
           <p class="name-home-stories">Rosalba Luna</p>
         </div>
       </div>

@@ -17,7 +17,7 @@
   align-items: center;
   position: sticky;
   top: 0;
-  z-index: 1;
+  z-index: 10;
   border-radius: 0 0 12px 12px;
 }
 
@@ -265,6 +265,7 @@ main .container {
   }
 }
 
+
 @media screen and (max-width: 500px) { 
   .post-username-details {
     display: flex;
@@ -280,6 +281,11 @@ main .container {
   flex-direction: column;
   align-items: center;
 }
+
+/* .post-username-details {
+  display: flex;
+  flex-direction: column;
+} */
 
   .post-container {
     display: flex;
@@ -364,20 +370,85 @@ main .container {
   z-index: 1;
   transform: translateX(-94px) translateY(3px);
 }
-.dropdown-content a {
+.dropdown-element {
   color: black;
   padding: 12px 16px;
   text-decoration: none;
   display: block;
+  cursor: pointer;
   font-size: 0.9rem;
 }
-.dropdown-content a:hover {
+.dropdown-element:hover {
   background-color: #ddd;
+}
+.dropdown-delete {
+  color: red;
 }
 .show-post-actions {
   display: block;
 }
 /*  */
+
+/* DELETE MODAL */
+#modal-container {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+  top: 0;
+  display: none;
+}
+#modal {
+  position: fixed;
+  background-color: #00000020;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+  top: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#modal-content {
+  background-color: #fafafa;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 5% 10%;
+  border-radius: 10px;
+  box-shadow: 0px 5px 5px gray;
+}
+#modal-content img {
+  color: red;
+}
+#modal-content h2 {
+  font-weight: 500;
+}
+#modal-content p {
+  text-align: center;
+  margin-bottom: 15px;
+}
+#modal-btns {
+  width: 80%;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 15px;
+}
+.modal-cancel-btn {
+  background-color: #a0a0a0;
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.modal-delete-btn {
+  background-color: tomato;
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+/* */
 
 .post-feed {
   width: 100%;
@@ -406,6 +477,7 @@ main .container {
 .detail-intracables {
   display: flex;
   gap: 10px;
+  position: relative;
 }
 
 .detail-intracables img {
@@ -493,6 +565,22 @@ main .container {
   pointer-events: none;
 }
 
+/* se agrego para mantener el corazon */
+.like-btn {
+  background-color: #00000000;
+  z-index: 2;
+}
+
+/* small like icon */
+.small-like-icon{
+  opacity: 0;
+  transition: 0.5s;
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  left: 0;
+ }
+ 
 .like-icon {
   width: 200px;
   opacity: 0;
