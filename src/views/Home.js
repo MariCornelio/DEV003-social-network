@@ -71,7 +71,7 @@ export const Home = () => {
         </form>
         <section class="home-post-section">
           <div class="post-container">
-            <div class="post">
+            <!-- <div class="post">
               <div class="post-header">
                 <img src="../../assets/feed.jpg" class="user-icon" alt="">
                 <p class="username">Anita Mari</p>
@@ -79,14 +79,19 @@ export const Home = () => {
                 <div class="post-dropdown">
                   <button class="post-actions">...</button>
                   <div id="myDropdown" class="dropdown-content">
-                    <a>Edit</a>
-                    <a>Delete</a>
+                    <div class="dropdown-element">
+                      <i class="fa-solid fa-pencil"></i>
+                      <a>Edit</a>
+                    </div>
+                    <div class="dropdown-element dropdown-delete">
+                      <i class="fa-solid fa-trash-can"></i>
+                      <a>Delete</a>
+                    </div>
                   </div>
                 </div>
               </div>
               <div class="post-feed">
                 <div class="post-overlays">
-                  <img src="./assets/red-heart.png" class="like-icon" alt="">
                   <div class="share-window">
                     <h1 class="title">share the post with others</h1>
                     <div class="share-link-container">
@@ -96,12 +101,14 @@ export const Home = () => {
                   </div>
                 </div>
                 <div class="post-img-container">
-                <p class="post-des">Hoy bañé a mi perriwo :)) </p>
+                  <p class="post-des">Hoy bañé a mi perriwo :)) </p>
                 </div>
               </div>
               <div class="post-detail">
                 <div class="detail-intracables">
                   <img src="./assets/heart-nofill.png" class="like-btn" alt="">
+                  <img src="./assets/red-heart.png" class="like-icon" alt="">
+
                   <img src="./assets/send-nofill.png" class="send-btn" alt="">
                   <img src="./assets/comment-nofill.png" class="comment-btn" alt="">
                 </div>
@@ -116,7 +123,7 @@ export const Home = () => {
 
                 <span class="comment-count">300 comments</span>
               </div>
-            </div>
+            </div> -->
 
             
             <!-- <div class="post">
