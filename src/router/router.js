@@ -23,7 +23,7 @@ export const router = () => {
       break;
     case '#/home':
       root.appendChild(Home());
-      homeLogic(Home());
+      homeLogic();
       break;
     default:
       root.innerHTML = '<h2>Error 404</h2>';

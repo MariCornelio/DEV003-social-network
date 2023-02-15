@@ -8,7 +8,6 @@
 }
 
 body {
-  min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -222,7 +221,7 @@ body {
   font-weight: 500;
   letter-spacing: 1px;
   border-radius: 6px;
-  background: #0E9DD9;
+  background: #0e9dd9;
   cursor: pointer;
   transition: all 0.3s ease;
 }
