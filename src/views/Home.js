@@ -1,7 +1,7 @@
 export const Home = () => {
-  const divContainer = document.createElement('div');
-  divContainer.classList.add('home-container');
-  divContainer.innerHTML = `
+    const divContainer = document.createElement('div');
+    divContainer.classList.add('home-container');
+    divContainer.innerHTML = `
   <!-- Ana-Header -->
   <header class="home-header">
   <div class="home-title-logo"> 
@@ -71,137 +71,143 @@ export const Home = () => {
         </form>
         <section class="home-post-section">
           <div class="post-container">
-            <div class="post">
-              <div class="post-header">
-                <img src="../../assets/feed.jpg" class="user-icon" alt="">
-                <p class="username">Anita Mari</p>
-                <p class="username-position-languages">Software Developer <em>javascript, angular</em></p>
-                <div class="post-dropdown">
-                  <button class="post-actions">...</button>
-                  <div id="myDropdown" class="dropdown-content">
-                    <a>Edit</a>
-                    <a>Delete</a>
-                  </div>
-                </div>
-              </div>
-              <div class="post-feed">
-                <div class="post-overlays">
-                  <img src="./assets/red-heart.png" class="like-icon" alt="">
-                  <div class="share-window">
-                    <h1 class="title">share the post with others</h1>
-                    <div class="share-link-container">
-                      <input type="text" id="share-link" value="https://www.devgram.com/" disabled>
-                      <button class="copy-btn">copy</button>
-                    </div>
-                  </div>
-                </div>
-                <div class="post-img-container">
-                <p class="post-des">Hoy bañé a mi perriwo :)) </p>
-                </div>
-              </div>
-              <div class="post-detail">
-                <div class="detail-intracables">
-                  <img src="./assets/heart-nofill.png" class="like-btn" alt="">
-                  <img src="./assets/send-nofill.png" class="send-btn" alt="">
-                  <img src="./assets/comment-nofill.png" class="comment-btn" alt="">
-                </div>
-                <span class="likes">2.8k likes</span>
-                <p class="username">Anita Mari</p>
-                
-
-                <div class="comment-box">
-                  <input type="text" id="comment-input" placeholder="Add a comment">
-                  <button class="add-comment-btn"><img src="./assets/comment-nofill.png" alt=""></button>
-                </div>
-
-                <span class="comment-count">300 comments</span>
+          <div class="post">
+          <div class="post-header">
+            <img src="../../assets/feed.jpg" class="user-icon" alt="">
+            <div class="post-username-details">
+              <p class="username">Anita Mari Graduada Román</p>
+              <p class="username-position-languages career">Software Developer</p>
+              <p class="username-position-languages"><em>javascript, angular</em></p>
+              <p class="post-date">2/14/2023 6:25 p.m.</p>
+            </div>
+            <div class="post-dropdown">
+              <button class="post-actions">...</button>
+              <div id="myDropdown" class="dropdown-content">
+                <a>Edit</a>
+                <a>Delete</a>
               </div>
             </div>
+          </div>
+          <div class="post-feed">
+            <div class="post-overlays">
+              <img src="./assets/red-heart.png" class="like-icon" alt="">
+              <div class="share-window">
+                <h1 class="title">share the post with others</h1>
+                <div class="share-link-container">
+                  <input type="text" id="share-link" value="https://www.devgram.com/" disabled>
+                  <button class="copy-btn">copy</button>
+                </div>
+              </div>
+            </div>
+            <div class="post-img-container">
+              <p class="post-des">Hoy escribí éste post para demostrarlo en la demo de hoy, yay! :) </p>
+            </div>
+          </div>
+          <div class="post-detail">
+            <div class="detail-intracables">
+              <img src="./assets/heart-nofill.png" class="like-btn" alt="">
+              <img src="./assets/send-nofill.png" class="send-btn" alt="">
+              <img src="./assets/comment-nofill.png" class="comment-btn" alt="">
+            </div>
+            <span class="likes">2.8k likes</span>
+        
+        
+            <div class="comment-box">
+              <input type="text" id="comment-input" placeholder="Add a comment">
+              <button class="add-comment-btn"><img src="./assets/comment-nofill.png" alt=""></button>
+            </div>
+        
+            <span class="comment-count">300 comments</span>
+          </div>
+        </div>
 
             
-            <!-- <div class="post">
-              <div class="post-header">
-                <img src="./assets/feed.jpg" class="user-icon" alt="">
-                <p class="username">Isabel Roman</p>
-                <p class="username-position-languages">Software Developer <em>javascript, angular</em>
-              </div>
-              <div class="post-feed">
-                <div class="post-overlays">
-                  <img src="./assets/red-heart.png" class="like-icon" alt="">
-                  <div class="share-window">
-                    <h1 class="title">share the post with others</h1>
-                    <div class="share-link-container">
-                      <input type="text" id="share-link" value="https://www.devgram.com" disabled>
-                      <button class="copy-btn">copy</button>
-                    </div>
-                  </div>
-                </div>
-                <div class="post-img-container">
-                  <img src="../../assets/feed.jpg" alt="">
-                </div>
-              </div>
-              <div class="post-detail">
-                <div class="detail-intracables">
-                  <img src="./assets/heart-nofill.png" class="like-btn" alt="">
-                  <img src="./assets/send-nofill.png" class="send-btn" alt="">
-                  <img src="./assets/comment-nofill.png" class="comment-btn" alt="">
-                </div>
-                <span class="likes">2.7k likes</span>
-                <p class="username">Isabel Roman</p>
-                <p class="post-des">Saluditos.com.mx</p>
-
-                <div class="comment-box">
-                  <input type="text" id="comment-input" placeholder="Add a comment">
-                  <button class="add-comment-btn"><img src="./assets/comment-nofill.png" alt=""></button>
-                </div>
-
-                <span class="comment-count">300 comments</span>
-              </div>
-            </div>
-            <div class="post">
-              <div class="post-header">
-                <img src="./assets/feed.jpg" class="user-icon" alt="">
-                <p class="username">Soyun Usuario</p>
-                <p class="username-position-languages">Software Developer <em>javascript, angular</em>
-              </div>
-              <div class="post-feed">
-                <div class="post-overlays">
-                  <img src="./assets/red-heart.png" class="like-icon" alt="">
-                  <div class="share-window">
-                    <h1 class="title">share the post with others</h1>
-                    <div class="share-link-container">
-                      <input type="text" id="share-link" value="https://www.devgram.com" disabled>
-                      <button class="copy-btn">copy</button>
-                    </div>
-                  </div>
-                </div>
-                <div class="post-img-container">
-                  <img src="../../assets/feed.jpg" alt="">
-                </div>
-              </div>
-              <div class="post-detail">
-                <div class="detail-intracables">
-                  <img src="./assets/heart-nofill.png" class="like-btn" alt="">
-                  <img src="./assets/send-nofill.png" class="send-btn" alt="">
-                  <img src="./assets/comment-nofill.png" class="comment-btn" alt="">
-                </div>
-                <span class="likes">2.7k likes</span>
-                <p class="username">Soyun Usuario</p>
-                <p class="post-des">Esto es un mensaje :) </p>
-
-                <div class="comment-box">
-                  <input type="text" id="comment-input" placeholder="Add a comment">
-                  <button class="add-comment-btn"><img src="./assets/comment-nofill.png" alt=""></button>
-                </div>
-
-                <span class="comment-count">300 comments</span>
-              </div>
-            </div> -->
+        
           </div>
         </section>
       </div>
     </section>
   </main>
     `;
-  return divContainer;
+    return divContainer;
 };
+
+
+/* <div class="post">
+<div class="post-header">
+  <img src="./assets/feed.jpg" class="user-icon" alt="">
+  <p class="username">Isabel Roman</p>
+  <p class="username-position-languages">Software Developer <em>javascript, angular</em>
+</div>
+<div class="post-feed">
+  <div class="post-overlays">
+    <img src="./assets/red-heart.png" class="like-icon" alt="">
+    <div class="share-window">
+      <h1 class="title">share the post with others</h1>
+      <div class="share-link-container">
+        <input type="text" id="share-link" value="https://www.devgram.com" disabled>
+        <button class="copy-btn">copy</button>
+      </div>
+    </div>
+  </div>
+  <div class="post-img-container">
+    <img src="../../assets/feed.jpg" alt="">
+  </div>
+</div>
+<div class="post-detail">
+  <div class="detail-intracables">
+    <img src="./assets/heart-nofill.png" class="like-btn" alt="">
+    <img src="./assets/send-nofill.png" class="send-btn" alt="">
+    <img src="./assets/comment-nofill.png" class="comment-btn" alt="">
+  </div>
+  <span class="likes">2.7k likes</span>
+  <p class="username">Isabel Roman</p>
+  <p class="post-des">Saluditos.com.mx</p>
+
+  <div class="comment-box">
+    <input type="text" id="comment-input" placeholder="Add a comment">
+    <button class="add-comment-btn"><img src="./assets/comment-nofill.png" alt=""></button>
+  </div>
+
+  <span class="comment-count">300 comments</span>
+</div>
+</div>
+<div class="post">
+<div class="post-header">
+  <img src="./assets/feed.jpg" class="user-icon" alt="">
+  <p class="username">Soyun Usuario</p>
+  <p class="username-position-languages">Software Developer <em>javascript, angular</em>
+</div>
+<div class="post-feed">
+  <div class="post-overlays">
+    <img src="./assets/red-heart.png" class="like-icon" alt="">
+    <div class="share-window">
+      <h1 class="title">share the post with others</h1>
+      <div class="share-link-container">
+        <input type="text" id="share-link" value="https://www.devgram.com" disabled>
+        <button class="copy-btn">copy</button>
+      </div>
+    </div>
+  </div>
+  <div class="post-img-container">
+    <img src="../../assets/feed.jpg" alt="">
+  </div>
+</div>
+<div class="post-detail">
+  <div class="detail-intracables">
+    <img src="./assets/heart-nofill.png" class="like-btn" alt="">
+    <img src="./assets/send-nofill.png" class="send-btn" alt="">
+    <img src="./assets/comment-nofill.png" class="comment-btn" alt="">
+  </div>
+  <span class="likes">2.7k likes</span>
+  <p class="username">Soyun Usuario</p>
+  <p class="post-des">Esto es un mensaje :) </p>
+
+  <div class="comment-box">
+    <input type="text" id="comment-input" placeholder="Add a comment">
+    <button class="add-comment-btn"><img src="./assets/comment-nofill.png" alt=""></button>
+  </div>
+
+  <span class="comment-count">300 comments</span>
+</div>
+</div>*/

@@ -1,58 +1,45 @@
 export const homeLogic = () => {
-  const addInterationsToPost = (post) => {
-    // post like
-
-    let likeBtn = post.querySelector('.like-btn');
-    let likeImg = post.querySelector('.like-icon');
-
-    likeBtn.addEventListener('click', () => {
+  const postContainer = document.querySelector('.post-container');
+  postContainer.addEventListener('click', e => {
+    if (e.target.matches('.like-btn')) {
+      let likeImg = postContainer.querySelector('.like-icon');
+      let shareBtn = postContainer.querySelector('.send-btn');
+      let likeBtn = e.target
       if (likeBtn.src.includes('nofill')) {
         likeImg.classList.add('show');
         if (shareBtn.src.includes('-fill')) {
           shareBtn.click();
         }
       }
-
-      changeIcon(likeBtn);
-
       setTimeout(() => {
+        console.log('remove')
         likeImg.classList.remove('show');
       }, 3000);
+    }
 
-    });
-
-
-    // post share
-    let shareBtn = post.querySelector('.send-btn');
-    let shareWindow = post.querySelector('.share-window');
-
-    shareBtn.addEventListener('click', () => {
+    if (e.target.matches('.send-btn')) {
+      let shareWindow = postContainer.querySelector('.share-window');
+      let shareBtn = postContainer.querySelector('.send-btn');
+      console.log('sharebtn', shareBtn)
       shareWindow.classList.toggle('active');
+    }
 
-      changeIcon(shareBtn);
-    });
-
-
-    let postLink = post.querySelector('#share-link').value;
-    let copyLinkBtn = post.querySelector('.copy-btn');
-
-    copyLinkBtn.addEventListener('click', () => {
+    if (e.target.matches('.copy-btn')) {
+      let shareBtn = postContainer.querySelector('.send-btn');
+      let postLink = postContainer.querySelector('#share-link').value;
       navigator.clipboard.writeText(postLink).then(() => {
         shareBtn.click();
 
       });
-    });
-  };
 
-  // post
+    }
+  });
 
-  let posts = [...document.querySelectorAll('.post')];
-  posts.map((post) => addInterationsToPost(post));
-
-  // show post dropdown menu
-  const postMenu = document.querySelector('.post-actions');
-  postMenu.addEventListener('click', () => {
-    document.getElementById('myDropdown').classList.toggle('show-post-actions');
+  postContainer.addEventListener('click', (e) => {
+    // show post dropdown menu
+    if (e.target.matches('.post-actions')) {
+      document.getElementById('myDropdown').classList.toggle('show-post-actions');
+    }
   });
 
   // close post dropdown menu
@@ -67,10 +54,9 @@ export const homeLogic = () => {
       }
     }
   };
-
   // Redirigiendo a profile
   const headerEditProfile = document.getElementById('header-edit-profile');
   headerEditProfile.addEventListener('click', () => {
     window.location.hash = '#/profile';
-  });
+  })
 };

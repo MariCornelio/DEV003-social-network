@@ -76,6 +76,11 @@ describe('Primera prueba de registro', () => {
       code: 'auth/email-already-in-use',
     });
     formSignup.submit();
+    // setTimeout(() => {
+      //aquí el expect
+    // }, 0);
+    // wait next click jest
+    expect(messageError).toHaveBeenCalledWith();
     const registerError = document.querySelectorAll('.messageError p');
     console.log(registerError);
     expect(registerError.textContent).toBe('Email already in use');
