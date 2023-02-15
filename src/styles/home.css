@@ -260,7 +260,6 @@ main .container {
 }
 .middle-home-content .stories-home .story-home:nth-child(6) {
   background: url('../assets/feed.jpg') no-repeat center center/cover;
-
 }
 
 .middle-home-content .story-home .profile-photo-home {
@@ -287,7 +286,7 @@ main .container {
   width: 100%;
   padding-left: 1rem;
   background: transparent;
-  color: rgb(255, 249, 249);
+  color: #111;
   margin-right: 1rem;
 }
 
@@ -343,7 +342,6 @@ main .container {
   font-size: 0.9rem;
   font-weight: 600;
 }
-
 
 /* POST DROPDOWN MENU */
 .post-dropdown {

@@ -28,10 +28,26 @@ export const guardarPublicacion = (descripcion) => {
 };
 
 export const verPublicacion = (funcionRecorrido) => onSnapshot(collection(db, 'publicaciones'), funcionRecorrido);
+// ***********************************************************
+// save posts
+export const savePosts = (idUser, description, nameUser, profession, languages, dateTime) => {
+  addDoc(collection(db, 'Posts'), {
+    idUser,
+    description,
+    nameUser,
+    profession,
+    languages,
+    dateTime,
+  });
+};
+// see Post
+export const seePost = (callback) => onSnapshot(collection(db, 'Posts'), callback);
+// update post
+export const updatePostFields = (id, newFields) => updateDoc(doc(db, 'Posts', id), newFields);
 // ************************************************************
 // guardando perfil
 export const saveProfile = (profession, languages) => {
-  console.log('hola')
+  console.log('hola');
   console.log(auth.currentUser);
   setDoc(doc(db, 'userProfile', auth.currentUser.uid), { profession, languages });
 };
@@ -73,8 +89,8 @@ export const onStateSession = () => {
 };
 
 // para registro de usuarios
-export const createUser = async (email, password, nameUser) => {
-  await createUserWithEmailAndPassword(auth, email, password)
+export const createUser = (email, password, nameUser) => {
+  createUserWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
       // console.log('1', userCredential);
       // console.log('2', auth.currentUser);
