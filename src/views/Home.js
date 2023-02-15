@@ -1,7 +1,7 @@
 export const Home = () => {
-  const divContainer = document.createElement('div');
-  divContainer.classList.add('home-container');
-  divContainer.innerHTML = `
+    const divContainer = document.createElement('div');
+    divContainer.classList.add('home-container');
+    divContainer.innerHTML = `
   <!-- Ana-Header -->
   <header class="home-header">
   <div class="home-title-logo">
@@ -59,6 +59,7 @@ export const Home = () => {
           <div class="profile-photo-home">
             <img src="../../assets/feed.jpg">
           </div>
+
           <p class="name-home-stories">Rosalba Luna</p>
         </div>
       </div>
@@ -76,7 +77,7 @@ export const Home = () => {
               <img src="../../assets/feed.jpg" class="user-icon" alt="">
               <div class="post-username-details">
                 <p class="username">Anita Mari</p>
-                <p class="username-position-languages">Software Developer</p>
+                <p class="username-position-languages career">Software Developer</p>
                 <p class="username-position-languages"><em>javascript, angular</em></p>
                 <p class="post-date">2/14/2023</p>
               </div>
@@ -122,9 +123,12 @@ export const Home = () => {
     </div>
   </section>
 </main>
+
     `;
-  return divContainer;
+    return divContainer;
 };
+
+
 /* <div class="post">
 <div class="post-header">
   <img src="./assets/feed.jpg" class="user-icon" alt="">
@@ -192,6 +196,7 @@ export const Home = () => {
   <span class="likes">2.7k likes</span>
   <p class="username">Soyun Usuario</p>
   <p class="post-des">Esto es un mensaje :) </p>
+
   <div class="comment-box">
     <input type="text" id="comment-input" placeholder="Add a comment">
     <button class="add-comment-btn"><img src="./assets/comment-nofill.png" alt=""></button>
@@ -199,3 +204,4 @@ export const Home = () => {
   <span class="comment-count">300 comments</span>
 </div>
 </div> */
+
