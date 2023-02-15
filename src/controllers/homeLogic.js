@@ -1,5 +1,10 @@
 import { createPost } from './utils/createPost';
-import { docGetProfile, savePosts, seePost, updatePostFields } from '../lib/index.js';
+import {
+  docGetProfile,
+  savePosts,
+  seePost,
+  updatePostFields,
+} from '../lib/index.js';
 import { auth } from '../lib/model/firebase.js';
 
 export const homeLogic = () => {
@@ -115,54 +120,52 @@ export const homeLogic = () => {
           doc.data().dateTime,
         ));
       }
-
     });
   });
 
   // ********************************************************************************
   postContainer.addEventListener('click', (e) => {
-     if (e.target.matches('.like-btn')) {
-      let likeImg = postContainer.querySelector('.like-icon');
-      let shareBtn = postContainer.querySelector('.send-btn');
-      let likeBtn = e.target
+    if (e.target.matches('.like-btn')) {
+      const likeImg = postContainer.querySelector('.like-icon');
+      const shareBtn = postContainer.querySelector('.send-btn');
+      const likeBtn = e.target
       if (likeBtn.src.includes('nofill')) {
         likeImg.classList.add('show');
         if (shareBtn.src.includes('-fill')) {
           shareBtn.click();
-          }
-         }
-        setTimeout(() => {
+        }
+      }
+      setTimeout(() => {
         console.log('remove')
         likeImg.classList.remove('show');
       }, 3000);
     }
 
     if (e.target.matches('.send-btn')) {
-      let shareWindow = postContainer.querySelector('.share-window');
-      let shareBtn = postContainer.querySelector('.send-btn');
+      const shareWindow = postContainer.querySelector('.share-window');
+      const shareBtn = postContainer.querySelector('.send-btn');
       console.log('sharebtn', shareBtn)
       shareWindow.classList.toggle('active');
     }
 
     if (e.target.matches('.copy-btn')) {
-      let shareBtn = postContainer.querySelector('.send-btn');
-      let postLink = postContainer.querySelector('#share-link').value;
+      const shareBtn = postContainer.querySelector('.send-btn');
+      const postLink = postContainer.querySelector('#share-link').value;
       navigator.clipboard.writeText(postLink).then(() => {
         shareBtn.click();
-
       });
     }
-     // show post dropdown menu
+    // show post dropdown menu
     if (e.target.matches('.post-actions')) {
       document.getElementById('myDropdown').classList.toggle('show-post-actions');
     }
-    
-  }); //cierre del click post container
-            
+  });
+  // cierre del click post container
   // close post dropdown menu
-  window.onclick = function (event) {
+  window.onclick = (event) => {
     if (!event.target.matches('.post-actions')) {
       const dropdowns = document.getElementsByClassName('dropdown-content');
+      // eslint-disable-next-line no-plusplus
       for (let i = 0; i < dropdowns.length; i++) {
         const openDropdown = dropdowns[i];
         if (openDropdown.classList.contains('show-post-actions')) {
@@ -176,5 +179,5 @@ export const homeLogic = () => {
   const headerEditProfile = document.getElementById('header-edit-profile');
   headerEditProfile.addEventListener('click', () => {
     window.location.hash = '#/profile';
-  })
+  });
 }; // final de la funcion homoLogic
