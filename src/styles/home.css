@@ -63,6 +63,7 @@ img {
   width: 2.4rem;
   overflow: hidden;
   border-radius: 50%;
+  cursor: pointer;
 }
 /*profile pic manually resized*/
 .home-profile-pic img {
@@ -250,7 +251,7 @@ main .container {
   width: 100%;
   padding-left: 1rem;
   background: transparent;
-  color: rgb(255, 249, 249);
+  color: #111;
   margin-right: 1rem;
 }
 
@@ -264,9 +265,11 @@ main .container {
   }
 }
 
-@media screen and (max-width: 600px) {
-  .username-position-languages {
-    display: inline-block;
+
+@media screen and (max-width: 500px) { 
+  .post-username-details {
+    display: flex;
+    flex-direction: column;
   }
 }
 
@@ -279,57 +282,63 @@ main .container {
   align-items: center;
 }
 
-.post-container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  margin-top: 4%;
-  padding: 5px;
-  width: 100%;
-}
-
-.post {
-  width: 100%;
-  border: 1px solid #999;
-  background: #fff;
-  margin-bottom: 30px;
-  position: relative;
-}
-
-.post-header {
-  display: flex;
-  align-items: flex-start;
-  padding: 1.2rem;
-  gap: 10px;
-}
-
-.post-username-details {
+/* .post-username-details {
   display: flex;
   flex-direction: column;
-}
+} */
 
-.username-position-languages {
-  font-weight: 400;
-  font-size: 0.9rem;
-}
-
-.post-date {
-  font-weight: 100;
-  font-size: 0.8rem;
-}
-
+  .post-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin-top: 4%;
+    padding: 5px;
+    width: 100%;
+  }
+  
+  .post {
+    width: 100%;
+    border: 1px solid #999;
+    background: #fff;
+    margin-bottom: 30px;
+    position: relative;
+  }
+  
+  .post-header {
+    display: flex;
+    padding: 1.2rem;
+    gap: 10px;
+  }
+  
 .post-header .user-icon {
   width: 45px;
   height: 45px;
   border-radius: 50%;
-  align-self: flex-start;
   margin-top: 5px;
+  align-self: flex-start;
 }
 
 .post-header .username {
   font-size: 0.9rem;
   font-weight: 600;
+}
+
+.username-position-languages{
+  font-weight: 400;
+  font-size: 0.9rem;
+  display: inline;
+  color:#555555;
+}
+
+.career{
+  font-weight: 505;
+}
+
+.post-date{
+  font-weight: 200;
+  font-size: 0.9rem;
+  color:#6e6c6c;
 }
 
 /* POST DROPDOWN MENU */
@@ -490,8 +499,8 @@ main .container {
 .post-des {
   margin: 20px;
   font-size: 0.9rem;
-  line-height: 1.5rem;
-  opacity: 0.7;
+  line-height: 2rem;
+  font-weight: 500;
 }
 
 .comment-box {
@@ -562,16 +571,23 @@ main .container {
   z-index: 2;
 }
 
-.like-icon {
-  /* width: 200px; */
+/* small like icon */
+.small-like-icon{
   opacity: 0;
   transition: 0.5s;
   position: absolute;
   z-index: 1;
   top: 0;
   left: 0;
-  /* top: 20%;
-  z-index: 5; */
+ }
+ 
+.like-icon {
+  width: 200px;
+  opacity: 0;
+  transition: 0.5s;
+  position: absolute;
+  top: 20%;
+  z-index: 5;
 }
 
 .like-icon.show {
@@ -608,17 +624,6 @@ main .container {
   opacity: 0;
   z-index: 5;
 }
-/* .share-window {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background: #dddddd;
-  padding: 20px;
-  width: 70%;
-  transition: 0.5s;
-  opacity: 0;
-} */
 
 .share-window.active {
   opacity: 1;

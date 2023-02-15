@@ -1,0 +1,98 @@
+
+
+    .title-profile {
+      font-size: 24px;
+      font-weight: 300;
+      margin-bottom: 20px;
+      
+    }
+
+    .form-profile {
+      background-color: #e6e3e3;
+      padding: 20px;
+      border-radius: 5px;
+      margin-bottom: 20px;
+    }
+
+    .questions-profile {
+      display: flex;
+      font-size: 16px;
+      margin-bottom: 5px;
+    }
+
+    .answer-profile{
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #918f8f;
+      border-radius: 3px;
+      font-size: 16px;
+      margin-bottom: 20px;
+    }
+
+    .save-btn{
+      color: #ffffff;
+      border-radius: 5px;
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+      border: none;
+    }
+
+    .logout-btn {
+      color: red;
+      border-radius: 5px;
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+      border-style: solid;
+      border-color: red;
+    }
+
+    .save-btn {
+      background-color: #1e90ff;
+      margin-right: 10px;
+    }
+
+    .save-btn:hover, .logout-btn:hover {
+      background-color: #555;
+    }
+
+    .logout-btn {
+      border-color: red;
+      background-color: rgb(255, 253, 253);
+    }
+
+    .logout-btn:hover {
+      background-color: red;
+      color: white;
+    }
+
+    .save-container{
+      display: flex;
+      justify-content: center;
+    }
+
+    .logout-container{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  
+    @media (max-width:600px) {
+      .title-profile{
+        font-size: 20px;
+      }
+
+      .form-profile{
+        padding: 10px;
+      }
+
+      .answer-profile{
+        font-size: 14px;
+      }
+
+      .save-btn, .logout-btn{
+        font-size: 14px;
+        padding: 5px 10px;
+      }
+    }
