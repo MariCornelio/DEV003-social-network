@@ -12,6 +12,7 @@ body {
   align-items: center;
   justify-content: center;
   background-color: rgb(238, 235, 235);
+  min-height: 100vh;
 }
 #root {
   display: flex;
