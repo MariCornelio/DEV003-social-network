@@ -16,6 +16,7 @@ import {
   doc,
   getDoc,
   setDoc,
+  deleteDoc,
 } from 'firebase/firestore';
 
 import { messageError } from '../errors/messageError.js';
@@ -27,7 +28,8 @@ export const guardarPublicacion = (descripcion) => {
   addDoc(collection(db, 'publicaciones'), { descripcion });
 };
 
-export const verPublicacion = (funcionRecorrido) => onSnapshot(collection(db, 'publicaciones'), funcionRecorrido);
+export const verPublicacion = (funcionRecorrido) =>
+  onSnapshot(collection(db, 'publicaciones'), funcionRecorrido);
 // ***********************************************************
 // save posts
 export const savePosts = (
@@ -37,7 +39,7 @@ export const savePosts = (
   profession,
   languages,
   dateTime,
-  photoProfile,
+  photoProfile
 ) => {
   addDoc(collection(db, 'Posts'), {
     idUser,
@@ -50,22 +52,31 @@ export const savePosts = (
   });
 };
 // see Post
-export const seePost = (callback) => onSnapshot(collection(db, 'Posts'), callback);
+export const seePost = (callback) =>
+  onSnapshot(collection(db, 'Posts'), callback);
 // update post
-export const updatePostFields = (id, newFields) => updateDoc(doc(db, 'Posts', id), newFields);
+export const updatePostFields = (id, newFields) =>
+  updateDoc(doc(db, 'Posts', id), newFields);
+// delete post
+export const deletePost = (id) => deleteDoc(doc(db, 'Posts', id));
 // ************************************************************
 // guardando perfil
 export const saveProfile = (profession, languages, nameUser) => {
   console.log('hola');
   console.log(auth.currentUser);
-  setDoc(doc(db, 'userProfile', auth.currentUser.uid), { profession, languages, nameUser });
+  setDoc(doc(db, 'userProfile', auth.currentUser.uid), {
+    profession,
+    languages,
+    nameUser,
+  });
 };
 
 // ************************************************
 // Mediador para el estado de perfil
 // export const stateProfile = (callback) => onSnapshot(collection(db, 'userProfile'), callback);
 
-export const updateprofileFields = (id, newFields) => updateDoc(doc(db, 'userProfile', id), newFields);
+export const updateprofileFields = (id, newFields) =>
+  updateDoc(doc(db, 'userProfile', id), newFields);
 
 export const docGetProfile = (id) => getDoc(doc(db, 'userProfile', id));
 // ************************************************
@@ -73,11 +84,13 @@ export const docGetProfile = (id) => getDoc(doc(db, 'userProfile', id));
 export const updateName = (currentUser, nameUser) => {
   updateProfile(currentUser, {
     displayName: nameUser,
-  }).then(() => {
-    console.log('Se guardo el nombre en el perfil');
-  }).catch((error) => {
-    console.log(error.code);
-  });
+  })
+    .then(() => {
+      console.log('Se guardo el nombre en el perfil');
+    })
+    .catch((error) => {
+      console.log(error.code);
+    });
 };
 // ***************************************************
 // usando Autenticación
@@ -109,7 +122,9 @@ export const createUser = (email, password, nameUser) => {
     })
     .catch((error) => {
       console.log(error);
-      const registerInput = document.querySelectorAll('#form-signup .input-field');
+      const registerInput = document.querySelectorAll(
+        '#form-signup .input-field'
+      );
       if (error.code === 'auth/email-already-in-use') {
         messageError('Email already in use', registerInput[1]);
       } else if (error.code === 'auth/invalid-email') {
@@ -147,7 +162,8 @@ export const googleSignin = () => {
   signInWithPopup(auth, provider)
     .then((result) => {
       window.location.hash = '#/home';
-    }).catch((error) => {
+    })
+    .catch((error) => {
       console.log(error);
     });
 };
