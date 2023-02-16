@@ -30,7 +30,15 @@ export const guardarPublicacion = (descripcion) => {
 export const verPublicacion = (funcionRecorrido) => onSnapshot(collection(db, 'publicaciones'), funcionRecorrido);
 // ***********************************************************
 // save posts
-export const savePosts = (idUser, description, nameUser, profession, languages, dateTime) => {
+export const savePosts = (
+  idUser,
+  description,
+  nameUser,
+  profession,
+  languages,
+  dateTime,
+  photoProfile,
+) => {
   addDoc(collection(db, 'Posts'), {
     idUser,
     description,
@@ -38,6 +46,7 @@ export const savePosts = (idUser, description, nameUser, profession, languages, 
     profession,
     languages,
     dateTime,
+    photoProfile,
   });
 };
 // see Post
@@ -46,10 +55,10 @@ export const seePost = (callback) => onSnapshot(collection(db, 'Posts'), callbac
 export const updatePostFields = (id, newFields) => updateDoc(doc(db, 'Posts', id), newFields);
 // ************************************************************
 // guardando perfil
-export const saveProfile = (profession, languages) => {
+export const saveProfile = (profession, languages, nameUser) => {
   console.log('hola');
   console.log(auth.currentUser);
-  setDoc(doc(db, 'userProfile', auth.currentUser.uid), { profession, languages });
+  setDoc(doc(db, 'userProfile', auth.currentUser.uid), { profession, languages, nameUser });
 };
 
 // ************************************************

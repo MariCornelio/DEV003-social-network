@@ -1,4 +1,5 @@
 import { createPost } from './utils/createPost';
+import photoProfileImport from '../assets/photoProfile.png';
 import {
   docGetProfile,
   savePosts,
@@ -12,12 +13,22 @@ export const homeLogic = () => {
   const createPostButton = document.getElementById('create-post-button');
   const homeCreatePost = document.getElementById('home-create-post');
   const homeFormCreatePost = document.getElementById('home-form-create-post');
-  const homeLayoutPost = (description, nameUser, profession, languages, dateTime) => {
+  const profilePhotoHomePost = document.getElementById('profilePhotoHomePost');
+  const profilePhotoHeader = document.getElementById('profilePhotoHeader');
+  let photoProfile = photoProfileImport;
+  const homeLayoutPost = (
+    description,
+    nameUser,
+    profession,
+    languages,
+    dateTime,
+    photoProfileUser,
+  ) => {
     const post = document.createElement('div');
     post.classList.add('post');
     post.innerHTML = `
             <div class="post-header">
-              <img src="../../assets/feed.jpg" class="user-icon" alt="">
+              <img src=${photoProfileUser} class="user-icon" alt="">
               <div class="post-username-details">
                 <p class="username">${nameUser}</p>
                 <p class="username-position-languages career">${profession}</p>
@@ -63,7 +74,6 @@ export const homeLogic = () => {
     `;
     return post;
   };
-
   createPostButton.addEventListener('click', async (e) => {
     e.preventDefault();
     if (homeCreatePost.value.trim().length !== 0) {
@@ -78,6 +88,9 @@ export const homeLogic = () => {
       let languages = '';
       if (auth.currentUser) {
         const docSnap = await docGetProfile(auth.currentUser.uid);
+        if (auth.currentUser.providerData[0].providerId === 'google.com') {
+          photoProfile = auth.currentUser.photoURL;
+        }
         if (docSnap.exists()) {
           profession = docSnap.data().profession;
           languages = docSnap.data().languages;
@@ -89,25 +102,33 @@ export const homeLogic = () => {
           profession,
           languages,
           dateTime,
+          photoProfile,
         );
       }
     }
     homeFormCreatePost.reset();
   });
+  console.log(photoProfile);
   seePost((querysnapshot) => {
+    if (auth.currentUser.providerData[0].providerId === 'google.com') {
+      profilePhotoHomePost.src = auth.currentUser.photoURL;
+      profilePhotoHeader.src = auth.currentUser.photoURL;
+    }
     postContainer.innerHTML = '';
     querysnapshot.forEach((doc) => {
       let profession = '';
       let languages = '';
+      let nameUser = auth.currentUser.displayName;
       if (auth.currentUser) {
         docGetProfile(auth.currentUser.uid)
           .then((docSnap) => {
             if (docSnap.exists()) {
               profession = docSnap.data().profession;
               languages = docSnap.data().languages;
+              nameUser = docSnap.data().nameUser;
             }
             if (doc.data().idUser === auth.currentUser.uid) {
-              updatePostFields(doc.id, { languages, profession });
+              updatePostFields(doc.id, { languages, profession, nameUser });
             }
           }).catch((error) => {
             console.log(error);
@@ -118,6 +139,7 @@ export const homeLogic = () => {
           doc.data().profession,
           doc.data().languages,
           doc.data().dateTime,
+          doc.data().photoProfile,
         ));
       }
     });
@@ -128,7 +150,7 @@ export const homeLogic = () => {
     if (e.target.matches('.like-btn')) {
       const likeImg = postContainer.querySelector('.like-icon');
       const shareBtn = postContainer.querySelector('.send-btn');
-      const likeBtn = e.target
+      const likeBtn = e.target;
       if (likeBtn.src.includes('nofill')) {
         likeImg.classList.add('show');
         if (shareBtn.src.includes('-fill')) {
@@ -136,7 +158,7 @@ export const homeLogic = () => {
         }
       }
       setTimeout(() => {
-        console.log('remove')
+        console.log('remove');
         likeImg.classList.remove('show');
       }, 3000);
     }
@@ -144,7 +166,7 @@ export const homeLogic = () => {
     if (e.target.matches('.send-btn')) {
       const shareWindow = postContainer.querySelector('.share-window');
       const shareBtn = postContainer.querySelector('.send-btn');
-      console.log('sharebtn', shareBtn)
+      console.log('sharebtn', shareBtn);
       shareWindow.classList.toggle('active');
     }
 

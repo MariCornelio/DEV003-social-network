@@ -1,3 +1,6 @@
+import photoProfile from '../assets/photoProfile.png';
+import logoDevgram from '../assets/branch.svg';
+
 export const Home = () => {
   const divContainer = document.createElement('div');
   divContainer.classList.add('home-container');
@@ -6,7 +9,7 @@ export const Home = () => {
   <header class="home-header">
   <div class="home-title-logo">
   <h1>devgram</h1>
-  <img src="./assets/branch.svg" alt="logo devgram">
+  <img src=${logoDevgram} alt="logo devgram">
   </div>
     <div class="home-buttons">
       <div class="home-post-btn">
@@ -15,7 +18,7 @@ export const Home = () => {
       </div>
       <div id='header-edit-profile' class="home-edit-profile">
         <div class="home-profile-pic">
-          <img src="../assets/profile.jpg" alt="Profile photo">
+          <img src=${photoProfile} alt="Profile photo"id='profilePhotoHeader'>
         </div>
         <p>Edit</p>
       </div>
@@ -64,7 +67,7 @@ export const Home = () => {
       </div>
       <form id="home-form-create-post" class="create-post">
         <div class="profile-photo-home">
-          <img src="../../assets/feed.jpg">
+          <img src=${photoProfile} id='profilePhotoHomePost'>
         </div>
         <input id="home-create-post" type="text" placeholder="What's on your mind, Mari?">
         <input id="create-post-button" type="submit" value="Post" class="create-btn btn-primary-create">
@@ -79,7 +82,6 @@ export const Home = () => {
     `;
   return divContainer;
 };
-
 
 /* <div class="post">
 <div class="post-header">

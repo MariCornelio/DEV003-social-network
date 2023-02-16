@@ -1,5 +1,10 @@
 import { signOut } from 'firebase/auth';
-import { docGetProfile, saveProfile, updateprofileFields } from '../lib/index.js';
+import {
+  docGetProfile,
+  saveProfile,
+  updateName,
+  updateprofileFields,
+} from '../lib/index.js';
 import { auth } from '../lib/model/firebase';
 
 export const profileLogic = () => {
@@ -7,6 +12,7 @@ export const profileLogic = () => {
   const profileForm = document.getElementById('profile-form');
   const profileProfession = document.getElementById('profile-profession');
   const profileLanguages = document.getElementById('profile-languages');
+  const profileNameUser = document.getElementById('profile-nameUser');
 
   // firebase: cerrando sesion con un evento click
   profileButtonLogout.addEventListener('click', async () => {
@@ -20,28 +26,24 @@ export const profileLogic = () => {
     console.log(docFirebaseId);
 
     const docSnap = await docGetProfile(docFirebaseId);
+    let newNameUser = auth.currentUser.displayName;
+
+    if (profileNameUser.value.trim().length !== 0) {
+      newNameUser = profileNameUser.value;
+      updateName(auth.currentUser, newNameUser);
+    }
+
     if (docSnap.exists()) {
       console.log('actualizando');
       updateprofileFields(docFirebaseId, {
         profession: profileProfession.value,
         languages: profileLanguages.value,
+        nameUser: newNameUser,
       });
     } else {
-      console.log('entro')
-      saveProfile(profileProfession.value, profileLanguages.value);
+      console.log('entro');
+      saveProfile(profileProfession.value, profileLanguages.value, newNameUser);
     }
-
-    // stateProfile((querysnapshot) => {
-    //   querysnapshot.forEach((doc) => {
-    //     if (doc.id === docFirebaseId) {
-    //       updateprofileFields(doc.id, {
-    //         proffesion: profileProffesion.value,
-    //         languages: profileLanguages.value,
-    //       });
-    //     } else {
-    //       saveProfile(profileProffesion.value, profileLanguages.value);
-    //     }
-    //   });
-    // });
+    profileForm.reset();
   });
 };
