@@ -1,3 +1,6 @@
+import { doc, deleteDoc } from 'firebase/firestore';
+import { db } from '../../lib/model/firebase.js';
+
 const modalContainer = document.getElementById('modal-container');
 function closeModal() {
   modalContainer.innerHTML = '';
@@ -42,9 +45,9 @@ export const postActions = {
       modalContainer.style.display = 'flex';
     }
   },
-  deletePost: (e, postId) => {
+  deletePost: async (e, postId) => {
     if (e.target.matches(`#confirm-delete-${postId}`)) {
-      document.getElementById(`post-${postId}`).remove();
+      await deleteDoc(doc(db, 'Posts', `${postId}`));
       closeModal();
     }
   },
