@@ -64,12 +64,18 @@ export const updatePostFields = (id, newFields) =>
   updateDoc(doc(db, 'Posts', id), newFields);
 // delete post
 export const deletePost = (id) => deleteDoc(doc(db, 'Posts', id));
+
+// edit post
+export const editPost = (id, postUpdate) =>
+  updateDoc(doc(db, 'Posts', id), postUpdate);
+
 // get only one post
 export const docGetPost = (id) => getDoc(doc(db, 'Posts', id));
 // ************************************************************************
 // adding likes and removing likes
 export const addingLikes = (idDoc, idUser) => updateDoc(doc(db, 'Posts', idDoc), { likes: arrayUnion(idUser) });
 export const removingLikes = (idDoc, idUser) => updateDoc(doc(db, 'Posts', idDoc), { likes: arrayRemove(idUser) });
+
 // ************************************************************
 // guardando perfil
 export const saveProfile = (profession, languages, nameUser) => {

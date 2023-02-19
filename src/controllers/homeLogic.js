@@ -1,3 +1,4 @@
+/* eslint-disable no-plusplus */
 import photoProfileImport from '../assets/photoProfile.png';
 import {
   docGetProfile,
@@ -5,9 +6,11 @@ import {
   seePost,
   updatePostFields,
   deletePost,
+  editPost,
   docGetPost,
   removingLikes,
   addingLikes,
+
 } from '../lib/index.js';
 import { auth } from '../lib/model/firebase.js';
 
@@ -43,7 +46,7 @@ export const homeLogic = () => {
               <div class="post-dropdown">
                 <button class="post-actions select-btn">...</button>
                 <div class="dropdown-content select-dropdown">
-                  <div class="dropdown-element">
+                  <div class="dropdown-element dropdown-edit">
                     <i class="fa-solid fa-pencil"></i>
                     <a>Edit</a>
                   </div>
@@ -81,6 +84,7 @@ export const homeLogic = () => {
               </div>
               <div class="post-img-container">
                 <p class="post-des">${description}</p>
+                <button data-id=${id} class="save-edit-btn">Save</button>
               </div>
             </div>
             <div class="post-detail">
@@ -192,6 +196,13 @@ export const homeLogic = () => {
       });
     });
 
+    const saveEditBtn = document.querySelectorAll('.save-edit-btn');
+    saveEditBtn.forEach((btn) => {
+      const postUpdateText = btn.previousElementSibling;
+      btn.addEventListener('click', () => {
+        editPost(btn.dataset.id, { description: postUpdateText.innerHTML });
+      });
+
     // ***************************************************************
     // adding likes
     const likeBtn = document.querySelectorAll('.detail-intracables-likes');
@@ -229,6 +240,9 @@ export const homeLogic = () => {
     const modalContainer = document.querySelectorAll('#modal-container');
     const selectDropdown = document.querySelectorAll('.select-dropdown');
     const selectBtn = document.querySelectorAll('.select-btn');
+    const selectEdit = document.querySelectorAll('.dropdown-edit');
+    // const selectEditIcon
+    // const selectEditA
     const selectPredelete = document.querySelectorAll('.select-predelete');
     const selectPredeleteIcon = document.querySelectorAll(
       '.select-predelete-icon'
@@ -274,14 +288,27 @@ export const homeLogic = () => {
         modalContainer[i].style.display = 'none';
       }
     }
-  });
 
+    for (let i = 0; i < selectEdit.length; i++) {
+      if (
+        e.target === selectEdit[i] ||
+        e.target === selectEdit[i].children[0] ||
+        e.target === selectEdit[i].children[1]
+      ) {
+        const postDes = document.querySelectorAll('.post-des');
+        postDes[i].setAttribute('contenteditable', true);
+        postDes[i].classList.add('editable');
+        const saveEdit = document.querySelectorAll('.save-edit-btn');
+        saveEdit[i].classList.add('show');
+      }
+    }
+  });
   // cierre del click post container
+
   // close post dropdown menu
   window.onclick = (event) => {
     if (!event.target.matches('.post-actions')) {
       const dropdowns = document.getElementsByClassName('dropdown-content');
-      // eslint-disable-next-line no-plusplus
       for (let i = 0; i < dropdowns.length; i++) {
         const openDropdown = dropdowns[i];
         if (openDropdown.classList.contains('show-post-actions')) {
