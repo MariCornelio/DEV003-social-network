@@ -7,6 +7,10 @@ import {
   updatePostFields,
   deletePost,
   editPost,
+  docGetPost,
+  removingLikes,
+  addingLikes,
+
 } from '../lib/index.js';
 import { auth } from '../lib/model/firebase.js';
 
@@ -25,7 +29,8 @@ export const homeLogic = () => {
     profession,
     languages,
     dateTime,
-    photoProfileUser
+    photoProfileUser,
+    likes,
   ) => {
     const post = document.createElement('div');
     post.classList.add('post');
@@ -69,11 +74,10 @@ export const homeLogic = () => {
             </div>
             <div class="post-feed">
               <div class="post-overlays">
-                <img src="./assets/red-heart.png" class="like-icon" alt="">
                 <div class="share-window">
                   <h1 class="title">share the post with others</h1>
                   <div class="share-link-container">
-                    <input type="text" id="share-link" value="https://www.devgram.com/" disabled>
+                    <input type="text" class="share-link-id" value="https://devgram-app.netlify.app" disabled>
                     <button class="copy-btn">copy</button>
                   </div>
                 </div>
@@ -85,12 +89,17 @@ export const homeLogic = () => {
             </div>
             <div class="post-detail">
               <div class="detail-intracables">
-                <img id="like" src="./assets/heart-nofill.png" class="like-btn" alt="">
-                <img id="liked" src="./assets/red-heart.png" class="small-like-icon" alt="">
+               <div class="detail-intracables-likes" data-like=${id}>
+                  <img src="./assets/red-heart.png" class="like-icon" alt="">
+               <div class="detail-intrancables-likes-position">
+                  <img id="like" src="./assets/heart-nofill.png" class="like-btn" alt="">
+                  <img id="liked" src="./assets/red-heart.png" class="small-like-icon" alt="">
+                </div>
+               </div>
                 <img src="./assets/send-nofill.png" class="send-btn" alt="">
                 <img src="./assets/comment-nofill.png" class="comment-btn" alt="">
               </div>
-              <span class="likes">2.8k likes</span>
+              <span class="likes">${likes} likes</span>
               <div class="comment-box">
                 <input type="text" id="comment-input" placeholder="Add a comment">
                 <button class="add-comment-btn"><img src="./assets/comment-nofill.png" alt=""></button>
@@ -103,13 +112,13 @@ export const homeLogic = () => {
   createPostButton.addEventListener('click', async (e) => {
     e.preventDefault();
     if (homeCreatePost.value.trim().length !== 0) {
-      const dateTime = new Date().toLocaleTimeString([], {
-        year: 'numeric',
-        month: 'numeric',
-        day: 'numeric',
-        hour: '2-digit',
-        minute: '2-digit',
-      });
+      // const dateTime = new Date().toLocaleTimeString([], {
+      //   year: 'numeric',
+      //   month: 'numeric',
+      //   day: 'numeric',
+      //   hour: '2-digit',
+      //   minute: '2-digit',
+      // });
       let profession = '';
       let languages = '';
       if (auth.currentUser) {
@@ -127,14 +136,12 @@ export const homeLogic = () => {
           auth.currentUser.displayName,
           profession,
           languages,
-          dateTime,
-          photoProfile
+          photoProfile,
         );
       }
     }
     homeFormCreatePost.reset();
   });
-  console.log(photoProfile);
   seePost((querysnapshot) => {
     if (auth.currentUser.providerData[0].providerId === 'google.com') {
       profilePhotoHomePost.src = auth.currentUser.photoURL;
@@ -146,6 +153,14 @@ export const homeLogic = () => {
       let languages = '';
       let nameUser = auth.currentUser.displayName;
       if (auth.currentUser) {
+        const timeAll = doc.data().time.toDate().toLocaleTimeString([], {
+          year: 'numeric',
+          month: 'numeric',
+          day: 'numeric',
+          hour: '2-digit',
+          minute: '2-digit',
+          hour12: true,
+        });
         docGetProfile(auth.currentUser.uid)
           .then((docSnap) => {
             if (docSnap.exists()) {
@@ -167,8 +182,9 @@ export const homeLogic = () => {
             doc.data().nameUser,
             doc.data().profession,
             doc.data().languages,
-            doc.data().dateTime,
-            doc.data().photoProfile
+            timeAll,
+            doc.data().photoProfile,
+            doc.data().likes.length,
           )
         );
       }
@@ -179,12 +195,42 @@ export const homeLogic = () => {
         deletePost(btn.dataset.id);
       });
     });
+
     const saveEditBtn = document.querySelectorAll('.save-edit-btn');
     saveEditBtn.forEach((btn) => {
       const postUpdateText = btn.previousElementSibling;
       btn.addEventListener('click', () => {
         editPost(btn.dataset.id, { description: postUpdateText.innerHTML });
       });
+
+    // ***************************************************************
+    // adding likes
+    const likeBtn = document.querySelectorAll('.detail-intracables-likes');
+    likeBtn.forEach((btn) => {
+      const smallLikeIcon = btn.querySelector('.small-like-icon');
+      const likeIcon = btn.querySelector('.like-icon');
+      btn.addEventListener('click', () => {
+        docGetPost(btn.dataset.like)
+          .then((docSnap) => {
+            if (docSnap.data().likes.includes(auth.currentUser.uid)) {
+              removingLikes(btn.dataset.like, auth.currentUser.uid);
+            } else {
+              likeIcon.classList.add('show');
+              setTimeout(() => {
+                likeIcon.classList.remove('show');
+                addingLikes(btn.dataset.like, auth.currentUser.uid);
+              }, 2000);
+            }
+          });
+      });
+      docGetPost(btn.dataset.like)
+        .then((docSnap) => {
+          if (docSnap.data().likes.includes(auth.currentUser.uid)) {
+            smallLikeIcon.classList.add('show');
+          } else {
+            smallLikeIcon.classList.remove('show');
+          }
+        });
     });
   });
 
@@ -218,37 +264,25 @@ export const homeLogic = () => {
       }
     }
 
-    if (e.target.matches('.like-btn')) {
-      const likeImg = postContainer.querySelector('.like-icon');
-      const shareBtn = postContainer.querySelector('.send-btn');
-      const likeBtn = e.target;
-      if (likeBtn.src.includes('nofill')) {
-        likeImg.classList.add('show');
-        if (shareBtn.src.includes('-fill')) {
-          shareBtn.click();
-        }
+    // ********************************************************
+    // show big heart and share link
+    const homePost = postContainer.querySelectorAll('.post');
+    const shareWindow = postContainer.querySelectorAll('.share-window');
+    const shareBtn = postContainer.querySelectorAll('.send-btn');
+    const postLink = postContainer.querySelectorAll('.share-link-id');
+    const copyBtn = postContainer.querySelectorAll('.copy-btn');
+    for (let i = 0; i < homePost.length; i++) {
+      // adding share for each Post and copying to clipboard
+      if (e.target === shareBtn[i]) {
+        shareWindow[i].classList.toggle('active');
       }
-      setTimeout(() => {
-        console.log('remove');
-        likeImg.classList.remove('show');
-      }, 3000);
+      if (e.target === copyBtn[i]) {
+        navigator.clipboard.writeText(postLink[i].value).then(() => {
+          shareBtn[i].click();
+        });
+      }
     }
-
-    if (e.target.matches('.send-btn')) {
-      const shareWindow = postContainer.querySelector('.share-window');
-      const shareBtn = postContainer.querySelector('.send-btn');
-      console.log('sharebtn', shareBtn);
-      shareWindow.classList.toggle('active');
-    }
-
-    if (e.target.matches('.copy-btn')) {
-      const shareBtn = postContainer.querySelector('.send-btn');
-      const postLink = postContainer.querySelector('#share-link').value;
-      navigator.clipboard.writeText(postLink).then(() => {
-        shareBtn.click();
-      });
-    }
-
+    // for modal window
     for (let i = 0; i < selectPredelete.length; i++) {
       if (e.target.matches('.modal-cancel-btn')) {
         modalContainer[i].style.display = 'none';

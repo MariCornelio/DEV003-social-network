@@ -3,7 +3,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
 
 .home-container {
-  max-width: 1300px;
+  align-self: flex-start;
+  width: 100%;
 }
 
 .home-header {
@@ -206,22 +207,22 @@ main .container {
 }
 
 .middle-home-content .stories-home .story-home:nth-child(1) {
-  background: url('../assets/feed.jpg') no-repeat center center/cover;
+  background: url('../assets/stories1.png') no-repeat center center/cover;
 }
 .middle-home-content .stories-home .story-home:nth-child(2) {
-  background: url('../assets/feed.jpg') no-repeat center center/cover;
+  background: url('../assets/stories2.webp') no-repeat center center/cover;
 }
 .middle-home-content .stories-home .story-home:nth-child(3) {
-  background: url('../assets/feed.jpg') no-repeat center center/cover;
+  background: url('../assets/stories5.jpg') no-repeat center center/cover;
 }
 .middle-home-content .stories-home .story-home:nth-child(4) {
-  background: url('../assets/feed.jpg') no-repeat center center/cover;
+  background: url('../assets/stories4.jpg') no-repeat center center/cover;
 }
 .middle-home-content .stories-home .story-home:nth-child(5) {
-  background: url('../assets/feed.jpg') no-repeat center center/cover;
+  background: url('../assets/stories3.webp') no-repeat center center/cover;
 }
 .middle-home-content .stories-home .story-home:nth-child(6) {
-  background: url('../assets/feed.jpg') no-repeat center center/cover;
+  background: url('../assets/stories6.jpg') no-repeat center center/cover;
 }
 
 .middle-home-content .story-home .profile-photo-home {
@@ -479,6 +480,8 @@ main .container {
 .detail-intracables {
   display: flex;
   gap: 10px;
+}
+.detail-intrancables-likes-position {
   position: relative;
 }
 
@@ -579,18 +582,19 @@ main .container {
   opacity: 0;
   transition: 0.5s;
   position: absolute;
-  z-index: 0;
   top: 0;
   left: 0;
+  z-index: 5;
 }
 
-.like-icon {
+.detail-intracables .like-icon {
   width: 200px;
+  height: 200px;
   opacity: 0;
   transition: 0.5s;
   position: absolute;
   top: 20%;
-  z-index: 5;
+  left: 30%;
 }
 
 .small-like-icon.show {
@@ -650,7 +654,7 @@ main .container {
   border: 1px solid #999;
 }
 
-#share-link {
+.share-link-id {
   height: 40px;
   padding: 10px;
   background: #fafafa;

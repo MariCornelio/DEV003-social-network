@@ -13,6 +13,7 @@ export const profileLogic = () => {
   const profileProfession = document.getElementById('profile-profession');
   const profileLanguages = document.getElementById('profile-languages');
   const profileNameUser = document.getElementById('profile-nameUser');
+  const profileNotNow = document.getElementById('profileNotNow');
 
   // firebase: cerrando sesion con un evento click
   profileButtonLogout.addEventListener('click', async () => {
@@ -35,15 +36,26 @@ export const profileLogic = () => {
 
     if (docSnap.exists()) {
       console.log('actualizando');
-      updateprofileFields(docFirebaseId, {
-        profession: profileProfession.value,
-        languages: profileLanguages.value,
-        nameUser: newNameUser,
-      });
+      if (profileNameUser.value.trim().length !== 0) {
+        updateprofileFields(docFirebaseId, { nameUser: newNameUser });
+      }
+      if (profileProfession.value.trim().length !== 0) {
+        updateprofileFields(docFirebaseId, {
+          profession: profileProfession.value,
+        });
+      }
+      if (profileLanguages.value.trim().length !== 0) {
+        updateprofileFields(docFirebaseId, {
+          languages: profileLanguages.value,
+        });
+      }
     } else {
       console.log('entro');
       saveProfile(profileProfession.value, profileLanguages.value, newNameUser);
     }
     profileForm.reset();
+  });
+  profileNotNow.addEventListener('click', () => {
+    window.location.hash = '#/home';
   });
 };

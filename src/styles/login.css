@@ -12,13 +12,14 @@ body {
   align-items: center;
   justify-content: center;
   background-color: rgb(238, 235, 235);
-  min-height: 100vh;
 }
 #root {
   display: flex;
   align-items: center;
   justify-content: center;
   width: 100%;
+  max-width: 1200px;
+  min-height: 100vh;
 }
 
 .container {
