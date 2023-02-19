@@ -57,18 +57,15 @@ img {
   display: flex;
   align-items: center;
 }
-
+.home-edit-profile
+/*, .home-post-btn*/ {
+  cursor: pointer;
+}
 .home-profile-pic {
   height: 2.4rem;
   width: 2.4rem;
   overflow: hidden;
   border-radius: 50%;
-  cursor: pointer;
-}
-/*profile pic manually resized*/
-.home-profile-pic img {
-  width: 45px;
-  margin: -15px 0 0 5px;
 }
 
 .nav-links {
@@ -358,6 +355,7 @@ main .container {
 .post-actions:focus {
   background-color: #0e9dd9;
   color: white;
+  cursor: pointer;
 }
 
 .dropdown-content {
@@ -395,12 +393,15 @@ main .container {
   height: 100%;
   z-index: 10;
   top: 0;
+  left: 0;
   display: none;
+  justify-content: center;
+  background-color: #00000050;
 }
 #modal {
-  position: fixed;
-  background-color: #00000020;
+  /* position: fixed; */
   width: 100%;
+  max-width: 550px;
   height: 100%;
   z-index: 10;
   top: 0;
@@ -410,15 +411,13 @@ main .container {
 }
 #modal-content {
   background-color: #fafafa;
+  max-width: 80%;
   display: flex;
   flex-direction: column;
   align-items: center;
   padding: 5% 10%;
   border-radius: 10px;
   box-shadow: 0px 5px 5px gray;
-}
-#modal-content img {
-  color: red;
 }
 #modal-content h2 {
   font-weight: 500;
@@ -428,7 +427,7 @@ main .container {
   margin-bottom: 15px;
 }
 #modal-btns {
-  width: 80%;
+  width: 100%;
   display: flex;
   justify-content: space-between;
   margin-bottom: 15px;
@@ -447,6 +446,7 @@ main .container {
   border-radius: 5px;
   cursor: pointer;
 }
+
 /* */
 
 .post-feed {
@@ -460,6 +460,9 @@ main .container {
   display: flex;
   overflow: hidden;
   transition: 0.5s;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .post-img-container img {
@@ -500,6 +503,7 @@ main .container {
   font-size: 0.9rem;
   line-height: 2rem;
   font-weight: 500;
+  align-self: flex-start;
 }
 
 .comment-box {
@@ -675,4 +679,29 @@ main .container {
   background: rgb(255, 255, 255);
   border-radius: 10px;
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* EDIT POST */
+.editable {
+  background-color: #fafafa;
+  border: solid 1px #999;
+  padding: 5px;
+  width: 90%;
+  min-height: 70px;
+  margin-bottom: 10px;
+}
+.save-edit-btn {
+  background-color: #0e9dd9;
+  color: white;
+  width: 15%;
+  height: 30px;
+  border-radius: 20px;
+  align-self: flex-end;
+  margin-right: 5%;
+  cursor: pointer;
+  display: none;
+}
+/* */
+.show {
+  display: block;
 }

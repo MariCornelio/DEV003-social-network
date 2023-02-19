@@ -59,6 +59,9 @@ export const updatePostFields = (id, newFields) =>
   updateDoc(doc(db, 'Posts', id), newFields);
 // delete post
 export const deletePost = (id) => deleteDoc(doc(db, 'Posts', id));
+// edit post
+export const editPost = (id, postUpdate) =>
+  updateDoc(doc(db, 'Posts', id), postUpdate);
 // ************************************************************
 // guardando perfil
 export const saveProfile = (profession, languages, nameUser) => {
