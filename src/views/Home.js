@@ -1,5 +1,11 @@
 import photoProfile from '../assets/photoProfile.png';
 import logoDevgram from '../assets/branch.svg';
+import photoProfileStories1 from '../assets/photo-profile-stories1.webp';
+import photoProfileStories2 from '../assets/photoStrories2.png';
+import photoProfileStories3 from '../assets/photo-profile-stories3.png';
+import photoProfileStories4 from '../assets/photo-profile-stories4.png';
+import photoProfileStories5 from '../assets/photo-profile-stories5.jpg';
+import photoProfileStories6 from '../assets/photo-profile-stories6.webp';
 
 export const Home = () => {
   const divContainer = document.createElement('div');
@@ -30,46 +36,46 @@ export const Home = () => {
       <div class="stories-home">
         <div class="story-home">
           <div class="profile-photo-home">
-            <img src="../../assets/feed.jpg">
+            <img src=${photoProfileStories1}>
           </div>
           <p class="name-home-stories">Your Story</p>
         </div>
         <div class="story-home">
           <div class="profile-photo-home">
-            <img src="../../assets/feed.jpg">
+            <img src=${photoProfileStories2}>
           </div>
-          <p class="name-home-stories">Anita Mari</p>
+          <p class="name-home-stories">Ana Ibarra</p>
         </div>
         <div class="story-home">
           <div class="profile-photo-home">
-            <img src="../../assets/feed.jpg">
+            <img src=${photoProfileStories3}>
           </div>
           <p class="name-home-stories">Fernanda Treviño</p>
         </div>
         <div class="story-home">
           <div class="profile-photo-home">
-            <img src="../../assets/feed.jpg">
+            <img src=${photoProfileStories4}>
           </div>
-          <p class="name-home-stories">Gerado Perez</p>
+          <p class="name-home-stories">Marilu Cornelio</p>
         </div>
         <div class="story-home">
           <div class="profile-photo-home">
-            <img src="../../assets/feed.jpg">
+            <img src=${photoProfileStories5}>
           </div>
           <p class="name-home-stories">Isabel Lopez</p>
         </div>
         <div class="story-home">
           <div class="profile-photo-home">
-            <img src="../../assets/feed.jpg">
+            <img src=${photoProfileStories6}>
           </div>
-          <p class="name-home-stories">Rosalba Luna</p>
+          <p class="name-home-stories">Gerardo Perez</p>
         </div>
       </div>
       <form id="home-form-create-post" class="create-post">
         <div class="profile-photo-home">
           <img src=${photoProfile} id='profilePhotoHomePost'>
         </div>
-        <input id="home-create-post" type="text" placeholder="What's on your mind, Mari?">
+        <input id="home-create-post" type="text" placeholder="What's on your mind?">
         <input id="create-post-button" type="submit" value="Post" class="create-btn btn-primary-create">
       </form>
       <section class="home-post-section">

@@ -17,6 +17,11 @@ import {
   getDoc,
   setDoc,
   deleteDoc,
+  arrayUnion,
+  arrayRemove,
+  serverTimestamp,
+  query,
+  orderBy,
 } from 'firebase/firestore';
 
 import { messageError } from '../errors/messageError.js';
@@ -38,8 +43,7 @@ export const savePosts = (
   nameUser,
   profession,
   languages,
-  dateTime,
-  photoProfile
+  photoProfile,
 ) => {
   addDoc(collection(db, 'Posts'), {
     idUser,
@@ -47,18 +51,25 @@ export const savePosts = (
     nameUser,
     profession,
     languages,
-    dateTime,
     photoProfile,
+    likes: [],
+    time: serverTimestamp(),
   });
 };
 // see Post
 export const seePost = (callback) =>
-  onSnapshot(collection(db, 'Posts'), callback);
+  onSnapshot(query(collection(db, 'Posts'), orderBy('time', 'desc')), callback);
 // update post
 export const updatePostFields = (id, newFields) =>
   updateDoc(doc(db, 'Posts', id), newFields);
 // delete post
 export const deletePost = (id) => deleteDoc(doc(db, 'Posts', id));
+// get only one post
+export const docGetPost = (id) => getDoc(doc(db, 'Posts', id));
+// ************************************************************************
+// adding likes and removing likes
+export const addingLikes = (idDoc, idUser) => updateDoc(doc(db, 'Posts', idDoc), { likes: arrayUnion(idUser) });
+export const removingLikes = (idDoc, idUser) => updateDoc(doc(db, 'Posts', idDoc), { likes: arrayRemove(idUser) });
 // ************************************************************
 // guardando perfil
 export const saveProfile = (profession, languages, nameUser) => {
@@ -72,12 +83,10 @@ export const saveProfile = (profession, languages, nameUser) => {
 };
 
 // ************************************************
-// Mediador para el estado de perfil
-// export const stateProfile = (callback) => onSnapshot(collection(db, 'userProfile'), callback);
-
+// updating profile
 export const updateprofileFields = (id, newFields) =>
   updateDoc(doc(db, 'userProfile', id), newFields);
-
+// get only one doc Profile
 export const docGetProfile = (id) => getDoc(doc(db, 'userProfile', id));
 // ************************************************
 // para actualizar la información de usuario
