@@ -202,7 +202,7 @@ export const homeLogic = () => {
       btn.addEventListener('click', () => {
         editPost(btn.dataset.id, { description: postUpdateText.innerHTML });
       });
-
+    });
     // ***************************************************************
     // adding likes
     const likeBtn = document.querySelectorAll('.detail-intracables-likes');
