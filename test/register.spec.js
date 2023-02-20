@@ -23,7 +23,6 @@ describe('register form', () => {
     // boton
 
     expect(formElement).not.toBeNull();
-    console.log(document.body.innerHTML);
   });
 });
 
