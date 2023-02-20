@@ -36,6 +36,8 @@
   font-size: 16px;
   cursor: pointer;
   border: none;
+  background-color: #1e90ff;
+  margin-right: 10px;
 }
 
 .logout-btn {
@@ -46,11 +48,7 @@
   cursor: pointer;
   border-style: solid;
   border-color: red;
-}
-
-.save-btn {
-  background-color: #1e90ff;
-  margin-right: 10px;
+  background-color: rgb(255, 253, 253);
 }
 
 .save-btn:hover,
@@ -58,10 +56,10 @@
   background-color: #555;
 }
 
-.logout-btn {
+/* .logout-btn {
   border-color: red;
   background-color: rgb(255, 253, 253);
-}
+} */
 
 .logout-btn:hover {
   background-color: red;

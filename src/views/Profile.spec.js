@@ -6,7 +6,7 @@ describe('Profile', () => {
   });
 
   it('should create an element', () => {
-    jest.spyOn(document, 'createElement').mockImplementation(() => {return {classList: {add: () => {}}}});
+    jest.spyOn(document, 'createElement').mockImplementation(() => ({ classList: { add: () => { } } }));
     Profile();
     expect(document.createElement).toBeCalled();
   });

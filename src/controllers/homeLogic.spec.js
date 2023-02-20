@@ -14,8 +14,8 @@ describe('homeLogic', () => {
   });
 
   it('should create an element', () => {
-    jest.spyOn(document, 'getElementById').mockImplementation(() => { return { addEventListener: jest.fn() } });
-    jest.spyOn(document, 'querySelector').mockImplementation(() => { return { addEventListener: () => {} } });
+    jest.spyOn(document, 'getElementById').mockImplementation(() => ({ addEventListener: jest.fn() }));
+    jest.spyOn(document, 'querySelector').mockImplementation(() => ({ addEventListener: () => { } }));
 
     homeLogic();
     expect(document.getElementById).toBeCalled();

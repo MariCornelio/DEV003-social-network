@@ -38,8 +38,8 @@ describe('router', () => {
   });
 
   it('should create an element', () => {
-    jest.spyOn(document, 'getElementById').mockImplementation(() => { return { appendChild: jest.fn(), addEventListener: jest.fn() } });
-    jest.spyOn(document, 'querySelector').mockImplementation(() => { return { addEventListener: () => { } } });
+    jest.spyOn(document, 'getElementById').mockImplementation(() => ({ appendChild: jest.fn(), addEventListener: jest.fn() }));
+    jest.spyOn(document, 'querySelector').mockImplementation(() => ({ addEventListener: () => { } }));
 
     global.window = Object.create(window);
 
@@ -55,8 +55,8 @@ describe('router', () => {
   });
 
   it('should create another element', () => {
-    jest.spyOn(document, 'getElementById').mockImplementation(() => { return { appendChild: jest.fn(), addEventListener: jest.fn() } });
-    jest.spyOn(document, 'querySelector').mockImplementation(() => { return { addEventListener: () => { } } });
+    jest.spyOn(document, 'getElementById').mockImplementation(() => ({ appendChild: jest.fn(), addEventListener: jest.fn() }));
+    jest.spyOn(document, 'querySelector').mockImplementation(() => ({ addEventListener: () => { } }));
 
     global.window = Object.create(window);
 
@@ -68,11 +68,11 @@ describe('router', () => {
     router();
     expect(window.location.hash).toEqual('#/profile');
     expect(document.getElementById).toBeCalled();
-    expect(profileLogic).toBeCalled()
+    expect(profileLogic).toBeCalled();
   });
   it('should create once again another element', () => {
-    jest.spyOn(document, 'getElementById').mockImplementation(() => { return { appendChild: jest.fn(), addEventListener: jest.fn() } });
-    jest.spyOn(document, 'querySelector').mockImplementation(() => { return { addEventListener: () => { } } });
+    jest.spyOn(document, 'getElementById').mockImplementation(() => ({ appendChild: jest.fn(), addEventListener: jest.fn() }));
+    jest.spyOn(document, 'querySelector').mockImplementation(() => ({ addEventListener: () => { } }));
 
     global.window = Object.create(window);
 

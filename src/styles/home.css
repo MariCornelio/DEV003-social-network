@@ -385,7 +385,6 @@ main .container {
 .show-post-actions {
   display: block;
 }
-/*  */
 
 /* DELETE MODAL */
 #modal-container {
@@ -447,8 +446,6 @@ main .container {
   border-radius: 5px;
   cursor: pointer;
 }
-
-/* */
 
 .post-feed {
   width: 100%;
@@ -705,7 +702,7 @@ main .container {
   cursor: pointer;
   display: none;
 }
-/* */
+
 .show {
   display: block;
 }
