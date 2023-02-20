@@ -28,13 +28,13 @@ import { messageError } from '../errors/messageError.js';
 
 import { auth, db } from './model/firebase.js';
 
-// usando firestore
-export const guardarPublicacion = (descripcion) => {
-  addDoc(collection(db, 'publicaciones'), { descripcion });
-};
+// // usando firestore
+// export const guardarPublicacion = (descripcion) => {
+//   addDoc(collection(db, 'publicaciones'), { descripcion });
+// };
 
-export const verPublicacion = (funcionRecorrido) =>
-  onSnapshot(collection(db, 'publicaciones'), funcionRecorrido);
+// export const verPublicacion = (funcionRecorrido) =>
+//   onSnapshot(collection(db, 'publicaciones'), funcionRecorrido);
 // ***********************************************************
 // save posts
 export const savePosts = (
@@ -57,17 +57,14 @@ export const savePosts = (
   });
 };
 // see Post
-export const seePost = (callback) =>
-  onSnapshot(query(collection(db, 'Posts'), orderBy('time', 'desc')), callback);
+export const seePost = (callback) => onSnapshot(query(collection(db, 'Posts'), orderBy('time', 'desc')), callback);
 // update post
-export const updatePostFields = (id, newFields) =>
-  updateDoc(doc(db, 'Posts', id), newFields);
+export const updatePostFields = (id, newFields) => updateDoc(doc(db, 'Posts', id), newFields);
 // delete post
 export const deletePost = (id) => deleteDoc(doc(db, 'Posts', id));
 
 // edit post
-export const editPost = (id, postUpdate) =>
-  updateDoc(doc(db, 'Posts', id), postUpdate);
+export const editPost = (id, postUpdate) => updateDoc(doc(db, 'Posts', id), postUpdate);
 
 // get only one post
 export const docGetPost = (id) => getDoc(doc(db, 'Posts', id));
@@ -90,8 +87,7 @@ export const saveProfile = (profession, languages, nameUser) => {
 
 // ************************************************
 // updating profile
-export const updateprofileFields = (id, newFields) =>
-  updateDoc(doc(db, 'userProfile', id), newFields);
+export const updateprofileFields = (id, newFields) => updateDoc(doc(db, 'userProfile', id), newFields);
 // get only one doc Profile
 export const docGetProfile = (id) => getDoc(doc(db, 'userProfile', id));
 // ************************************************
@@ -138,7 +134,7 @@ export const createUser = (email, password, nameUser) => {
     .catch((error) => {
       console.log(error);
       const registerInput = document.querySelectorAll(
-        '#form-signup .input-field'
+        '#form-signup .input-field',
       );
       if (error.code === 'auth/email-already-in-use') {
         messageError('Email already in use', registerInput[1]);
@@ -153,7 +149,7 @@ export const createUser = (email, password, nameUser) => {
 // para iniciar sesion
 export const signinUser = (email, password) => {
   signInWithEmailAndPassword(auth, email, password)
-    .then((userCredential) => {
+    .then(() => {
       console.log('se ha iniciado sesion con correo y contraseña');
       window.location.hash = '#/home';
     })
@@ -175,7 +171,7 @@ export const signinUser = (email, password) => {
 const provider = new GoogleAuthProvider();
 export const googleSignin = () => {
   signInWithPopup(auth, provider)
-    .then((result) => {
+    .then(() => {
       window.location.hash = '#/home';
     })
     .catch((error) => {

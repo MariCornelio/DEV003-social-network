@@ -164,4 +164,3 @@ export const Home = () => {
   <span class="comment-count">300 comments</span>
 </div>
 </div> */
-

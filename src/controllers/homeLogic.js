@@ -10,7 +10,6 @@ import {
   docGetPost,
   removingLikes,
   addingLikes,
-
 } from '../lib/index.js';
 import { auth } from '../lib/model/firebase.js';
 
@@ -185,7 +184,7 @@ export const homeLogic = () => {
             timeAll,
             doc.data().photoProfile,
             doc.data().likes.length,
-          )
+          ),
         );
       }
     });
@@ -245,7 +244,7 @@ export const homeLogic = () => {
     // const selectEditA
     const selectPredelete = document.querySelectorAll('.select-predelete');
     const selectPredeleteIcon = document.querySelectorAll(
-      '.select-predelete-icon'
+      '.select-predelete-icon',
     );
     const selectPredeleteA = document.querySelectorAll('.select-predelete-a');
     for (let i = 0; i < selectDropdown.length; i++) {
@@ -256,9 +255,8 @@ export const homeLogic = () => {
 
     for (let i = 0; i < selectPredelete.length; i++) {
       if (
-        e.target === selectPredelete[i] ||
-        e.target === selectPredeleteIcon[i] ||
-        e.target === selectPredeleteA[i]
+        e.target === selectPredelete[i] || e.target === selectPredeleteIcon[i]
+        || e.target === selectPredeleteA[i]
       ) {
         modalContainer[i].style.display = 'flex';
       }
@@ -291,9 +289,8 @@ export const homeLogic = () => {
 
     for (let i = 0; i < selectEdit.length; i++) {
       if (
-        e.target === selectEdit[i] ||
-        e.target === selectEdit[i].children[0] ||
-        e.target === selectEdit[i].children[1]
+        e.target === selectEdit[i] || e.target === selectEdit[i].children[0]
+        || e.target === selectEdit[i].children[1]
       ) {
         const postDes = document.querySelectorAll('.post-des');
         postDes[i].setAttribute('contenteditable', true);
