@@ -70,7 +70,6 @@ export const loginLogic = () => {
       buttonRegister.style.opacity = 1;
     }
   };
-  // cada que se ingresa texto en el input
   createPassword.addEventListener('input', checkPassword);
   confirmPassword.addEventListener('input', checkPassword);
   // ********************************************

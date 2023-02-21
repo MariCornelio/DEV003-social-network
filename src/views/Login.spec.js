@@ -1,4 +1,4 @@
-import { Login } from '../src/views/Login';
+import { Login } from './Login';
 
 describe('Login', () => {
   it('should be a function', () => {
