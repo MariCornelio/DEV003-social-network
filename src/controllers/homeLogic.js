@@ -1,5 +1,8 @@
 /* eslint-disable no-plusplus */
-import photoProfileImport from '../assets/photoProfile.png';
+import redHeart from '../assets/red-heart.png';
+import heartNoFill from '../assets/heart-nofill.png';
+import sendNoFill from '../assets/send-nofill.png';
+import commentNoFill from '../assets/comment-nofill.png';
 import {
   docGetProfile,
   savePosts,
@@ -20,8 +23,8 @@ export const homeLogic = () => {
   const homeFormCreatePost = document.getElementById('home-form-create-post');
   const profilePhotoHomePost = document.getElementById('profilePhotoHomePost');
   const profilePhotoHeader = document.getElementById('profilePhotoHeader');
-  let photoProfile = photoProfileImport;
-
+  let photoProfile = 'https://cdn-icons-png.flaticon.com/512/3088/3088877.png';
+  
   createPostButton.addEventListener('click', async (e) => {
     e.preventDefault();
     if (homeCreatePost.value.trim().length !== 0) {
@@ -55,7 +58,6 @@ export const homeLogic = () => {
     }
     homeFormCreatePost.reset();
   });
-  // querysnapshot son los documentos de firebase (es el post)
   seePost((querysnapshot) => {
     if (auth.currentUser.providerData[0].providerId === 'google.com') {
       profilePhotoHomePost.src = auth.currentUser.photoURL;
@@ -82,7 +84,6 @@ export const homeLogic = () => {
               languages = docSnap.data().languages;
               nameUser = docSnap.data().nameUser;
             }
-            // si el usuario es el mismo entonces puede realizar cambios en cada uno de sus posts
             if (doc.data().idUser === auth.currentUser.uid) {
               updatePostFields(doc.id, { languages, profession, nameUser });
             }
@@ -90,7 +91,6 @@ export const homeLogic = () => {
           .catch((error) => {
             console.log(error);
           });
-          // agregando layout por cada post
         postContainer.appendChild(
           homeLayoutPost(
             doc.id,
@@ -112,7 +112,6 @@ export const homeLogic = () => {
       });
     });
 
-    //guarda cambios en el post (texto editado) y almacena en la base de datos
     const saveEditBtn = document.querySelectorAll('.save-edit-btn');
     saveEditBtn.forEach((btn) => {
       const postUpdateText = btn.previousElementSibling;
@@ -127,14 +126,11 @@ export const homeLogic = () => {
       const smallLikeIcon = btn.querySelector('.small-like-icon');
       const likeIcon = btn.querySelector('.like-icon');
       btn.addEventListener('click', () => {
-        //se llama a cada uno de los posts
         docGetPost(btn.dataset.like)
           .then((docSnap) => {
-            //si el usuario ha dado like (si se encuentra en el array) entonces se guarda en la bd
             if (docSnap.data().likes.includes(auth.currentUser.uid)) {
               removingLikes(btn.dataset.like, auth.currentUser.uid);
             } else {
-              //si el usuario no está en el array
               likeIcon.classList.add('show');
               setTimeout(() => {
                 likeIcon.classList.remove('show');
@@ -144,7 +140,6 @@ export const homeLogic = () => {
           });
       });
       docGetPost(btn.dataset.like)
-      //que el corazón peque permanezca pintado
         .then((docSnap) => {
           if (docSnap.data().likes.includes(auth.currentUser.uid)) {
             smallLikeIcon.classList.add('show');
@@ -162,18 +157,19 @@ export const homeLogic = () => {
     const selectDropdown = document.querySelectorAll('.select-dropdown');
     const selectBtn = document.querySelectorAll('.select-btn');
     const selectEdit = document.querySelectorAll('.dropdown-edit');
+    // const selectEditIcon
+    // const selectEditA
     const selectPredelete = document.querySelectorAll('.select-predelete');
     const selectPredeleteIcon = document.querySelectorAll(
       '.select-predelete-icon',
     );
-    //se selecciona los puntitos y se recorre para abrir el menu
     const selectPredeleteA = document.querySelectorAll('.select-predelete-a');
     for (let i = 0; i < selectDropdown.length; i++) {
       if (e.target === selectBtn[i]) {
         selectDropdown[i].classList.toggle('show-post-actions');
       }
     }
-    // cuando se selecciona la opción de eliminar y se muestra el modal del post seleccionado
+
     for (let i = 0; i < selectPredelete.length; i++) {
       if (
         e.target === selectPredelete[i] || e.target === selectPredeleteIcon[i]
@@ -195,7 +191,6 @@ export const homeLogic = () => {
       if (e.target === shareBtn[i]) {
         shareWindow[i].classList.toggle('active');
       }
-      //se copia el link en el portapapeles
       if (e.target === copyBtn[i]) {
         navigator.clipboard.writeText(postLink[i].value).then(() => {
           shareBtn[i].click();
@@ -209,7 +204,6 @@ export const homeLogic = () => {
       }
     }
 
-    // para cuando se seleccione la opción de edit 
     for (let i = 0; i < selectEdit.length; i++) {
       if (
         e.target === selectEdit[i] || e.target === selectEdit[i].children[0]
@@ -259,7 +253,7 @@ export const homeLogic = () => {
     post.classList.add('post');
     post.innerHTML = `
             <div class="post-header">
-              <img src=${photoProfileUser} class="user-icon" alt="">
+              <img src=${photoProfileUser} class="user-icon" alt="photo profile">
               <div class="post-username-details">
                 <p class="username">${nameUser}</p>
                 <p class="username-position-languages career">${profession}</p>
@@ -313,24 +307,22 @@ export const homeLogic = () => {
             <div class="post-detail">
               <div class="detail-intracables">
                <div class="detail-intracables-likes" data-like=${id}>
-                  <img src="./assets/red-heart.png" class="like-icon" alt="">
+                  <img src=${redHeart} class="like-icon" alt="heart">
                <div class="detail-intrancables-likes-position">
-                  <img id="like" src="./assets/heart-nofill.png" class="like-btn" alt="">
-                  <img id="liked" src="./assets/red-heart.png" class="small-like-icon" alt="">
+                  <img id="like" src=${heartNoFill} class="like-btn" alt="heart">
+                  <img id="liked" src=${redHeart} class="small-like-icon" alt="heart">
                 </div>
                </div>
-                <img src="./assets/send-nofill.png" class="send-btn" alt="">
-                <img src="./assets/comment-nofill.png" class="comment-btn" alt="">
+                <img src=${sendNoFill} class="send-btn" alt="send">
+                <img src=${commentNoFill} class="comment-btn" alt="comment">
               </div>
               <span class="likes">${likes} likes</span>
               <div class="comment-box">
                 <input type="text" id="comment-input" placeholder="Add a comment">
-                <button class="add-comment-btn"><img src="./assets/comment-nofill.png" alt=""></button>
+                <button class="add-comment-btn"><img src=${commentNoFill} alt="comment"></button>
               </div>
               <span class="comment-count">300 comments</span>
             </div>
     `;
     return post;
   };
-
-  //yupiiiiii holaaa

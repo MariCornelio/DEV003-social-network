@@ -1,4 +1,4 @@
-import { loginLogic } from '../src/controllers/loginLogic';
+import { loginLogic } from './loginLogic';
 
 describe('loginLogic', () => {
   it('should be a function', () => {

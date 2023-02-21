@@ -1,4 +1,4 @@
-import { profileLogic } from '../src/controllers/profileLogic';
+import { profileLogic } from './profileLogic';
 
 describe('profileLogic', () => {
   it('should be a function', () => {
