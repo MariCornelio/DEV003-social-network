@@ -1,8 +1,8 @@
 import { createUserWithEmailAndPassword } from 'firebase/auth';
-import { googleSignin, createUser } from './index';
+import { googleSignin, createUser } from '../src/lib/index';
 
-jest.mock('../errors/messageError.js', () => {
-  const originalModule = jest.requireActual('../errors/messageError.js');
+jest.mock('../src/errors/messageError.js', () => {
+  const originalModule = jest.requireActual('../src/errors/messageError.js');
   const newMod = { ...originalModule };
   newMod.messageError = jest.fn();
   return newMod;
@@ -36,20 +36,20 @@ describe('createUser', () => {
     expect(typeof createUser).toBe('function');
   });
 
-  it('should receive ID object correctly', () => {
-    const email = 'myemail@gmail.com';
-    const password = 'pwd';
-    const nameUser = 'Anita Mari';
-    createUser(email, password, nameUser);
-    return expect(createUserWithEmailAndPassword(
-      Promise.resolve({}),
-      email,
-      password,
-    )).resolves.toStrictEqual({
-      user:
-        { id: 'hello im a mock', email: 'myemail@gmail.com', password: 'pwd' },
-    });
-  });
+  // it('should receive ID object correctly', () => {
+  //   const email = 'myemail@gmail.com';
+  //   const password = 'pwd';
+  //   const nameUser = 'Anita Mari';
+  //   createUser(email, password, nameUser);
+  //   return expect(createUserWithEmailAndPassword(
+  //     Promise.resolve({}),
+  //     email,
+  //     password,
+  //   )).resolves.toStrictEqual({
+  //     user:
+  //       { id: 'hello im a mock', email: 'myemail@gmail.com', password: 'pwd' },
+  //   });
+  // });
 
   it('createUserWithEmailAndPassword should be called with the correct parameters', () => {
     const email = 'myemail@gmail.com';

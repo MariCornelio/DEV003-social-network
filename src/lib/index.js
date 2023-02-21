@@ -1,18 +1,18 @@
-// aqui exportaras las funciones que necesites
+// importando los métodos de firebase
 import {
   createUserWithEmailAndPassword,
   GoogleAuthProvider,
-  onAuthStateChanged,
+  onAuthStateChanged, //Agrega un observador para los cambios en el estado de inicio de sesión del usuario.
   signInWithEmailAndPassword,
   signInWithPopup,
   updateProfile,
 } from 'firebase/auth';
 
 import {
-  collection,
+  collection, 
   addDoc,
-  onSnapshot,
-  updateDoc,
+  onSnapshot, //Para escuchar un documento - obtiene actualizaciones en tiempo real 
+  updateDoc, 
   doc,
   getDoc,
   setDoc,
@@ -20,7 +20,7 @@ import {
   arrayUnion,
   arrayRemove,
   serverTimestamp,
-  query,
+  query, //Especificar qué documentos desea recuperar de una colección o grupo de colecciones.
   orderBy,
 } from 'firebase/firestore';
 
@@ -28,15 +28,6 @@ import { messageError } from '../errors/messageError.js';
 
 import { auth, db } from './model/firebase.js';
 
-// // usando firestore
-// export const guardarPublicacion = (descripcion) => {
-//   addDoc(collection(db, 'publicaciones'), { descripcion });
-// };
-
-// export const verPublicacion = (funcionRecorrido) =>
-//   onSnapshot(collection(db, 'publicaciones'), funcionRecorrido);
-// ***********************************************************
-// save posts
 export const savePosts = (
   idUser,
   description,
@@ -58,7 +49,7 @@ export const savePosts = (
 };
 // see Post
 export const seePost = (callback) => onSnapshot(query(collection(db, 'Posts'), orderBy('time', 'desc')), callback);
-// update post
+// update post. Imported in homeLogic
 export const updatePostFields = (id, newFields) => updateDoc(doc(db, 'Posts', id), newFields);
 // delete post
 export const deletePost = (id) => deleteDoc(doc(db, 'Posts', id));
@@ -66,7 +57,7 @@ export const deletePost = (id) => deleteDoc(doc(db, 'Posts', id));
 // edit post
 export const editPost = (id, postUpdate) => updateDoc(doc(db, 'Posts', id), postUpdate);
 
-// get only one post
+// get only one like per post
 export const docGetPost = (id) => getDoc(doc(db, 'Posts', id));
 // ************************************************************************
 // adding likes and removing likes
@@ -125,9 +116,6 @@ export const onStateSession = () => {
 export const createUser = (email, password, nameUser) => {
   createUserWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
-      // console.log('1', userCredential);
-      // console.log('2', auth.currentUser);
-      // console.log(userCredential.user.displayName);
       updateName(userCredential.user, nameUser);
       window.location.hash = '#/home';
     })
