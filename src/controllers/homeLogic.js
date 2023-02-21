@@ -153,7 +153,6 @@ export const homeLogic = () => {
     querysnapshot.forEach((doc) => {
       let profession = '';
       let languages = '';
-      let userProfilePhoto = '';
       let nameUser = auth.currentUser.displayName;
       if (auth.currentUser) {
         const timeAll = doc.data().time.toDate().toLocaleTimeString([], {
