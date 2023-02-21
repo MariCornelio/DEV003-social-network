@@ -24,93 +24,7 @@ export const homeLogic = () => {
   const profilePhotoHomePost = document.getElementById('profilePhotoHomePost');
   const profilePhotoHeader = document.getElementById('profilePhotoHeader');
   let photoProfile = 'https://cdn-icons-png.flaticon.com/512/3088/3088877.png';
-  const homeLayoutPost = (
-    id,
-    description,
-    nameUser,
-    profession,
-    languages,
-    dateTime,
-    photoProfileUser,
-    likes,
-  ) => {
-    const post = document.createElement('div');
-    post.classList.add('post');
-    post.innerHTML = `
-            <div class="post-header">
-              <img src=${photoProfileUser} class="user-icon" alt="photo profile">
-              <div class="post-username-details">
-                <p class="username">${nameUser}</p>
-                <p class="username-position-languages career">${profession}</p>
-                <p class="username-position-languages"><em>${languages}</em></p>
-                <p class="post-date">${dateTime}</p>
-              </div>
-              <div class="post-dropdown">
-                <button class="post-actions select-btn">...</button>
-                <div class="dropdown-content select-dropdown">
-                  <div class="dropdown-element dropdown-edit">
-                    <i class="fa-solid fa-pencil"></i>
-                    <a>Edit</a>
-                  </div>
-                  <div class="dropdown-element dropdown-delete select-predelete" >
-                    <i class="fa-solid fa-trash-can select-predelete-icon"></i>
-                    <a class="select-predelete-a">Delete</a>
-                  </div>
-                </div>
-              </div>
-              <div id="modal-container">
-                <div id="modal">
-                  <div id="modal-content">
-                    <span style="font-size: 3em; color: Tomato;">
-                      <i class="fa-regular fa-circle-xmark"></i>
-                    </span>
-                    <h2>Are you sure?</h2>
-                    <p>Do you really want to delete this post?</p>
-                    <div id="modal-btns">
-                      <button class="modal-cancel-btn">Cancel</button>
-                      <button data-id=${id} class="modal-delete-btn">Delete</button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="post-feed">
-              <div class="post-overlays">
-                <div class="share-window">
-                  <h1 class="title">share the post with others</h1>
-                  <div class="share-link-container">
-                    <input type="text" class="share-link-id" value="https://devgram-app.netlify.app" disabled>
-                    <button class="copy-btn">copy</button>
-                  </div>
-                </div>
-              </div>
-              <div class="post-img-container">
-                <p class="post-des">${description}</p>
-                <button data-id=${id} class="save-edit-btn">Save</button>
-              </div>
-            </div>
-            <div class="post-detail">
-              <div class="detail-intracables">
-               <div class="detail-intracables-likes" data-like=${id}>
-                  <img src=${redHeart} class="like-icon" alt="heart">
-               <div class="detail-intrancables-likes-position">
-                  <img id="like" src=${heartNoFill} class="like-btn" alt="heart">
-                  <img id="liked" src=${redHeart} class="small-like-icon" alt="heart">
-                </div>
-               </div>
-                <img src=${sendNoFill} class="send-btn" alt="send">
-                <img src=${commentNoFill} class="comment-btn" alt="comment">
-              </div>
-              <span class="likes">${likes} likes</span>
-              <div class="comment-box">
-                <input type="text" id="comment-input" placeholder="Add a comment">
-                <button class="add-comment-btn"><img src=${commentNoFill} alt="comment"></button>
-              </div>
-              <span class="comment-count">300 comments</span>
-            </div>
-    `;
-    return post;
-  };
+  
   createPostButton.addEventListener('click', async (e) => {
     e.preventDefault();
     if (homeCreatePost.value.trim().length !== 0) {
@@ -323,4 +237,92 @@ export const homeLogic = () => {
   headerEditProfile.addEventListener('click', () => {
     window.location.hash = '#/profile';
   });
-}; // final de la funcion homoLogic
+}; // final de la funcion homeLogic
+
+  const homeLayoutPost = (
+    id,
+    description,
+    nameUser,
+    profession,
+    languages,
+    dateTime,
+    photoProfileUser,
+    likes,
+  ) => {
+    const post = document.createElement('div');
+    post.classList.add('post');
+    post.innerHTML = `
+            <div class="post-header">
+              <img src=${photoProfileUser} class="user-icon" alt="photo profile">
+              <div class="post-username-details">
+                <p class="username">${nameUser}</p>
+                <p class="username-position-languages career">${profession}</p>
+                <p class="username-position-languages"><em>${languages}</em></p>
+                <p class="post-date">${dateTime}</p>
+              </div>
+              <div class="post-dropdown">
+                <button class="post-actions select-btn">...</button>
+                <div class="dropdown-content select-dropdown">
+                  <div class="dropdown-element dropdown-edit">
+                    <i class="fa-solid fa-pencil"></i>
+                    <a>Edit</a>
+                  </div>
+                  <div class="dropdown-element dropdown-delete select-predelete" >
+                    <i class="fa-solid fa-trash-can select-predelete-icon"></i>
+                    <a class="select-predelete-a">Delete</a>
+                  </div>
+                </div>
+              </div>
+              <div id="modal-container">
+                <div id="modal">
+                  <div id="modal-content">
+                    <span style="font-size: 3em; color: Tomato;">
+                      <i class="fa-regular fa-circle-xmark"></i>
+                    </span>
+                    <h2>Are you sure?</h2>
+                    <p>Do you really want to delete this post?</p>
+                    <div id="modal-btns">
+                      <button class="modal-cancel-btn">Cancel</button>
+                      <button data-id=${id} class="modal-delete-btn">Delete</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="post-feed">
+              <div class="post-overlays">
+                <div class="share-window">
+                  <h1 class="title">share the post with others</h1>
+                  <div class="share-link-container">
+                    <input type="text" class="share-link-id" value="https://devgram-app.netlify.app" disabled>
+                    <button class="copy-btn">copy</button>
+                  </div>
+                </div>
+              </div>
+              <div class="post-img-container">
+                <p class="post-des">${description}</p>
+                <button data-id=${id} class="save-edit-btn">Save</button>
+              </div>
+            </div>
+            <div class="post-detail">
+              <div class="detail-intracables">
+               <div class="detail-intracables-likes" data-like=${id}>
+                  <img src=${redHeart} class="like-icon" alt="heart">
+               <div class="detail-intrancables-likes-position">
+                  <img id="like" src=${heartNoFill} class="like-btn" alt="heart">
+                  <img id="liked" src=${redHeart} class="small-like-icon" alt="heart">
+                </div>
+               </div>
+                <img src=${sendNoFill} class="send-btn" alt="send">
+                <img src=${commentNoFill} class="comment-btn" alt="comment">
+              </div>
+              <span class="likes">${likes} likes</span>
+              <div class="comment-box">
+                <input type="text" id="comment-input" placeholder="Add a comment">
+                <button class="add-comment-btn"><img src=${commentNoFill} alt="comment"></button>
+              </div>
+              <span class="comment-count">300 comments</span>
+            </div>
+    `;
+    return post;
+  };
