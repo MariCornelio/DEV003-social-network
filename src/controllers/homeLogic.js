@@ -1,5 +1,8 @@
 /* eslint-disable no-plusplus */
-import photoProfileImport from '../assets/photoProfile.png';
+import redHeart from '../assets/red-heart.png';
+import heartNoFill from '../assets/heart-nofill.png';
+import sendNoFill from '../assets/send-nofill.png';
+import commentNoFill from '../assets/comment-nofill.png';
 import {
   docGetProfile,
   savePosts,
@@ -20,7 +23,8 @@ export const homeLogic = () => {
   const homeFormCreatePost = document.getElementById('home-form-create-post');
   const profilePhotoHomePost = document.getElementById('profilePhotoHomePost');
   const profilePhotoHeader = document.getElementById('profilePhotoHeader');
-  let photoProfile = photoProfileImport;
+  
+  let photoProfile = 'https://cdn-icons-png.flaticon.com/512/3088/3088877.png';
 
   createPostButton.addEventListener('click', async (e) => {
     e.preventDefault();

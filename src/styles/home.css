@@ -585,6 +585,7 @@ main .container {
 }
 
 .detail-intracables .like-icon {
+  display: none;
   width: 200px;
   height: 200px;
   opacity: 0;
@@ -599,6 +600,7 @@ main .container {
   animation: popup 2s forwards 1;
 }
 .like-icon.show {
+  display: block;
   opacity: 1;
   animation: popup 2s forwards 1;
 }
