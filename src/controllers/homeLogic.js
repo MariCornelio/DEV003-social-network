@@ -1,5 +1,8 @@
 /* eslint-disable no-plusplus */
-import photoProfileImport from '../assets/photoProfile.png';
+import redHeart from '../assets/red-heart.png';
+import heartNoFill from '../assets/heart-nofill.png';
+import sendNoFill from '../assets/send-nofill.png';
+import commentNoFill from '../assets/comment-nofill.png';
 import {
   docGetProfile,
   savePosts,
@@ -20,7 +23,7 @@ export const homeLogic = () => {
   const homeFormCreatePost = document.getElementById('home-form-create-post');
   const profilePhotoHomePost = document.getElementById('profilePhotoHomePost');
   const profilePhotoHeader = document.getElementById('profilePhotoHeader');
-  let photoProfile = photoProfileImport;
+  let photoProfile = 'https://cdn-icons-png.flaticon.com/512/3088/3088877.png';
   const homeLayoutPost = (
     id,
     description,
@@ -35,7 +38,7 @@ export const homeLogic = () => {
     post.classList.add('post');
     post.innerHTML = `
             <div class="post-header">
-              <img src=${photoProfileUser} class="user-icon" alt="">
+              <img src=${photoProfileUser} class="user-icon" alt="photo profile">
               <div class="post-username-details">
                 <p class="username">${nameUser}</p>
                 <p class="username-position-languages career">${profession}</p>
@@ -89,19 +92,19 @@ export const homeLogic = () => {
             <div class="post-detail">
               <div class="detail-intracables">
                <div class="detail-intracables-likes" data-like=${id}>
-                  <img src="./assets/red-heart.png" class="like-icon" alt="">
+                  <img src=${redHeart} class="like-icon" alt="heart">
                <div class="detail-intrancables-likes-position">
-                  <img id="like" src="./assets/heart-nofill.png" class="like-btn" alt="">
-                  <img id="liked" src="./assets/red-heart.png" class="small-like-icon" alt="">
+                  <img id="like" src=${heartNoFill} class="like-btn" alt="heart">
+                  <img id="liked" src=${redHeart} class="small-like-icon" alt="heart">
                 </div>
                </div>
-                <img src="./assets/send-nofill.png" class="send-btn" alt="">
-                <img src="./assets/comment-nofill.png" class="comment-btn" alt="">
+                <img src=${sendNoFill} class="send-btn" alt="send">
+                <img src=${commentNoFill} class="comment-btn" alt="comment">
               </div>
               <span class="likes">${likes} likes</span>
               <div class="comment-box">
                 <input type="text" id="comment-input" placeholder="Add a comment">
-                <button class="add-comment-btn"><img src="./assets/comment-nofill.png" alt=""></button>
+                <button class="add-comment-btn"><img src=${commentNoFill} alt="comment"></button>
               </div>
               <span class="comment-count">300 comments</span>
             </div>
@@ -150,6 +153,7 @@ export const homeLogic = () => {
     querysnapshot.forEach((doc) => {
       let profession = '';
       let languages = '';
+      let userProfilePhoto = '';
       let nameUser = auth.currentUser.displayName;
       if (auth.currentUser) {
         const timeAll = doc.data().time.toDate().toLocaleTimeString([], {
