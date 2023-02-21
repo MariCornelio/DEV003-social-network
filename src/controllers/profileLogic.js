@@ -21,7 +21,6 @@ export const profileLogic = () => {
     await signOut(auth);
   });
 
-  //para cuando se haga click en save
   profileForm.addEventListener('submit', async (e) => {
     e.preventDefault();
     const docFirebaseId = auth.currentUser.uid;
@@ -30,13 +29,11 @@ export const profileLogic = () => {
     const docSnap = await docGetProfile(docFirebaseId);
     let newNameUser = auth.currentUser.displayName;
 
-    //que no hayan espacios vacíos ni en blanco
     if (profileNameUser.value.trim().length !== 0) {
       newNameUser = profileNameUser.value;
       updateName(auth.currentUser, newNameUser);
     }
 
-    //que se actualice el mismo documento (en caso de que ya exista)
     if (docSnap.exists()) {
       console.log('actualizando');
       if (profileNameUser.value.trim().length !== 0) {
@@ -52,15 +49,12 @@ export const profileLogic = () => {
           languages: profileLanguages.value,
         });
       }
-      // se crea un perfil en caso de que no exista
     } else {
       console.log('entro');
       saveProfile(profileProfession.value, profileLanguages.value, newNameUser);
     }
     profileForm.reset();
   });
-
-  //redirigiendo a home
   profileNotNow.addEventListener('click', () => {
     window.location.hash = '#/home';
   });

@@ -15,7 +15,7 @@ export const Profile = () => {
   </div>
   </form>
   <div  class='profile-notNow'>
-    <p id="profileNotNow">Not Now</p>
+    <p id="profileNotNow">Not Now/Home</p>
   </div>
   <div class="logout-container"> 
   <button class="logout-btn" id="profile-button-logout">Log Out</button>
