@@ -1,13 +1,13 @@
-import { Profile } from './Profile';
+import { Home } from '../src/views/Home';
 
-describe('Profile', () => {
+describe('Home', () => {
   it('should be a function', () => {
-    expect(typeof Profile).toBe('function');
+    expect(typeof Home).toBe('function');
   });
 
   it('should create an element', () => {
     jest.spyOn(document, 'createElement').mockImplementation(() => ({ classList: { add: () => { } } }));
-    Profile();
+    Home();
     expect(document.createElement).toBeCalled();
   });
 });
