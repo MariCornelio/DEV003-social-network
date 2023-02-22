@@ -11,7 +11,7 @@ import {
   removingLikes,
   addingLikes,
 } from '../lib/index.js';
-import { auth } from '../lib/model/firebase.js';
+import {auth} from '../lib/model/firebase.js';
 
 export const homeLogic = () => {
   const postContainer = document.querySelector('.post-container');
@@ -20,94 +20,8 @@ export const homeLogic = () => {
   const homeFormCreatePost = document.getElementById('home-form-create-post');
   const profilePhotoHomePost = document.getElementById('profilePhotoHomePost');
   const profilePhotoHeader = document.getElementById('profilePhotoHeader');
-  let photoProfile = photoProfileImport;
-  const homeLayoutPost = (
-    id,
-    description,
-    nameUser,
-    profession,
-    languages,
-    dateTime,
-    photoProfileUser,
-    likes,
-  ) => {
-    const post = document.createElement('div');
-    post.classList.add('post');
-    post.innerHTML = `
-            <div class="post-header">
-              <img src=${photoProfileUser} class="user-icon" alt="">
-              <div class="post-username-details">
-                <p class="username">${nameUser}</p>
-                <p class="username-position-languages career">${profession}</p>
-                <p class="username-position-languages"><em>${languages}</em></p>
-                <p class="post-date">${dateTime}</p>
-              </div>
-              <div class="post-dropdown">
-                <button class="post-actions select-btn">...</button>
-                <div class="dropdown-content select-dropdown">
-                  <div class="dropdown-element dropdown-edit">
-                    <i class="fa-solid fa-pencil"></i>
-                    <a>Edit</a>
-                  </div>
-                  <div class="dropdown-element dropdown-delete select-predelete" >
-                    <i class="fa-solid fa-trash-can select-predelete-icon"></i>
-                    <a class="select-predelete-a">Delete</a>
-                  </div>
-                </div>
-              </div>
-              <div id="modal-container">
-                <div id="modal">
-                  <div id="modal-content">
-                    <span style="font-size: 3em; color: Tomato;">
-                      <i class="fa-regular fa-circle-xmark"></i>
-                    </span>
-                    <h2>Are you sure?</h2>
-                    <p>Do you really want to delete this post?</p>
-                    <div id="modal-btns">
-                      <button class="modal-cancel-btn">Cancel</button>
-                      <button data-id=${id} class="modal-delete-btn">Delete</button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="post-feed">
-              <div class="post-overlays">
-                <div class="share-window">
-                  <h1 class="title">share the post with others</h1>
-                  <div class="share-link-container">
-                    <input type="text" class="share-link-id" value="https://devgram-app.netlify.app" disabled>
-                    <button class="copy-btn">copy</button>
-                  </div>
-                </div>
-              </div>
-              <div class="post-img-container">
-                <p class="post-des">${description}</p>
-                <button data-id=${id} class="save-edit-btn">Save</button>
-              </div>
-            </div>
-            <div class="post-detail">
-              <div class="detail-intracables">
-               <div class="detail-intracables-likes" data-like=${id}>
-                  <img src="./assets/red-heart.png" class="like-icon" alt="">
-               <div class="detail-intrancables-likes-position">
-                  <img id="like" src="./assets/heart-nofill.png" class="like-btn" alt="">
-                  <img id="liked" src="./assets/red-heart.png" class="small-like-icon" alt="">
-                </div>
-               </div>
-                <img src="./assets/send-nofill.png" class="send-btn" alt="">
-                <img src="./assets/comment-nofill.png" class="comment-btn" alt="">
-              </div>
-              <span class="likes">${likes} likes</span>
-              <div class="comment-box">
-                <input type="text" id="comment-input" placeholder="Add a comment">
-                <button class="add-comment-btn"><img src="./assets/comment-nofill.png" alt=""></button>
-              </div>
-              <span class="comment-count">300 comments</span>
-            </div>
-    `;
-    return post;
-  };
+  let photoProfile = 'https://cdn-icons-png.flaticon.com/512/3088/3088877.png';
+
   createPostButton.addEventListener('click', async (e) => {
     e.preventDefault();
     if (homeCreatePost.value.trim().length !== 0) {
@@ -135,12 +49,13 @@ export const homeLogic = () => {
           auth.currentUser.displayName,
           profession,
           languages,
-          photoProfile,
+          photoProfile
         );
       }
     }
     homeFormCreatePost.reset();
   });
+  // querysnapshot son los documentos de firebase (es el post)
   seePost((querysnapshot) => {
     if (auth.currentUser.providerData[0].providerId === 'google.com') {
       profilePhotoHomePost.src = auth.currentUser.photoURL;
@@ -167,13 +82,15 @@ export const homeLogic = () => {
               languages = docSnap.data().languages;
               nameUser = docSnap.data().nameUser;
             }
+            // si el usuario es el mismo entonces puede realizar cambios en cada uno de sus posts
             if (doc.data().idUser === auth.currentUser.uid) {
-              updatePostFields(doc.id, { languages, profession, nameUser });
+              updatePostFields(doc.id, {languages, profession, nameUser});
             }
           })
           .catch((error) => {
             console.log(error);
           });
+        // agregando layout por cada post
         postContainer.appendChild(
           homeLayoutPost(
             doc.id,
@@ -183,8 +100,8 @@ export const homeLogic = () => {
             doc.data().languages,
             timeAll,
             doc.data().photoProfile,
-            doc.data().likes.length,
-          ),
+            doc.data().likes.length
+          )
         );
       }
     });
@@ -197,11 +114,12 @@ export const homeLogic = () => {
 
     const saveEditBtn = document.querySelectorAll('.save-edit-btn');
     saveEditBtn.forEach((btn) => {
-      const postUpdateText = btn.previousElementSibling;
+      const postUpdateText = btn.parentElement.previousElementSibling;
       btn.addEventListener('click', () => {
-        editPost(btn.dataset.id, { description: postUpdateText.innerHTML });
+        editPost(btn.dataset.id, {description: postUpdateText.innerHTML});
       });
     });
+
     // ***************************************************************
     // adding likes
     const likeBtn = document.querySelectorAll('.detail-intracables-likes');
@@ -209,27 +127,25 @@ export const homeLogic = () => {
       const smallLikeIcon = btn.querySelector('.small-like-icon');
       const likeIcon = btn.querySelector('.like-icon');
       btn.addEventListener('click', () => {
-        docGetPost(btn.dataset.like)
-          .then((docSnap) => {
-            if (docSnap.data().likes.includes(auth.currentUser.uid)) {
-              removingLikes(btn.dataset.like, auth.currentUser.uid);
-            } else {
-              likeIcon.classList.add('show');
-              setTimeout(() => {
-                likeIcon.classList.remove('show');
-                addingLikes(btn.dataset.like, auth.currentUser.uid);
-              }, 2000);
-            }
-          });
-      });
-      docGetPost(btn.dataset.like)
-        .then((docSnap) => {
+        docGetPost(btn.dataset.like).then((docSnap) => {
           if (docSnap.data().likes.includes(auth.currentUser.uid)) {
-            smallLikeIcon.classList.add('show');
+            removingLikes(btn.dataset.like, auth.currentUser.uid);
           } else {
-            smallLikeIcon.classList.remove('show');
+            likeIcon.classList.add('show');
+            setTimeout(() => {
+              likeIcon.classList.remove('show');
+              addingLikes(btn.dataset.like, auth.currentUser.uid);
+            }, 2000);
           }
         });
+      });
+      docGetPost(btn.dataset.like).then((docSnap) => {
+        if (docSnap.data().likes.includes(auth.currentUser.uid)) {
+          smallLikeIcon.classList.add('show');
+        } else {
+          smallLikeIcon.classList.remove('show');
+        }
+      });
     });
   });
 
@@ -244,9 +160,10 @@ export const homeLogic = () => {
     // const selectEditA
     const selectPredelete = document.querySelectorAll('.select-predelete');
     const selectPredeleteIcon = document.querySelectorAll(
-      '.select-predelete-icon',
+      '.select-predelete-icon'
     );
     const selectPredeleteA = document.querySelectorAll('.select-predelete-a');
+    const cancelEditBtn = document.querySelectorAll('.cancel-edit-btn');
     for (let i = 0; i < selectDropdown.length; i++) {
       if (e.target === selectBtn[i]) {
         selectDropdown[i].classList.toggle('show-post-actions');
@@ -255,8 +172,9 @@ export const homeLogic = () => {
 
     for (let i = 0; i < selectPredelete.length; i++) {
       if (
-        e.target === selectPredelete[i] || e.target === selectPredeleteIcon[i]
-        || e.target === selectPredeleteA[i]
+        e.target === selectPredelete[i] ||
+        e.target === selectPredeleteIcon[i] ||
+        e.target === selectPredeleteA[i]
       ) {
         modalContainer[i].style.display = 'flex';
       }
@@ -289,14 +207,30 @@ export const homeLogic = () => {
 
     for (let i = 0; i < selectEdit.length; i++) {
       if (
-        e.target === selectEdit[i] || e.target === selectEdit[i].children[0]
-        || e.target === selectEdit[i].children[1]
+        e.target === selectEdit[i] ||
+        e.target === selectEdit[i].children[0] ||
+        e.target === selectEdit[i].children[1]
       ) {
         const postDes = document.querySelectorAll('.post-des');
         postDes[i].setAttribute('contenteditable', true);
         postDes[i].classList.add('editable');
         const saveEdit = document.querySelectorAll('.save-edit-btn');
         saveEdit[i].classList.add('show');
+        const cancelEdit = document.querySelectorAll('.cancel-edit-btn');
+        cancelEdit[i].classList.add('show');
+      }
+    }
+
+    for (let i = 0; i < cancelEditBtn.length; i++) {
+      if (e.target === cancelEditBtn[i]) {
+        const postDes = document.querySelectorAll('.post-des');
+        postDes[i].setAttribute('contenteditable', false);
+        postDes[i].classList.remove('editable');
+        const saveEdit = document.querySelectorAll('.save-edit-btn');
+        saveEdit[i].classList.remove('show');
+        const cancelEdit = document.querySelectorAll('.cancel-edit-btn');
+        cancelEdit[i].classList.remove('show');
+        location.reload();
       }
     }
   });
@@ -321,3 +255,94 @@ export const homeLogic = () => {
     window.location.hash = '#/profile';
   });
 }; // final de la funcion homoLogic
+
+const homeLayoutPost = (
+  id,
+  description,
+  nameUser,
+  profession,
+  languages,
+  dateTime,
+  photoProfileUser,
+  likes
+) => {
+  const post = document.createElement('div');
+  post.classList.add('post');
+  post.innerHTML = `
+          <div class="post-header">
+            <img src=${photoProfileUser} class="user-icon" alt="">
+            <div class="post-username-details">
+              <p class="username">${nameUser}</p>
+              <p class="username-position-languages career">${profession}</p>
+              <p class="username-position-languages"><em>${languages}</em></p>
+              <p class="post-date">${dateTime}</p>
+            </div>
+            <div class="post-dropdown">
+              <button class="post-actions select-btn">...</button>
+              <div class="dropdown-content select-dropdown">
+                <div class="dropdown-element dropdown-edit">
+                  <i class="fa-solid fa-pencil"></i>
+                  <a>Edit</a>
+                </div>
+                <div class="dropdown-element dropdown-delete select-predelete" >
+                  <i class="fa-solid fa-trash-can select-predelete-icon"></i>
+                  <a class="select-predelete-a">Delete</a>
+                </div>
+              </div>
+            </div>
+            <div id="modal-container">
+              <div id="modal">
+                <div id="modal-content">
+                  <span style="font-size: 3em; color: Tomato;">
+                    <i class="fa-regular fa-circle-xmark"></i>
+                  </span>
+                  <h2>Are you sure?</h2>
+                  <p>Do you really want to delete this post?</p>
+                  <div id="modal-btns">
+                    <button class="modal-cancel-btn">Cancel</button>
+                    <button data-id=${id} class="modal-delete-btn">Delete</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="post-feed">
+            <div class="post-overlays">
+              <div class="share-window">
+                <h1 class="title">share the post with others</h1>
+                <div class="share-link-container">
+                  <input type="text" class="share-link-id" value="https://devgram-app.netlify.app" disabled>
+                  <button class="copy-btn">copy</button>
+                </div>
+              </div>
+            </div>
+            <div class="post-img-container">
+              <p class="post-des">${description}</p>
+              <div class="edit-buttons">
+                <button class="cancel-edit-btn">Cancel</button>
+                <button data-id=${id} class="save-edit-btn">Save</button>
+              </div>
+            </div>
+          </div>
+          <div class="post-detail">
+            <div class="detail-intracables">
+             <div class="detail-intracables-likes" data-like=${id}>
+                <img src="./assets/red-heart.png" class="like-icon" alt="">
+             <div class="detail-intrancables-likes-position">
+                <img id="like" src="./assets/heart-nofill.png" class="like-btn" alt="">
+                <img id="liked" src="./assets/red-heart.png" class="small-like-icon" alt="">
+              </div>
+             </div>
+              <img src="./assets/send-nofill.png" class="send-btn" alt="">
+              <img src="./assets/comment-nofill.png" class="comment-btn" alt="">
+            </div>
+            <span class="likes">${likes} likes</span>
+            <div class="comment-box">
+              <input type="text" id="comment-input" placeholder="Add a comment">
+              <button class="add-comment-btn"><img src="./assets/comment-nofill.png" alt=""></button>
+            </div>
+            <span class="comment-count">300 comments</span>
+          </div>
+  `;
+  return post;
+};
