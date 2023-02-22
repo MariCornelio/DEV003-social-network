@@ -57,9 +57,11 @@ img {
   font-size: 1.5rem;
   display: flex;
   align-items: center;
+  /* color: #0e9dd9; */
+  color: #5a017a;
 }
-.home-edit-profile
-/*, .home-post-btn*/ {
+.home-edit-profile,
+.home-post-btn {
   cursor: pointer;
 }
 .home-profile-pic {
@@ -130,7 +132,9 @@ body {
   border-radius: 50%;
   overflow: hidden;
 }
-
+#home-create-post:focus {
+  outline: none;
+}
 .create-btn {
   display: inline-block;
   padding: 0.6rem 2rem;
@@ -363,10 +367,11 @@ main .container {
   display: none;
   position: absolute;
   background-color: #f1f1f1;
-  min-width: 160px;
+  width: 120px;
   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
   z-index: 1;
   transform: translateX(-94px) translateY(3px);
+  margin-right: 5%;
 }
 .dropdown-element {
   color: black;
@@ -692,14 +697,32 @@ main .container {
   width: 90%;
   min-height: 70px;
   margin-bottom: 10px;
+  margin-right: 10px;
+  outline: none;
+}
+.edit-buttons {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
 }
 .save-edit-btn {
   background-color: #0e9dd9;
   color: white;
-  width: 15%;
+  width: 80px;
   height: 30px;
   border-radius: 20px;
-  align-self: flex-end;
+  /* align-self: flex-end; */
+  margin-right: 5%;
+  cursor: pointer;
+  display: none;
+}
+.cancel-edit-btn {
+  background-color: #6e6c6c;
+  color: white;
+  width: 80px;
+  height: 30px;
+  border-radius: 20px;
+  /* align-self: flex-end; */
   margin-right: 5%;
   cursor: pointer;
   display: none;
