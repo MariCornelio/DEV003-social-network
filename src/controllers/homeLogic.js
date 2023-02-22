@@ -1,5 +1,8 @@
 /* eslint-disable no-plusplus */
-import photoProfileImport from '../assets/photoProfile.png';
+import redHeart from '../assets/red-heart.png';
+import heartNoFill from '../assets/heart-nofill.png';
+import sendNoFill from '../assets/send-nofill.png';
+import commentNoFill from '../assets/comment-nofill.png';
 import {
   docGetProfile,
   savePosts,
@@ -254,58 +257,58 @@ export const homeLogic = () => {
   headerEditProfile.addEventListener('click', () => {
     window.location.hash = '#/profile';
   });
-}; // final de la funcion homoLogic
+}; // final de la funcion homeLogic
 
-const homeLayoutPost = (
-  id,
-  description,
-  nameUser,
-  profession,
-  languages,
-  dateTime,
-  photoProfileUser,
-  likes
-) => {
-  const post = document.createElement('div');
-  post.classList.add('post');
-  post.innerHTML = `
-          <div class="post-header">
-            <img src=${photoProfileUser} class="user-icon" alt="">
-            <div class="post-username-details">
-              <p class="username">${nameUser}</p>
-              <p class="username-position-languages career">${profession}</p>
-              <p class="username-position-languages"><em>${languages}</em></p>
-              <p class="post-date">${dateTime}</p>
-            </div>
-            <div class="post-dropdown">
-              <button class="post-actions select-btn">...</button>
-              <div class="dropdown-content select-dropdown">
-                <div class="dropdown-element dropdown-edit">
-                  <i class="fa-solid fa-pencil"></i>
-                  <a>Edit</a>
-                </div>
-                <div class="dropdown-element dropdown-delete select-predelete" >
-                  <i class="fa-solid fa-trash-can select-predelete-icon"></i>
-                  <a class="select-predelete-a">Delete</a>
+  const homeLayoutPost = (
+    id,
+    description,
+    nameUser,
+    profession,
+    languages,
+    dateTime,
+    photoProfileUser,
+    likes,
+  ) => {
+    const post = document.createElement('div');
+    post.classList.add('post');
+    post.innerHTML = `
+            <div class="post-header">
+              <img src=${photoProfileUser} class="user-icon" alt="photo profile">
+              <div class="post-username-details">
+                <p class="username">${nameUser}</p>
+                <p class="username-position-languages career">${profession}</p>
+                <p class="username-position-languages"><em>${languages}</em></p>
+                <p class="post-date">${dateTime}</p>
+              </div>
+              <div class="post-dropdown">
+                <button class="post-actions select-btn">...</button>
+                <div class="dropdown-content select-dropdown">
+                  <div class="dropdown-element dropdown-edit">
+                    <i class="fa-solid fa-pencil"></i>
+                    <a>Edit</a>
+                  </div>
+                  <div class="dropdown-element dropdown-delete select-predelete" >
+                    <i class="fa-solid fa-trash-can select-predelete-icon"></i>
+                    <a class="select-predelete-a">Delete</a>
+                  </div>
                 </div>
               </div>
-            </div>
-            <div id="modal-container">
-              <div id="modal">
-                <div id="modal-content">
-                  <span style="font-size: 3em; color: Tomato;">
-                    <i class="fa-regular fa-circle-xmark"></i>
-                  </span>
-                  <h2>Are you sure?</h2>
-                  <p>Do you really want to delete this post?</p>
-                  <div id="modal-btns">
-                    <button class="modal-cancel-btn">Cancel</button>
-                    <button data-id=${id} class="modal-delete-btn">Delete</button>
+              <div id="modal-container">
+                <div id="modal">
+                  <div id="modal-content">
+                    <span style="font-size: 3em; color: Tomato;">
+                      <i class="fa-regular fa-circle-xmark"></i>
+                    </span>
+                    <h2>Are you sure?</h2>
+                    <p>Do you really want to delete this post?</p>
+                    <div id="modal-btns">
+                      <button class="modal-cancel-btn">Cancel</button>
+                      <button data-id=${id} class="modal-delete-btn">Delete</button>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
           <div class="post-feed">
             <div class="post-overlays">
               <div class="share-window">
@@ -327,22 +330,22 @@ const homeLayoutPost = (
           <div class="post-detail">
             <div class="detail-intracables">
              <div class="detail-intracables-likes" data-like=${id}>
-                <img src="./assets/red-heart.png" class="like-icon" alt="">
-             <div class="detail-intrancables-likes-position">
-                <img id="like" src="./assets/heart-nofill.png" class="like-btn" alt="">
-                <img id="liked" src="./assets/red-heart.png" class="small-like-icon" alt="">
+                  <img src=${redHeart} class="like-icon" alt="heart">
+               <div class="detail-intrancables-likes-position">
+                  <img id="like" src=${heartNoFill} class="like-btn" alt="heart">
+                  <img id="liked" src=${redHeart} class="small-like-icon" alt="heart">
+                </div>
+               </div>
+                <img src=${sendNoFill} class="send-btn" alt="send">
+                <img src=${commentNoFill} class="comment-btn" alt="comment">
               </div>
-             </div>
-              <img src="./assets/send-nofill.png" class="send-btn" alt="">
-              <img src="./assets/comment-nofill.png" class="comment-btn" alt="">
+              <span class="likes">${likes} likes</span>
+              <div class="comment-box">
+                <input type="text" id="comment-input" placeholder="Add a comment">
+                <button class="add-comment-btn"><img src=${commentNoFill} alt="comment"></button>
+              </div>
+              <span class="comment-count">300 comments</span>
             </div>
-            <span class="likes">${likes} likes</span>
-            <div class="comment-box">
-              <input type="text" id="comment-input" placeholder="Add a comment">
-              <button class="add-comment-btn"><img src="./assets/comment-nofill.png" alt=""></button>
-            </div>
-            <span class="comment-count">300 comments</span>
-          </div>
-  `;
-  return post;
-};
+    `;
+    return post;
+  };
