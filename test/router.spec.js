@@ -90,9 +90,9 @@ describe('router', () => {
   });
 
   it('should create the default element', () => {
-    const root = {innerHTML: ''}
-    const eventListenerMock = jest.fn().mockReturnValue(()=>{return root})
-    jest.spyOn(document, 'getElementById').mockImplementation(() => ({ appendChild: jest.fn(), addEventListener: eventListenerMock}));
+    const root = { innerHTML: '' };
+    const eventListenerMock = jest.fn().mockReturnValue(() => root);
+    jest.spyOn(document, 'getElementById').mockImplementation(() => ({ appendChild: jest.fn(), addEventListener: eventListenerMock }));
     jest.spyOn(document, 'querySelector').mockImplementation(() => ({ addEventListener: () => { } }));
 
     global.window = Object.create(window);
@@ -107,6 +107,4 @@ describe('router', () => {
     expect(document.getElementById).toBeCalled();
     expect(homeLogic).toBeCalled();
   });
-
 });
-

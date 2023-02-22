@@ -1,4 +1,4 @@
-import {messageError, cleanMessageErrors} from '../src/errors/messageError';
+import { messageError, cleanMessageErrors } from '../src/errors/messageError';
 
 describe('messageError', () => {
   it('should be a function', () => {
@@ -6,13 +6,11 @@ describe('messageError', () => {
   });
 
   it('should create element', () => {
-    const classListMock = {add: jest.fn()};
-    const divError = {innerHTML: '', classList: classListMock};
-    jest.spyOn(document, 'createElement').mockImplementation(() => {
-      return divError;
-    });
+    const classListMock = { add: jest.fn() };
+    const divError = { innerHTML: '', classList: classListMock };
+    jest.spyOn(document, 'createElement').mockImplementation(() => divError);
     const insertAdjacentElementMock = jest.fn();
-    const tag = {insertAdjacentElement: insertAdjacentElementMock};
+    const tag = { insertAdjacentElement: insertAdjacentElementMock };
 
     messageError('', tag);
     expect(classListMock.add).toBeCalled();
@@ -44,7 +42,7 @@ describe('cleanMessageErrors', () => {
     expect(document.querySelector).toBeCalled();
   });
 
-  it('should clean element', () => {
+  it('should clean element 2', () => {
     const removeChildMock = jest.fn();
     const tagContainerMock = {
       querySelector: jest.fn().mockReturnValue(null),
